@@ -2,21 +2,21 @@
 
 import Image from "next/image";
 
-interface ProductCardProps {
+interface MenuItemProps {
   name: string;
   imageSrc: string;
   imageWidth: number;
   imageHeight: number;
   fontSize: number;
-  multiLine?: boolean;
+  isMultiLine?: boolean;
 }
 
-function ProductCard({ name, imageSrc, imageWidth, imageHeight, fontSize, multiLine }: ProductCardProps) {
+function MenuItem({ name, imageSrc, imageWidth, imageHeight, fontSize, isMultiLine }: MenuItemProps) {
   return (
     <div className="relative flex flex-col items-center">
-      {/* Shadow blur effect */}
+      {/* Shadow blur effect under burger */}
       <div 
-        className="absolute bottom-[50px] w-[80%] h-[10px] bg-shadow-gray shadow-blur rounded-full"
+        className="absolute bottom-[45px] w-[70%] h-[8px] bg-[#7B7B7B] rounded-[50%]"
         style={{ filter: "blur(1.45px)" }}
       />
       
@@ -27,7 +27,7 @@ function ProductCard({ name, imageSrc, imageWidth, imageHeight, fontSize, multiL
       >
         <Image
           src={imageSrc}
-          alt={name}
+          alt={name.replace(/<br\s*\/?>/gi, ' ')}
           fill
           className="object-contain"
         />
@@ -35,10 +35,10 @@ function ProductCard({ name, imageSrc, imageWidth, imageHeight, fontSize, multiL
       
       {/* Product Name */}
       <h3 
-        className="font-lilita text-text-dark text-center mt-2"
+        className="font-lilita text-text-dark text-center mt-1"
         style={{ 
           fontSize: `${fontSize}px`, 
-          lineHeight: multiLine ? "25px" : "31px" 
+          lineHeight: isMultiLine ? "25px" : "31px" 
         }}
         dangerouslySetInnerHTML={{ __html: name }}
       />
@@ -48,25 +48,25 @@ function ProductCard({ name, imageSrc, imageWidth, imageHeight, fontSize, multiL
 
 export default function MenuGrid() {
   return (
-    <section className="w-full bg-white py-8">
-      <div className="flex justify-center gap-4 px-4">
+    <section className="w-full bg-white pt-6 pb-10">
+      <div className="flex justify-between items-end px-2">
         {/* Classic Burger */}
-        <ProductCard
+        <MenuItem
           name="CLASSIC"
-          imageSrc="/images/classic-burger.svg"
-          imageWidth={225}
-          imageHeight={123}
+          imageSrc="/images/classic-burger.png"
+          imageWidth={180}
+          imageHeight={130}
           fontSize={27}
         />
         
         {/* Fried Chicken Burger */}
-        <ProductCard
+        <MenuItem
           name="FRIED<br/>CHICKEN"
-          imageSrc="/images/fried-chicken-burger.svg"
-          imageWidth={271}
-          imageHeight={148}
+          imageSrc="/images/fried-chicken-burger.png"
+          imageWidth={200}
+          imageHeight={140}
           fontSize={24}
-          multiLine
+          isMultiLine
         />
       </div>
     </section>
