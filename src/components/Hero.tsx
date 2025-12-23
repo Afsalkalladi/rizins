@@ -36,26 +36,6 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Left decorative burger - faded */}
-      <div className="absolute w-[302px] h-[165px] -left-[160px] top-[83px] opacity-30 pointer-events-none">
-        <Image
-          src="/images/classic-burger.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      {/* Right decorative burger - faded */}
-      <div className="absolute w-[427px] h-[233px] left-[229px] top-[58px] opacity-30 pointer-events-none">
-        <Image
-          src="/images/fried-chicken-burger.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
       {/* Left Arrow Navigation */}
       <button 
         className="absolute left-[17px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
@@ -81,6 +61,30 @@ export default function Hero() {
           height={40}
         />
       </button>
+
+
+      {/* Left decorative burger - faded */}
+      <div className="absolute w-[302px] h-[165px] -left-[160px] top-[83px] opacity-30 pointer-events-none z-20">
+        <Image
+          src="/images/classic-burger.png"
+          alt=""
+          fill
+          className="object-contain"
+        />
+      </div>
+
+      {/* Right decorative burger - faded */}
+      <div className="absolute w-[427px] h-[233px] left-[229px] top-[58px] opacity-30 pointer-events-none z-20">
+        <Image
+          src="/images/fried-chicken-burger.png"
+          alt=""
+          fill
+          className="object-contain"
+        />
+      </div>
+
+      {/* Black Rectangle Background - covers area from above burger to below text */}
+      <div className="absolute w-full h-[290px] left-0 top-[65px] bg-black/100 z-10" />
 
       {/* Main Landing Burger - Center */}
       <div className="absolute w-[198px] h-[198px] left-1/2 -translate-x-1/2 top-[67px] z-20">
