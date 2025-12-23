@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <defs>
+    <linearGradient id="fried-bun-top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8A54B"/>
+      <stop offset="100%" style="stop-color:#D4863A"/>
+    </linearGradient>
+    <linearGradient id="fried-bun-bottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#D4863A"/>
+      <stop offset="100%" style="stop-color:#C07030"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Bottom bun -->
+  <ellipse cx="200" cy="250" rx="140" ry="25" fill="url(#fried-bun-bottom)"/>
+  
+  <!-- Lettuce -->
+  <path d="M60 225 Q90 240, 120 220 Q150 240, 180 220 Q210 240, 240 220 Q270 240, 300 220 Q330 240, 340 225 L340 240 Q320 230, 290 245 Q260 230, 230 245 Q200 230, 170 245 Q140 230, 110 245 Q80 230, 60 240 Z" fill="#4CAF50"/>
+  
+  <!-- Pickles -->
+  <ellipse cx="150" cy="205" rx="35" ry="8" fill="#7CB342"/>
+  <ellipse cx="250" cy="208" rx="35" ry="8" fill="#689F38"/>
+  
+  <!-- Cheese -->
+  <path d="M70 180 Q90 195, 110 180 Q130 200, 150 180 Q170 200, 190 180 Q210 200, 230 180 Q250 200, 270 180 Q290 200, 310 180 Q330 190, 330 180 L330 170 L70 170 Z" fill="#FFC107"/>
+  
+  <!-- Fried Chicken Patty (crispy texture) -->
+  <ellipse cx="200" cy="145" rx="135" ry="40" fill="#D4A056"/>
+  <ellipse cx="200" cy="140" rx="130" ry="35" fill="#E8B86D"/>
+  
+  <!-- Crispy texture details -->
+  <ellipse cx="140" cy="135" rx="15" ry="8" fill="#C9953E"/>
+  <ellipse cx="180" cy="150" rx="12" ry="6" fill="#C9953E"/>
+  <ellipse cx="220" cy="130" rx="14" ry="7" fill="#C9953E"/>
+  <ellipse cx="260" cy="145" rx="13" ry="7" fill="#C9953E"/>
+  <ellipse cx="160" cy="155" rx="10" ry="5" fill="#C9953E"/>
+  <ellipse cx="240" cy="155" rx="11" ry="6" fill="#C9953E"/>
+  <ellipse cx="200" cy="140" rx="18" ry="8" fill="#D4A056"/>
+  
+  <!-- Top bun -->
+  <path d="M70 105 Q70 30, 200 15 Q330 30, 330 105 Q330 115, 200 120 Q70 115, 70 105" fill="url(#fried-bun-top)"/>
+  
+  <!-- Sesame seeds -->
+  <ellipse cx="130" cy="50" rx="7" ry="4" fill="#FFFDE7" transform="rotate(-15 130 50)"/>
+  <ellipse cx="175" cy="40" rx="7" ry="4" fill="#FFFDE7" transform="rotate(10 175 40)"/>
+  <ellipse cx="220" cy="35" rx="7" ry="4" fill="#FFFDE7" transform="rotate(-10 220 35)"/>
+  <ellipse cx="265" cy="45" rx="7" ry="4" fill="#FFFDE7" transform="rotate(20 265 45)"/>
+  <ellipse cx="155" cy="70" rx="7" ry="4" fill="#FFFDE7" transform="rotate(5 155 70)"/>
+  <ellipse cx="200" cy="55" rx="7" ry="4" fill="#FFFDE7" transform="rotate(-5 200 55)"/>
+  <ellipse cx="245" cy="65" rx="7" ry="4" fill="#FFFDE7" transform="rotate(15 245 65)"/>
+</svg>
