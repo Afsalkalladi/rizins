@@ -2,18 +2,12 @@
 
 import Image from "next/image";
 
-// BURGER watermark positions based on Figma CSS
+// BURGER watermark positions based on exact Figma CSS percentages
 const burgerPositions = [
-  { left: "15%", top: "-5%" },
-  { left: "43%", top: "-5%" },
-  { left: "65%", top: "5%" },
-  { left: "5%", top: "15%" },
-  { left: "35%", top: "18%" },
-  { left: "60%", top: "25%" },
-  { left: "0%", top: "35%" },
-  { left: "30%", top: "40%" },
-  { left: "55%", top: "45%" },
-  { left: "20%", top: "60%" },
+  { left: "5.0%", top: "86.5%" },
+  { left: "1.8%", top: "50%" },
+  { left: "4.7%", top: "0%" },
+  { left: "-69%", top: "0%" },
 ];
 
 export default function Hero() {
@@ -24,7 +18,8 @@ export default function Hero() {
         {burgerPositions.map((pos, index) => (
           <span
             key={index}
-            className="absolute font-jomhuria text-white/10 text-[200px] leading-none whitespace-nowrap select-none"
+            // Updated size to 222px and leading to 222px to match Figma
+            className="absolute font-jomhuria text-white/10 text-[222px] leading-[222px] whitespace-nowrap select-none"
             style={{
               left: pos.left,
               top: pos.top,
@@ -61,7 +56,6 @@ export default function Hero() {
           height={40}
         />
       </button>
-
 
       {/* Left decorative burger - faded */}
       <div className="absolute w-[302px] h-[165px] -left-[160px] top-[83px] opacity-30 pointer-events-none z-20">
