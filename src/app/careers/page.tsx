@@ -6,7 +6,7 @@ import WorkWithUs from "@/components/WorkWithUs";
 
 export default function CareersPage() {
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-white pt-[100px]">
             <Header />
 
             {/* Hero / Intro for Careers */}

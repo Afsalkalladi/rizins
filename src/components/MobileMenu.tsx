@@ -8,11 +8,11 @@ interface MobileMenuProps {
 }
 
 const menuItems = [
+  { label: "HOME", href: "/" },
   { label: "MENU", href: "/menu" },
-  { label: "LOCATION", href: "#location" },
-  { label: "ORDER NOW", href: "#order" },
-  { label: "WORK WITH US", href: "#careers" },
-  { label: "DOWNLOAD APP", href: "#app" },
+  { label: "LOCATION", href: "/location" },
+  { label: "ORDER NOW", href: "/menu" }, // redirecting order to menu for now as typical
+  { label: "WORK WITH US", href: "/careers" },
 ];
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {

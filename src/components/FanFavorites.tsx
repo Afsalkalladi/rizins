@@ -5,11 +5,20 @@ import Image from "next/image";
 
 export default function FanFavorites() {
     return (
-        <section className="w-full bg-white py-20">
+        <section className="w-full bg-[#FAFAFA] py-20">
             <div className="max-w-[1440px] mx-auto px-6">
-                <div className="text-center mb-12">
-                    <h2 className="font-jomhuria text-[64px] text-black leading-none">FAN FAVORITES</h2>
-                    <p className="text-gray-500 font-lilita text-xl uppercase tracking-wide">Top Picks This Week</p>
+                <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+                    <div className="text-center md:text-left">
+                        <span className="text-brand-red font-bold tracking-widest text-sm uppercase mb-2 block">DISCOVER THE TASTE</span>
+                        <h2 className="font-jomhuria text-[72px] text-black leading-[0.8]">
+                            OUR SIGNATURE <span className="text-brand-red">COLLECTION</span>
+                        </h2>
+                    </div>
+
+                    <Link href="/menu" className="hidden md:flex items-center gap-2 text-black font-lilita text-xl hover:text-brand-red transition-colors group">
+                        EXPLORE FULL MENU
+                        <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
