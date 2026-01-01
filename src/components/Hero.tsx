@@ -55,7 +55,7 @@ export default function Hero() {
       </button>
 
       {/* Left decorative burger - faded */}
-      <div className="absolute w-[302px] h-[165px] -left-[160px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:-translate-x-4">
+      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] -left-[60px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:-translate-x-4">
         <Image
           src="/images/classic-burger.png"
           alt=""
@@ -65,7 +65,7 @@ export default function Hero() {
       </div>
 
       {/* Right decorative burger - faded */}
-      <div className="absolute w-[427px] h-[233px] left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:translate-x-4">
+      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:translate-x-4">
         <Image
           src="/images/fried-chicken-burger.png"
           alt=""

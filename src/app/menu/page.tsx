@@ -12,7 +12,7 @@ export default function MenuPage() {
     const [activeCategory, setActiveCategory] = useState("CHICKEN");
 
     return (
-        <main className="min-h-screen bg-[#111] text-white pt-[100px]">
+        <main className="min-h-screen bg-[#111] text-white">
             <Header />
 
             {/* Menu Header / Filter (Design 5) */}

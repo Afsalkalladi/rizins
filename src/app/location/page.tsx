@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 
 export default function LocationPage() {
     return (
-        <main className="min-h-screen bg-white pt-[100px] flex flex-col justify-between">
+        <main className="min-h-screen bg-white flex flex-col justify-between">
             <Header />
 
             <section className="flex-grow flex flex-col items-center justify-center text-center px-6">
