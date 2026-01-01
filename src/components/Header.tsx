@@ -11,12 +11,12 @@ export default function Header() {
   return (
     <>
       <header className="w-full bg-brand-red h-[80px] relative z-30">
-        <div className="grid h-full grid-cols-4 divide-x divide-black/50">
+        <div className="grid h-full grid-cols-4 md:grid-cols-[100px_1fr_1fr_100px] divide-x divide-black/50 mx-auto max-w-[1440px]">
           {/* Logo (Home) */}
           <Link
             href="/"
             aria-label="Go to homepage"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center bg-brand-red"
           >
             <Image
               src="/images/logo.png"
@@ -52,7 +52,7 @@ export default function Header() {
               <circle cx="14" cy="12" r="4" fill="#273B4A" />
               <circle cx="14" cy="12" r="2" fill="white" />
             </svg>
-            <span className="font-jomhuria text-[24px] leading-[14px] text-left">
+            <span className="font-jomhuria text-[24px] md:text-[32px] leading-[14px] md:leading-[20px] text-left">
               ORDER<br />DELIVERY
             </span>
           </a>
@@ -90,7 +90,7 @@ export default function Header() {
                 strokeLinecap="round"
               />
             </svg>
-            <span className="font-jomhuria text-[24px] leading-[14px] text-left">
+            <span className="font-jomhuria text-[24px] md:text-[32px] leading-[14px] md:leading-[20px] text-left">
               PICK UP<br />ON APP
             </span>
           </a>
@@ -99,7 +99,7 @@ export default function Header() {
           <button
             type="button"
             onClick={() => setIsMenuOpen(true)}
-            className="flex items-center justify-center hover:opacity-85 transition-opacity"
+            className="flex items-center justify-center hover:opacity-85 transition-opacity bg-brand-red"
             aria-label="Open menu"
           >
             <span className="flex flex-col justify-center items-center gap-[7px] p-2">

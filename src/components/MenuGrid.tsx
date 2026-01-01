@@ -77,23 +77,43 @@ function MenuItem({
 export default function MenuGrid() {
   return (
     <section className="w-full bg-gray-50 py-10">
-      <div className="mx-auto max-w-[480px] grid grid-cols-2 items-stretch gap-6 px-4">
-        <MenuItem
-          name="CLASSIC"
-          imageSrc="/images/classic-burger.png"
-          imageWidth={190}
-          imageHeight={140}
-          fontSize={26}
-        />
+      <div className="mx-auto w-full max-w-[1440px] px-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-items-center">
+          <MenuItem
+            name="CLASSIC"
+            imageSrc="/images/classic-burger.png"
+            imageWidth={190}
+            imageHeight={140}
+            fontSize={26}
+          />
 
-        <MenuItem
-          name="FRIED<br/>CHICKEN"
-          imageSrc="/images/fried-chicken-burger.png"
-          imageWidth={190}
-          imageHeight={140}
-          fontSize={26}
-          isMultiLine
-        />
+          <MenuItem
+            name="FRIED<br/>CHICKEN"
+            imageSrc="/images/fried-chicken-burger.png"
+            imageWidth={190}
+            imageHeight={140}
+            fontSize={26}
+            isMultiLine
+          />
+
+          <MenuItem
+            name="DOUBLE<br/>CHEESE"
+            imageSrc="/images/classic-burger.png"
+            imageWidth={190}
+            imageHeight={140}
+            fontSize={26}
+            isMultiLine
+          />
+
+          <MenuItem
+            name="SPICY<br/>VEGGIE"
+            imageSrc="/images/fried-chicken-burger.png"
+            imageWidth={190}
+            imageHeight={140}
+            fontSize={26}
+            isMultiLine
+          />
+        </div>
       </div>
     </section>
   );

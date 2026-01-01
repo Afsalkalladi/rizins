@@ -12,14 +12,13 @@ const burgerPositions = [
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-[422px] bg-black overflow-hidden">
-      {/* BURGER Watermark Pattern - rotated text background */}
+    <section className="relative w-full h-[422px] md:h-[600px] lg:h-[700px] bg-black overflow-hidden group">
+      {/* BURGER Watermark Pattern - responsive adjustments */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {burgerPositions.map((pos, index) => (
           <span
             key={index}
-            // Updated size to 222px and leading to 222px to match Figma
-            className="absolute font-jomhuria text-white/10 text-[222px] leading-[222px] whitespace-nowrap select-none"
+            className="absolute font-jomhuria text-white/10 text-[222px] leading-[222px] whitespace-nowrap select-none transition-transform duration-700 ease-out group-hover:scale-105"
             style={{
               left: pos.left,
               top: pos.top,
@@ -32,8 +31,8 @@ export default function Hero() {
       </div>
 
       {/* Left Arrow Navigation */}
-      <button 
-        className="absolute left-[17px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
+      <button
+        className="absolute left-[17px] md:left-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
         aria-label="Previous"
       >
         <Image
@@ -45,8 +44,8 @@ export default function Hero() {
       </button>
 
       {/* Right Arrow Navigation */}
-      <button 
-        className="absolute right-[17px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
+      <button
+        className="absolute right-[17px] md:right-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
         aria-label="Next"
       >
         <Image
@@ -58,7 +57,7 @@ export default function Hero() {
       </button>
 
       {/* Left decorative burger - faded */}
-      <div className="absolute w-[302px] h-[165px] -left-[160px] top-[83px] opacity-30 pointer-events-none z-20">
+      <div className="absolute w-[302px] h-[165px] -left-[160px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:-translate-x-4">
         <Image
           src="/images/classic-burger.png"
           alt=""
@@ -68,7 +67,7 @@ export default function Hero() {
       </div>
 
       {/* Right decorative burger - faded */}
-      <div className="absolute w-[427px] h-[233px] left-[229px] top-[58px] opacity-30 pointer-events-none z-20">
+      <div className="absolute w-[427px] h-[233px] left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:translate-x-4">
         <Image
           src="/images/fried-chicken-burger.png"
           alt=""
@@ -78,10 +77,10 @@ export default function Hero() {
       </div>
 
       {/* Black Rectangle Background - covers area from above burger to below text */}
-      <div className="absolute w-full h-[290px] left-0 top-[65px] bg-black/100 z-10" />
+      <div className="absolute w-full h-[290px] md:h-[400px] left-0 top-[65px] md:top-[100px] bg-black/100 z-10" />
 
       {/* Main Landing Burger - Center */}
-      <div className="absolute w-[198px] h-[198px] left-1/2 -translate-x-1/2 top-[67px] z-20">
+      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] left-1/2 -translate-x-1/2 top-[67px] md:top-[50px] z-20 transition-transform duration-500 hover:scale-105 cursor-pointer">
         <Image
           src="/images/main-burger.png"
           alt="Delicious gourmet burger"
@@ -92,19 +91,19 @@ export default function Hero() {
       </div>
 
       {/* BURGER'S REINVENTED Text */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[280px] z-20 text-center">
-        <h1 className="font-jomhuria text-[57px] leading-[33px] tracking-[0.047em] text-[#EDEDED]">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[280px] md:top-[380px] lg:top-[450px] z-20 text-center w-full">
+        <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
           BURGER&apos;S
         </h1>
-        <h1 className="font-jomhuria text-[57px] leading-[33px] tracking-[0.047em] text-[#EDEDED]">
+        <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
           REINVENTED
         </h1>
       </div>
 
       {/* ORDER NOW Button */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[365px] z-20">
-        <button className="w-[161px] h-[32px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-colors shadow-lg">
-          <span className="font-lilita text-[20px] leading-[23px] text-white">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[365px] md:top-[500px] lg:top-[620px] z-20">
+        <button className="w-[161px] h-[32px] md:w-[200px] md:h-[48px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/50">
+          <span className="font-lilita text-[20px] md:text-[24px] leading-[23px] md:leading-[28px] text-white">
             ORDER NOW
           </span>
         </button>
