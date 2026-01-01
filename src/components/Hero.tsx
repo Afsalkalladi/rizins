@@ -1,6 +1,29 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+// Slide Data
+const slides = [
+  {
+    image: "/images/main-burger.png",
+    subtitle: "BURGER'S",
+    title: "REINVENTED",
+    description: "The classic taste you love, elevated to perfection.",
+  },
+  {
+    image: "/images/fried-chicken-burger.png",
+    subtitle: "CRISPY",
+    title: "CRUNCH",
+    description: "Golden fried chicken with our signature spicy mayo.",
+  },
+  {
+    image: "/images/classic-burger.png",
+    subtitle: "DOUBLE",
+    title: "DELIGHT",
+    description: "Double the beef, double the cheese, double the joy.",
+  },
+];
 
 // BURGER watermark positions based on exact Figma CSS percentages
 const burgerPositions = [
@@ -11,14 +34,32 @@ const burgerPositions = [
 ];
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000); // Rotate every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
   return (
-    <section className="relative w-full h-[422px] md:h-[600px] lg:h-[700px] bg-black overflow-hidden group">
+    <section className="relative w-full h-[500px] md:h-[600px] lg:h-[700px] bg-black overflow-hidden group">
       {/* BURGER Watermark Pattern - responsive adjustments */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
         {burgerPositions.map((pos, index) => (
           <span
             key={index}
-            className="absolute font-jomhuria text-white/10 text-[222px] leading-[222px] whitespace-nowrap select-none transition-transform duration-700 ease-out group-hover:scale-105"
+            className="absolute font-jomhuria text-white/5 text-[222px] leading-[222px] whitespace-nowrap select-none transition-transform duration-700 ease-out group-hover:scale-105"
             style={{
               left: pos.left,
               top: pos.top,
@@ -32,78 +73,80 @@ export default function Hero() {
 
       {/* Left Arrow Navigation */}
       <button
-        className="absolute left-[17px] md:left-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
+        onClick={prevSlide}
+        className="absolute left-[17px] md:left-[40px] top-[45%] -translate-y-1/2 w-[40px] h-[40px] z-30 opacity-60 hover:opacity-100 transition-all hover:scale-110 flex items-center justify-center bg-white/10 rounded-full backdrop-blur-sm"
         aria-label="Previous"
       >
         <Image
           src="/images/arrow-left.svg"
           alt="Previous"
-          width={25}
-          height={40}
+          width={15}
+          height={24}
         />
       </button>
 
       {/* Right Arrow Navigation */}
       <button
-        className="absolute right-[17px] md:right-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
+        onClick={nextSlide}
+        className="absolute right-[17px] md:right-[40px] top-[45%] -translate-y-1/2 w-[40px] h-[40px] z-30 opacity-60 hover:opacity-100 transition-all hover:scale-110 flex items-center justify-center bg-white/10 rounded-full backdrop-blur-sm"
         aria-label="Next"
       >
         <Image
           src="/images/arrow-right.svg"
           alt="Next"
-          width={25}
-          height={40}
+          width={15}
+          height={24}
         />
       </button>
 
-      {/* Left decorative burger - faded */}
-      <div className="absolute w-[302px] h-[165px] -left-[160px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:-translate-x-4">
-        <Image
-          src="/images/classic-burger.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
+      {/* Black Rectangle Background Gradient */}
+      <div className="absolute w-full h-[60%] bottom-0 left-0 bg-gradient-to-t from-black via-black to-transparent z-10" />
+
+      {/* Main Landing Burger - Animated */}
+      <div className="absolute w-[280px] h-[280px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] left-1/2 -translate-x-1/2 top-[80px] md:top-[100px] z-20 transition-all duration-700 ease-in-out hover:scale-105 cursor-pointer">
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-all duration-700 ease-in-out ${index === currentSlide
+                ? "opacity-100 translate-x-0 rotate-0 scale-100"
+                : "opacity-0 translate-x-20 rotate-12 scale-90"
+              }`}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-contain drop-shadow-[0_20px_50px_rgba(200,50,50,0.15)]"
+              priority={index === 0}
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Right decorative burger - faded */}
-      <div className="absolute w-[427px] h-[233px] left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:translate-x-4">
-        <Image
-          src="/images/fried-chicken-burger.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      {/* Black Rectangle Background - covers area from above burger to below text */}
-      <div className="absolute w-full h-[290px] md:h-[400px] left-0 top-[65px] md:top-[100px] bg-black/100 z-10" />
-
-      {/* Main Landing Burger - Center */}
-      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] left-1/2 -translate-x-1/2 top-[67px] md:top-[50px] z-20 transition-transform duration-500 hover:scale-105 cursor-pointer">
-        <Image
-          src="/images/main-burger.png"
-          alt="Delicious gourmet burger"
-          fill
-          className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
-          priority
-        />
-      </div>
-
-      {/* BURGER'S REINVENTED Text */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[280px] md:top-[380px] lg:top-[450px] z-20 text-center w-full">
-        <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
-          BURGER&apos;S
-        </h1>
-        <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
-          REINVENTED
-        </h1>
+      {/* Text Content - Animated */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[340px] md:top-[480px] lg:top-[580px] z-20 text-center w-full px-4">
+        <div className="overflow-hidden h-[160px] md:h-[220px]"> {/* Container for text transition */}
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`transition-all duration-700 absolute w-full left-0 ${index === currentSlide ? "top-0 opacity-100" : "top-[100px] opacity-0"
+                }`}
+            >
+              <h2 className="font-jomhuria text-[40px] md:text-[60px] leading-none text-brand-red tracking-wider">
+                {slide.subtitle}
+              </h2>
+              <h1 className="font-jomhuria text-[60px] md:text-[100px] leading-[0.8] tracking-[0.05em] text-[#EDEDED] mb-4">
+                {slide.title}
+              </h1>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* ORDER NOW Button */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[365px] md:top-[500px] lg:top-[620px] z-20">
-        <button className="w-[161px] h-[32px] md:w-[200px] md:h-[48px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/50">
-          <span className="font-lilita text-[20px] md:text-[24px] leading-[23px] md:leading-[28px] text-white">
+      <div className="absolute left-1/2 -translate-x-1/2 bottom-[40px] md:bottom-[60px] z-30">
+        <button className="px-8 py-3 bg-brand-red rounded-full flex items-center justify-center hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/50 hover:-translate-y-1">
+          <span className="font-lilita text-[20px] md:text-[24px] text-white tracking-wide">
             ORDER NOW
           </span>
         </button>
