@@ -1,4 +1,26 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+
+// Slide Data
+const slides = [
+  {
+    image: "/images/main-burger.png",
+    subtitle: "BURGER'S",
+    title: "REINVENTED",
+  },
+  {
+    image: "/images/fried-chicken-burger.png",
+    subtitle: "CRISPY",
+    title: "CRUNCH",
+  },
+  {
+    image: "/images/classic-burger.png",
+    subtitle: "DOUBLE",
+    title: "DELIGHT",
+  },
+];
 
 // BURGER watermark positions based on exact Figma CSS percentages
 const burgerPositions = [
@@ -9,6 +31,45 @@ const burgerPositions = [
 ];
 
 export default function Hero() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  // Helper to get position class based on slide index and current slide
+  const getSlideClass = (index: number) => {
+    // Standardize indices to 0, 1, 2
+    const total = slides.length;
+    // Calculate relative position: 0 (active), -1 (prev), 1 (next)
+    // We want a circular difference.  
+    // logic: (index - current + total + 1) % total - 1  -> gives -1, 0, 1
+    // Let's stick to explicit checks for 3 items:
+
+    if (index === currentSlide) {
+      // CENTER (Main)
+      return "left-1/2 -translate-x-1/2 top-[67px] md:top-[50px] z-20 opacity-100 scale-100";
+    } else if (index === (currentSlide - 1 + total) % total) {
+      // LEFT (Previous)
+      return "-left-[60px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 z-10 scale-90";
+    } else {
+      // RIGHT (Next - or whatever is left)
+      return "left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 z-10 scale-90";
+    }
+  };
+
   return (
     <section className="relative w-full h-[422px] md:h-[600px] lg:h-[700px] bg-black overflow-hidden group">
       {/* BURGER Watermark Pattern - responsive adjustments */}
@@ -30,6 +91,7 @@ export default function Hero() {
 
       {/* Left Arrow Navigation */}
       <button
+        onClick={prevSlide}
         className="absolute left-[17px] md:left-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
         aria-label="Previous"
       >
@@ -43,6 +105,7 @@ export default function Hero() {
 
       {/* Right Arrow Navigation */}
       <button
+        onClick={nextSlide}
         className="absolute right-[17px] md:right-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
         aria-label="Next"
       >
@@ -54,42 +117,34 @@ export default function Hero() {
         />
       </button>
 
-      {/* Left decorative burger - faded */}
-      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] -left-[60px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:-translate-x-4">
-        <Image
-          src="/images/classic-burger.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      {/* Right decorative burger - faded */}
-      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 pointer-events-none z-20 transition-transform duration-700 delay-100 group-hover:translate-x-4">
-        <Image
-          src="/images/fried-chicken-burger.png"
-          alt=""
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      {/* Black Rectangle Background - covers area from above burger to below text */}
+      {/* Black Rectangle Background */}
       <div className="absolute w-full h-[290px] md:h-[400px] left-0 top-[65px] md:top-[100px] bg-black/100 z-10" />
 
-      {/* Main Landing Burger - Center */}
-      <div className="absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] left-1/2 -translate-x-1/2 top-[67px] md:top-[50px] z-20 transition-transform duration-500 hover:scale-105 cursor-pointer">
-        <Image
-          src="/images/main-burger.png"
-          alt="Delicious gourmet burger"
-          fill
-          className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
-          priority
-        />
-      </div>
+      {/* BURGERS ROTATION CONTAINER */}
+      {/* We render ALL burgers and move them with CSS classes */}
+      {slides.map((slide, index) => (
+        <div
+          key={index}
+          className={`absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] transition-all duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] cursor-pointer ${getSlideClass(index)}`}
+          onClick={() => setCurrentSlide(index)}
+        >
+          <Image
+            src={slide.image}
+            alt={slide.title}
+            fill
+            className={`object-contain transition-all duration-1000 ${index === currentSlide ? "drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" : ""}`}
+            priority={index === 0}
+          />
+        </div>
+      ))}
 
-      {/* BURGER'S REINVENTED Text */}
+      {/* BURGER'S REINVENTED Text - Matches Active Slide info or Static if desired (User asked for animation, keeping text static 'REINVENTED' or dynamic?) 
+          User said "small animation to hero burgers...". 
+          The previous request had Static Text. I will KEEP static text "BURGER'S REINVENTED" as requested in the revert, 
+          unless user implies text changes. "revert... to this commit" had static text. I'll keep it static for stability.
+      */}
       <div className="absolute left-1/2 -translate-x-1/2 top-[280px] md:top-[380px] lg:top-[450px] z-20 text-center w-full">
+        {/* OPTIONAL: Fade text if we wanted dynamic titles. Keeping Static as per revert request. */}
         <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
           BURGER&apos;S
         </h1>
