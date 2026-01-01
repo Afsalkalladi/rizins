@@ -8,11 +8,11 @@ interface MobileMenuProps {
 }
 
 const menuItems = [
-  { label: "MENU", href: "#menu" },
+  { label: "MENU", href: "/menu" },
   { label: "LOCATION", href: "#location" },
   { label: "ORDER NOW", href: "#order" },
-  { label: "CONTACT", href: "#contact" },
-  { label: "GET APP", href: "#app" },
+  { label: "WORK WITH US", href: "#careers" },
+  { label: "DOWNLOAD APP", href: "#app" },
 ];
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
@@ -32,13 +32,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     <>
       {/* Backdrop overlay with gradient shadow */}
       <div
-        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 transition-opacity duration-300 ${isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
         onClick={onClose}
       >
         {/* Left side gradient shadow */}
-        <div 
+        <div
           className="absolute left-0 top-0 w-[207px] h-full"
           style={{
             background: "linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 100%)",
@@ -48,9 +47,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
       {/* Sidebar Menu */}
       <div
-        className={`fixed top-0 right-0 w-[195px] h-full bg-brand-red z-50 transform transition-transform duration-300 ease-in-out ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 w-[195px] h-full bg-brand-red z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         {/* Close Button (X) */}
         <button
