@@ -31,12 +31,12 @@ export default function Header() {
           {/* Order (Order Now) */}
           <a
             href="#order"
-            className="flex items-center justify-center gap-2 px-2 text-white hover:opacity-85 transition-opacity"
+            className="flex items-center justify-center gap-2 px-2 text-white hover:opacity-85 transition-opacity translate-y-[2px]"
             aria-label="Order now"
           >
             <svg
               width="28"
-              height="32"
+              height="31"
               viewBox="0 0 28 32"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

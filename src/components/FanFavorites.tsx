@@ -7,7 +7,7 @@ export default function FanFavorites() {
     return (
         <section className="w-full bg-[#FAFAFA] py-10">
             <div className="max-w-[1440px] mx-auto px-6">
-                <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+                <div className="flex flex-col md:flex-row items-end justify-between mb-8 md:mb-16 gap-6">
                     <div className="text-center md:text-left">
                         <span className="text-brand-red font-bold tracking-widest text-sm uppercase mb-2 block">DISCOVER THE TASTE</span>
                         <h2 className="font-jomhuria text-[72px] text-black leading-[0.8]">

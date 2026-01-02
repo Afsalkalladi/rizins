@@ -8,13 +8,12 @@ export default function Footer() {
                 {/* Brand Column */}
                 <div className="flex flex-col gap-6">
                     <Link href="/" className="flex items-center gap-3">
-                        {/* Using the logo from header (assuming reusable or I'll just use text if image size varies too much, but let's try to use the same asset) */}
-                        <div className="relative w-12 h-12 bg-white rounded-full flex items-center justify-center">
+                        <div className="relative w-12 h-12 flex items-center justify-center">
                             <Image
                                 src="/images/logo.png"
                                 alt="Logo"
-                                width={32}
-                                height={32}
+                                width={48}
+                                height={48}
                                 className="object-contain"
                             />
                         </div>
