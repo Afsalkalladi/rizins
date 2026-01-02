@@ -10,7 +10,7 @@ export default function WorkWithUs() {
                 {/* Left: Illustration / Image */}
                 <div className="relative h-[400px] md:h-[500px] w-full bg-black rounded-[40px] overflow-hidden shadow-2xl group">
                     <Image
-                        src="/images/recruitment_chef_team.png"
+                        src="/images/workwithus.png"
                         alt="Join our team"
                         fill
                         className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
