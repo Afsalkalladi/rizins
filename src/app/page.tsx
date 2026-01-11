@@ -1,27 +1,33 @@
-import Link from "next/link";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ComboDeals from "@/components/ComboDeals";
+import MenuGrid from "@/components/MenuGrid";
 import CravingSection from "@/components/CravingSection";
-import FanFavorites from "@/components/FanFavorites";
+import Footer from "@/components/Footer";
 
-const Home = () => {
+export default function Home() {
   return (
-    <main className="min-h-screen bg-white w-full flex flex-col">
-      <Header />
-
-      {/* Hero Section - 3D Carousel */}
-      <Hero />
-
-      {/* Section 2: Fan Favorites / Signature Collection */}
-      <FanFavorites />
-
-      {/* Craving Section - Call to Action */}
-      <CravingSection />
-
-      <Footer />
+    <main className="min-h-screen bg-gray-100 flex justify-center">
+      {/* iPhone 16 Pro Container - 402px fixed width */}
+      <div className="w-[402px] bg-white relative shadow-2xl">
+        {/* Header */}
+        <Header />
+        
+        {/* Hero Section with BURGER watermark */}
+        <Hero />
+        
+        {/* Combo Deals Section */}
+        <ComboDeals />
+        
+        {/* Menu Grid Section - Hidden */}
+        {/* <MenuGrid /> */}
+        
+        {/* Craving Section */}
+        <CravingSection />
+        
+        {/* Footer */}
+        <Footer />
+      </div>
     </main>
   );
 }
-
-export default Home;

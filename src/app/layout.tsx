@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jomhuria, Lilita_One } from "next/font/google";
+import { Jomhuria, Lilita_One, Poppins } from "next/font/google";
 import "./globals.css";
 
 const jomhuria = Jomhuria({
@@ -14,6 +14,12 @@ const lilitaOne = Lilita_One({
   variable: "--font-lilita",
 });
 
+const poppins = Poppins({
+  weight: ["400", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-poppins",
+});
+
 export const metadata: Metadata = {
   title: "Burger's Reinvented",
   description: "Premium burger restaurant - Order delivery or pick up",
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${jomhuria.variable} ${lilitaOne.variable} antialiased`}>
+      <body className={`${jomhuria.variable} ${lilitaOne.variable} ${poppins.variable} antialiased`}>
         {children}
       </body>
     </html>

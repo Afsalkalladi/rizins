@@ -14,10 +14,14 @@ const config: Config = {
         "hero-bg": "#000000",
         "text-light": "#EDEDED",
         "shadow-gray": "#7B7B7B",
+        "orange-accent": "#c65e0f",
+        "orange-gradient-start": "#630b10",
+        "orange-gradient-end": "#d66c0f",
       },
       fontFamily: {
         jomhuria: ["var(--font-jomhuria)", "Jomhuria", "cursive"],
         lilita: ["var(--font-lilita)", "Lilita One", "sans-serif"],
+        poppins: ["var(--font-poppins)", "Poppins", "sans-serif"],
       },
       width: {
         mobile: "402px",

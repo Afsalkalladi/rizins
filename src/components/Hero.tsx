@@ -22,14 +22,6 @@ const slides = [
   },
 ];
 
-// BURGER watermark positions based on exact Figma CSS percentages
-const burgerPositions = [
-  { left: "5.0%", top: "86.5%" },
-  { left: "1.8%", top: "50%" },
-  { left: "4.7%", top: "0%" },
-  { left: "-69%", top: "0%" },
-];
-
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -49,38 +41,44 @@ export default function Hero() {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  const total = slides.length;
+
   // Helper to get position class based on slide index and current slide
   const getSlideClass = (index: number) => {
-    // Standardize indices to 0, 1, 2
-    const total = slides.length;
-    // Calculate relative position: 0 (active), -1 (prev), 1 (next)
-    // We want a circular difference.  
-    // logic: (index - current + total + 1) % total - 1  -> gives -1, 0, 1
-    // Let's stick to explicit checks for 3 items:
-
     if (index === currentSlide) {
       // CENTER (Main)
-      return "left-1/2 -translate-x-1/2 top-[67px] md:top-[50px] z-20 opacity-100 scale-100";
+      return "left-1/2 -translate-x-1/2 top-[55px] z-20 opacity-100 scale-100";
     } else if (index === (currentSlide - 1 + total) % total) {
       // LEFT (Previous)
-      return "-left-[60px] md:-left-[100px] lg:left-[5%] top-[83px] md:top-[120px] opacity-30 z-10 scale-90";
+      return "-left-[104px] top-[88px] opacity-40 z-10 scale-75 blur-[1.15px]";
     } else {
-      // RIGHT (Next - or whatever is left)
-      return "left-[229px] md:left-[auto] md:right-[-100px] lg:right-[5%] top-[58px] md:top-[100px] opacity-30 z-10 scale-90";
+      // RIGHT (Next)
+      return "left-[236px] top-[70px] opacity-40 z-10 scale-75 blur-[1.15px]";
     }
   };
 
   return (
-    <section className="relative w-full h-[422px] md:h-[600px] lg:h-[700px] bg-black overflow-hidden group">
-      {/* BURGER Watermark Pattern - responsive adjustments */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {burgerPositions.map((pos, index) => (
+    <section className="relative w-full h-[439px] bg-[#653913] overflow-hidden">
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/60 z-[5]" />
+
+      {/* Glow/Ellipse Effect at top */}
+      <div 
+        className="absolute -left-[75px] -top-[21px] w-[552px] h-[265px] z-[6]"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* BURGER Watermark Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none blur-sm">
+        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
           <span
             key={index}
-            className="absolute font-jomhuria text-white/10 text-[222px] leading-[222px] whitespace-nowrap select-none transition-transform duration-700 ease-out group-hover:scale-105"
+            className="absolute font-jomhuria text-white/[0.09] text-[222px] leading-[222px] whitespace-nowrap select-none"
             style={{
-              left: pos.left,
-              top: pos.top,
+              left: `${-30 + (index % 3) * 40}%`,
+              top: `${-20 + Math.floor(index / 3) * 35}%`,
               transform: "rotate(-18.27deg)",
             }}
           >
@@ -92,71 +90,66 @@ export default function Hero() {
       {/* Left Arrow Navigation */}
       <button
         onClick={prevSlide}
-        className="absolute left-[17px] md:left-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
+        className="absolute left-[17px] top-[145px] w-[38px] h-[38px] z-30 opacity-90 hover:opacity-100 transition-opacity bg-black/30 rounded-full flex items-center justify-center"
         aria-label="Previous"
       >
         <Image
           src="/images/arrow-left.svg"
           alt="Previous"
-          width={25}
-          height={40}
+          width={20}
+          height={20}
         />
       </button>
 
       {/* Right Arrow Navigation */}
       <button
         onClick={nextSlide}
-        className="absolute right-[17px] md:right-[40px] top-[45%] -translate-y-1/2 w-[25px] h-[40px] z-30 opacity-90 hover:opacity-100 transition-opacity"
+        className="absolute right-[17px] top-[145px] w-[38px] h-[38px] z-30 opacity-90 hover:opacity-100 transition-opacity bg-black/30 rounded-full flex items-center justify-center"
         aria-label="Next"
       >
         <Image
           src="/images/arrow-right.svg"
           alt="Next"
-          width={25}
-          height={40}
+          width={20}
+          height={20}
         />
       </button>
 
-      {/* Black Rectangle Background */}
-      <div className="absolute w-full h-[290px] md:h-[400px] left-0 top-[65px] md:top-[100px] bg-black/100 z-10" />
-
       {/* BURGERS ROTATION CONTAINER */}
-      {/* We render ALL burgers and move them with CSS classes */}
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute w-[198px] h-[198px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] transition-all duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] cursor-pointer ${getSlideClass(index)}`}
+          className={`absolute w-[216px] h-[216px] transition-all duration-1000 ease-[cubic-bezier(0.45,0,0.55,1)] cursor-pointer ${getSlideClass(index)}`}
           onClick={() => setCurrentSlide(index)}
         >
           <Image
             src={slide.image}
             alt={slide.title}
             fill
-            className={`object-contain transition-all duration-1000 ${index === currentSlide ? "drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" : ""}`}
+            className={`object-contain transition-all duration-1000 ${
+              index === currentSlide 
+                ? "drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" 
+                : "drop-shadow-[0_4px_6.7px_rgba(0,0,0,0.25)]"
+            }`}
             priority={index === 0}
           />
         </div>
       ))}
 
-      {/* BURGER'S REINVENTED Text - Matches Active Slide info or Static if desired (User asked for animation, keeping text static 'REINVENTED' or dynamic?) 
-          User said "small animation to hero burgers...". 
-          The previous request had Static Text. I will KEEP static text "BURGER'S REINVENTED" as requested in the revert, 
-          unless user implies text changes. "revert... to this commit" had static text. I'll keep it static for stability.
-      */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[280px] md:top-[380px] lg:top-[450px] z-20 text-center w-full">
-        {/* OPTIONAL: Fade text if we wanted dynamic titles. Keeping Static as per revert request. */}
-        <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
+      {/* BURGER'S REINVENTED Text */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-[271px] z-20 text-center">
+        <h1 className="font-jomhuria text-[57px] leading-[33px] tracking-[2.69px] text-[#EDEDED]">
           BURGER&apos;S
         </h1>
-        <h1 className="font-jomhuria text-[57px] md:text-[80px] lg:text-[100px] leading-[33px] md:leading-[50px] lg:leading-[70px] tracking-[0.047em] text-[#EDEDED]">
+        <h1 className="font-jomhuria text-[57px] leading-[33px] tracking-[2.69px] text-[#EDEDED]">
           REINVENTED
         </h1>
       </div>
 
       {/* ORDER NOW Button */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[365px] md:top-[500px] lg:top-[620px] z-20">
-        <button className="w-[161px] h-[32px] md:w-[200px] md:h-[48px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-colors shadow-lg hover:shadow-brand-red/50">
-          <span className="font-lilita text-[20px] md:text-[24px] leading-[23px] md:leading-[28px] text-white">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[367px] z-20">
+        <button className="w-[161px] h-[32px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-colors shadow-lg">
+          <span className="font-lilita text-[20px] text-white">
             ORDER NOW
           </span>
         </button>
