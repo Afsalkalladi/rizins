@@ -3,10 +3,6 @@
 import Image from "next/image";
 import { useState } from "react";
 
-// Star rating images from Figma
-const starFilled = "https://www.figma.com/api/mcp/asset/7135c92d-34c6-4980-bbd0-8a1962f18c88";
-const starEmpty = "https://www.figma.com/api/mcp/asset/a5f20788-d8f8-40c1-9689-009358303954";
-
 interface BurgerDeal {
   id: number;
   name: string;
@@ -22,7 +18,7 @@ const burgerDeals: BurgerDeal[] = [
     name: "Zinger Burger",
     price: 18,
     rating: 4,
-    imageSrc: "/images/classic-burger.png",
+    imageSrc: "/images/zinger-burger.png",
     featured: true,
   },
   {
@@ -30,14 +26,14 @@ const burgerDeals: BurgerDeal[] = [
     name: "Cheese Burger",
     price: 37,
     rating: 3,
-    imageSrc: "/images/main-burger.png",
+    imageSrc: "/images/cheese-burger.png",
   },
   {
     id: 3,
     name: "Jumbo Burger",
     price: 27,
     rating: 3,
-    imageSrc: "/images/main-burger.png",
+    imageSrc: "/images/cheese-burger.png",
   },
 ];
 
@@ -46,9 +42,11 @@ function StarRating({ rating }: { rating: number }) {
     <div className="flex gap-[0.5px]">
       {[1, 2, 3, 4, 5].map((star) => (
         <div key={star} className="w-[7.5px] h-[7.5px] relative">
-          <img
-            src={star <= rating ? starFilled : starEmpty}
+          <Image
+            src={star <= rating ? "/images/star-filled.png" : "/images/star-empty.png"}
             alt=""
+            width={8}
+            height={8}
             className="w-full h-full object-contain"
           />
         </div>
