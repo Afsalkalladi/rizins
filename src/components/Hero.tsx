@@ -47,18 +47,18 @@ export default function Hero() {
   const getSlideClass = (index: number) => {
     if (index === currentSlide) {
       // CENTER (Main)
-      return "left-1/2 -translate-x-1/2 top-[55px] z-20 opacity-100 scale-100";
+      return "left-1/2 -translate-x-1/2 top-[35px] z-20 opacity-100 scale-100";
     } else if (index === (currentSlide - 1 + total) % total) {
       // LEFT (Previous)
-      return "-left-[104px] top-[88px] opacity-40 z-10 scale-75 blur-[1.15px]";
+      return "-left-[104px] top-[68px] opacity-40 z-10 scale-75 blur-[1.15px]";
     } else {
       // RIGHT (Next)
-      return "left-[236px] top-[70px] opacity-40 z-10 scale-75 blur-[1.15px]";
+      return "left-[236px] top-[50px] opacity-40 z-10 scale-75 blur-[1.15px]";
     }
   };
 
   return (
-    <section className="relative w-full h-[439px] bg-[#653913] overflow-hidden">
+    <section className="relative w-full h-[360px] bg-[#653913] overflow-hidden">
       {/* Dark Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-transparent to-black/60 z-[5]" />
 
@@ -90,7 +90,7 @@ export default function Hero() {
       {/* Left Arrow Navigation */}
       <button
         onClick={prevSlide}
-        className="absolute left-[17px] top-[145px] w-[38px] h-[38px] z-30 opacity-90 hover:opacity-100 transition-opacity bg-black/30 rounded-full flex items-center justify-center"
+        className="absolute left-[17px] top-[115px] w-[38px] h-[38px] z-30 opacity-90 hover:opacity-100 transition-opacity bg-black/30 rounded-full flex items-center justify-center"
         aria-label="Previous"
       >
         <Image
@@ -104,7 +104,7 @@ export default function Hero() {
       {/* Right Arrow Navigation */}
       <button
         onClick={nextSlide}
-        className="absolute right-[17px] top-[145px] w-[38px] h-[38px] z-30 opacity-90 hover:opacity-100 transition-opacity bg-black/30 rounded-full flex items-center justify-center"
+        className="absolute right-[17px] top-[115px] w-[38px] h-[38px] z-30 opacity-90 hover:opacity-100 transition-opacity bg-black/30 rounded-full flex items-center justify-center"
         aria-label="Next"
       >
         <Image
@@ -137,7 +137,7 @@ export default function Hero() {
       ))}
 
       {/* BURGER'S REINVENTED Text */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[271px] z-20 text-center">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[220px] z-20 text-center">
         <h1 className="font-jomhuria text-[57px] leading-[33px] tracking-[2.69px] text-[#EDEDED]">
           BURGER&apos;S
         </h1>
@@ -147,7 +147,7 @@ export default function Hero() {
       </div>
 
       {/* ORDER NOW Button */}
-      <div className="absolute left-1/2 -translate-x-1/2 top-[367px] z-20">
+      <div className="absolute left-1/2 -translate-x-1/2 top-[300px] z-20">
         <button className="w-[161px] h-[32px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-colors shadow-lg">
           <span className="font-lilita text-[20px] text-white">
             ORDER NOW
