@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full bg-brand-red h-[80px] relative z-30">
+      <header className="w-full bg-brand-red h-[80px] fixed top-0 left-0 z-50">
         <div className="grid h-full grid-cols-4 md:grid-cols-[100px_1fr_1fr_100px] divide-x divide-black/50 mx-auto max-w-[1440px]">
           {/* Logo (Home) */}
           <Link

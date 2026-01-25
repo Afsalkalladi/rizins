@@ -7,24 +7,24 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-100 flex justify-center">
-      {/* iPhone 16 Pro Container - 402px fixed width */}
-      <div className="w-[402px] bg-white relative shadow-2xl">
+    <main className="min-h-screen bg-gray-100">
+      {/* Container - full width */}
+      <div className="w-full bg-white relative min-h-screen pt-[80px]">
         {/* Header */}
         <Header />
-        
+
         {/* Hero Section with BURGER watermark */}
         <Hero />
-        
+
         {/* Combo Deals Section */}
         <ComboDeals />
-        
+
         {/* Menu Grid Section - Hidden */}
         {/* <MenuGrid /> */}
-        
+
         {/* Craving Section */}
         <CravingSection />
-        
+
         {/* Footer */}
         <Footer />
       </div>
