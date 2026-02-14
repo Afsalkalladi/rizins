@@ -54,9 +54,14 @@ export default function FanFavorites() {
 
   return (
     <section
-      className="w-full py-10 sm:py-16 md:py-20 lg:py-24"
-      style={{ background: "linear-gradient(180deg, #0d0804 0%, #1a0e06 35%, #1c1008 100%)" }}
+      className="w-full py-10 sm:py-16 md:py-20 lg:py-24 relative"
+      style={{ background: "linear-gradient(180deg, #0d0804 0%, #1a0e06 60%, 85%, #f9f9f9 100%)" }}
     >
+      {/* Bottom fade into next section */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-[100px] pointer-events-none"
+        style={{ background: "linear-gradient(to bottom, transparent, #f9f9f9)" }}
+      />
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-8 md:mb-14 gap-4">
