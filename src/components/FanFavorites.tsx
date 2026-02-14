@@ -53,7 +53,10 @@ export default function FanFavorites() {
   };
 
   return (
-    <section className="w-full bg-[#111] py-10 sm:py-16 md:py-20 lg:py-24">
+    <section
+      className="w-full py-10 sm:py-16 md:py-20 lg:py-24"
+      style={{ background: "linear-gradient(180deg, #0d0804 0%, #1a0e06 35%, #1c1008 100%)" }}
+    >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-8 md:mb-14 gap-4">
@@ -82,10 +85,10 @@ export default function FanFavorites() {
           {items.map((item, i) => (
             <div
               key={i}
-              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[68vw] max-w-[260px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all bg-brand-red p-4 sm:p-7 ${
+              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[68vw] max-w-[260px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all ${
                 item.highlighted
-                  ? "shadow-2xl sm:scale-105 z-10"
-                  : "hover:shadow-xl hover:-translate-y-2"
+                  ? "bg-brand-red p-4 sm:p-7 shadow-2xl sm:scale-105 z-10"
+                  : "bg-white p-4 sm:p-7 hover:shadow-xl hover:-translate-y-2"
               }`}
             >
               {item.highlighted && (
@@ -103,10 +106,12 @@ export default function FanFavorites() {
                 />
               </div>
               <div className="text-center">
-                <h3 className={`font-lilita text-white mb-0.5 ${
-                  item.highlighted ? "text-lg sm:text-2xl" : "text-base sm:text-xl"
+                <h3 className={`font-lilita mb-0.5 ${
+                  item.highlighted ? "text-lg sm:text-2xl text-white" : "text-base sm:text-xl text-[#1a1a1a]"
                 }`}>{item.name}</h3>
-                <p className="text-white/80 text-xs sm:text-sm mb-2.5 sm:mb-4">
+                <p className={`text-xs sm:text-sm mb-2.5 sm:mb-4 ${
+                  item.highlighted ? "text-white/80" : "text-gray-500"
+                }`}>
                   {item.desc}
                 </p>
                 {item.highlighted ? (
@@ -114,7 +119,7 @@ export default function FanFavorites() {
                     ORDER NOW - {item.price}
                   </button>
                 ) : (
-                  <span className="inline-block bg-white text-brand-red px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-lilita text-sm sm:text-lg">
+                  <span className="inline-block bg-brand-red text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-lilita text-sm sm:text-lg">
                     {item.price}
                   </span>
                 )}

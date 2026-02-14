@@ -232,10 +232,18 @@ export default function Hero() {
         </button>
       </div>
 
+      {/* Bottom gradient – seamless fade into combo section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 h-[35%] z-[5] pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, transparent 0%, rgba(10,6,2,0.4) 50%, rgba(10,6,2,0.9) 80%, #0a0602 100%)",
+        }}
+      />
+
     </section>
 
-      {/* Brand-brown filler below hero – fills gap before combo curve */}
-      <div className="w-full h-[30px] sm:h-[36px] md:h-[44px] bg-brand-brown" />
+      {/* Tiny connector – prevents sub-pixel gaps */}
+      <div className="w-full h-[6px] bg-[#0a0602]" />
     </>
   );
 }
