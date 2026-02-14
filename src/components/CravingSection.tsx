@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function CravingSection() {
   return (
-    <section className="relative w-full overflow-hidden -mt-3 sm:-mt-4 md:-mt-6">
+    <section className="relative w-full overflow-hidden">
       <div className="relative w-full h-[270px] sm:h-[320px] md:h-[400px] lg:h-[500px] xl:h-[580px]">
         {/* Background Image – fried chicken scene */}
         <Image
@@ -15,29 +15,28 @@ export default function CravingSection() {
           sizes="100vw"
         />
 
-        {/* Top gradient – blends with ComboDeals above */}
+        {/* Top gradient – seamlessly blends with ComboDeals above (hides seam) */}
         <div
-          className="absolute top-0 left-0 right-0 h-[60px] sm:h-[80px] md:h-[100px] z-10 pointer-events-none"
+          className="absolute top-0 left-0 right-0 h-[35%] z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+            background: "linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 30%, rgba(0,0,0,0.2) 60%, transparent 100%)",
           }}
         />
 
-        {/* Gradient overlay – diagonal from upper-left for text contrast */}
+        {/* Light overlay for text contrast */}
         <div
-          className="absolute inset-0 z-10"
+          className="absolute inset-0 z-10 pointer-events-none"
           style={{
-            background:
-              "linear-gradient(130deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 30%, rgba(0,0,0,0.1) 55%, transparent 75%)",
+            background: "linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.2) 100%)",
           }}
         />
 
-        {/* Text: CRAVE THE CRUNCH – positioned bottom-left matching Figma */}
-        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 bottom-[20px] sm:bottom-[28px] md:bottom-[40px] lg:bottom-[60px]">
+        {/* Text: CRAVE THE CRUNCH – positioned top-left */}
+        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px]">
           <h2
             className="font-jomhuria text-text-light leading-[0.9] tracking-[2.6px]"
             style={{
-              fontSize: "clamp(48px, 13.7vw, 55px)",
+              fontSize: "clamp(48px, 13.7vw, 80px)",
             }}
           >
             CRAVE THE<br />

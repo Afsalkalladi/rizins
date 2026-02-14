@@ -82,10 +82,10 @@ export default function FanFavorites() {
           {items.map((item, i) => (
             <div
               key={i}
-              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[60vw] max-w-[240px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all ${
+              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[68vw] max-w-[260px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all ${
                 item.highlighted
                   ? "bg-brand-red p-4 sm:p-7 shadow-2xl sm:scale-105 z-10"
-                  : "bg-[#1a1a1a] p-4 sm:p-7 hover:shadow-xl hover:-translate-y-2 hover:bg-[#222]"
+                  : "bg-white sm:bg-[#1a1a1a] p-4 sm:p-7 hover:shadow-xl hover:-translate-y-2 sm:hover:bg-[#222]"
               }`}
             >
               {item.highlighted && (
@@ -94,22 +94,24 @@ export default function FanFavorites() {
                 </div>
               )}
               <div className={`relative mb-3 sm:mb-5 flex items-center justify-center ${
-                item.highlighted ? "h-[140px] sm:h-[200px] lg:h-[220px]" : "h-[120px] sm:h-[180px] lg:h-[200px]"
+                item.highlighted ? "h-[160px] sm:h-[200px] lg:h-[220px]" : "h-[150px] sm:h-[180px] lg:h-[200px]"
               }`}>
                 <Image
                   src={item.image}
                   alt={item.name}
-                  width={item.highlighted ? 240 : 200}
-                  height={item.highlighted ? 180 : 150}
+                  width={item.highlighted ? 240 : 220}
+                  height={item.highlighted ? 180 : 170}
                   className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="text-center">
-                <h3 className={`font-lilita text-white mb-0.5 ${
-                  item.highlighted ? "text-lg sm:text-2xl" : "text-base sm:text-xl"
+                <h3 className={`font-lilita mb-0.5 ${
+                  item.highlighted
+                    ? "text-lg sm:text-2xl text-white"
+                    : "text-base sm:text-xl text-[#1a1a1a] sm:text-white"
                 }`}>{item.name}</h3>
                 <p className={`text-xs sm:text-sm mb-2.5 sm:mb-4 ${
-                  item.highlighted ? "text-white/80" : "text-gray-400"
+                  item.highlighted ? "text-white/80" : "text-gray-500 sm:text-gray-400"
                 }`}>
                   {item.desc}
                 </p>

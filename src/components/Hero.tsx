@@ -204,17 +204,17 @@ export default function Hero() {
         </svg>
       </button>
 
-      {/* ===== TEXT: BURGER'S REINVENTED ===== */}
+      {/* ===== TEXT: BURGER'S REINVENTED (fixed) ===== */}
       <div
         className="absolute left-1/2 -translate-x-1/2 z-20 text-center w-full px-4"
         style={{ top: "62%" }}
       >
-        <div key={`text-${animationKey}`} className="animate-fade-in-up">
+        <div>
           <h1 className="font-jomhuria text-[57px] sm:text-[64px] md:text-[72px] lg:text-[90px] xl:text-[110px] leading-[33px] sm:leading-[38px] md:leading-[42px] lg:leading-[52px] xl:leading-[64px] tracking-[2.69px] text-text-light">
-            {slides[currentSlide].subtitle}
+            BURGER&apos;S
           </h1>
           <h1 className="font-jomhuria text-[57px] sm:text-[64px] md:text-[72px] lg:text-[90px] xl:text-[110px] leading-[33px] sm:leading-[38px] md:leading-[42px] lg:leading-[52px] xl:leading-[64px] tracking-[2.69px] text-text-light">
-            {slides[currentSlide].title}
+            REINVENTED
           </h1>
         </div>
       </div>
@@ -231,14 +231,6 @@ export default function Hero() {
         </button>
       </div>
 
-      {/* Bottom black gradient – bleeds into ComboDeals section */}
-      <div
-        className="absolute bottom-0 left-0 right-0 z-[25] pointer-events-none"
-        style={{
-          height: "35%",
-          background: "linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.15) 70%, transparent 100%)",
-        }}
-      />
     </section>
   );
 }
