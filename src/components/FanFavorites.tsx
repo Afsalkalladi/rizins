@@ -82,10 +82,10 @@ export default function FanFavorites() {
           {items.map((item, i) => (
             <div
               key={i}
-              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[68vw] max-w-[260px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all ${
+              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[68vw] max-w-[260px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all bg-brand-red p-4 sm:p-7 ${
                 item.highlighted
-                  ? "bg-brand-red p-4 sm:p-7 shadow-2xl sm:scale-105 z-10"
-                  : "bg-white sm:bg-[#1a1a1a] p-4 sm:p-7 hover:shadow-xl hover:-translate-y-2 sm:hover:bg-[#222]"
+                  ? "shadow-2xl sm:scale-105 z-10"
+                  : "hover:shadow-xl hover:-translate-y-2"
               }`}
             >
               {item.highlighted && (
@@ -93,26 +93,20 @@ export default function FanFavorites() {
                   #1 SELLER
                 </div>
               )}
-              <div className={`relative mb-3 sm:mb-5 flex items-center justify-center ${
-                item.highlighted ? "h-[160px] sm:h-[200px] lg:h-[220px]" : "h-[150px] sm:h-[180px] lg:h-[200px]"
-              }`}>
+              <div className="relative mb-3 sm:mb-5 flex items-end justify-center h-[170px] sm:h-[200px] lg:h-[220px]">
                 <Image
                   src={item.image}
                   alt={item.name}
-                  width={item.highlighted ? 240 : 220}
-                  height={item.highlighted ? 180 : 170}
-                  className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
+                  width={200}
+                  height={160}
+                  className="object-contain max-h-full drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
                 />
               </div>
               <div className="text-center">
-                <h3 className={`font-lilita mb-0.5 ${
-                  item.highlighted
-                    ? "text-lg sm:text-2xl text-white"
-                    : "text-base sm:text-xl text-[#1a1a1a] sm:text-white"
+                <h3 className={`font-lilita text-white mb-0.5 ${
+                  item.highlighted ? "text-lg sm:text-2xl" : "text-base sm:text-xl"
                 }`}>{item.name}</h3>
-                <p className={`text-xs sm:text-sm mb-2.5 sm:mb-4 ${
-                  item.highlighted ? "text-white/80" : "text-gray-500 sm:text-gray-400"
-                }`}>
+                <p className="text-white/80 text-xs sm:text-sm mb-2.5 sm:mb-4">
                   {item.desc}
                 </p>
                 {item.highlighted ? (
@@ -120,7 +114,7 @@ export default function FanFavorites() {
                     ORDER NOW - {item.price}
                   </button>
                 ) : (
-                  <span className="inline-block bg-brand-red text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-lilita text-sm sm:text-lg">
+                  <span className="inline-block bg-white text-brand-red px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-lilita text-sm sm:text-lg">
                     {item.price}
                   </span>
                 )}

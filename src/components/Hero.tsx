@@ -64,6 +64,7 @@ export default function Hero() {
   const nextIndex = (currentSlide + 1) % total;
 
   return (
+    <>
     <section className="relative w-full h-[439px] sm:h-[500px] md:h-[560px] lg:h-[640px] xl:h-[720px] bg-brand-brown overflow-hidden">
       {/* Dark Gradient Overlay – smooth three-stop */}
       <div
@@ -107,10 +108,10 @@ export default function Hero() {
 
       {/* ===== BURGER CAROUSEL ===== */}
 
-      {/* Left Burger (Previous) – symmetric with right */}
+      {/* Left Burger (Previous) – closer to center on PC */}
       <div
         className="absolute z-10"
-        style={{ top: "16%", left: "clamp(-48px, calc(5vw - 60px), 10%)" }}
+        style={{ top: "16%", left: "clamp(-48px, calc(5vw - 60px), 14%)" }}
       >
         <div
           key={`left-${animationKey}`}
@@ -120,8 +121,8 @@ export default function Hero() {
           <div
             className="relative opacity-40 blur-[1px] lg:opacity-50 lg:blur-[0.5px]"
             style={{
-              width: "clamp(130px, 30vw, 280px)",
-              height: "clamp(100px, 22vw, 200px)",
+              width: "clamp(130px, 30vw, 240px)",
+              height: "clamp(100px, 22vw, 170px)",
             }}
           >
             <Image
@@ -155,10 +156,10 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Right Burger (Next) – symmetric with left */}
+      {/* Right Burger (Next) – closer to center on PC */}
       <div
         className="absolute z-10"
-        style={{ top: "16%", right: "clamp(-48px, calc(5vw - 60px), 10%)" }}
+        style={{ top: "16%", right: "clamp(-48px, calc(5vw - 60px), 14%)" }}
       >
         <div
           key={`right-${animationKey}`}
@@ -168,8 +169,8 @@ export default function Hero() {
           <div
             className="relative opacity-40 blur-[1px] lg:opacity-50 lg:blur-[0.5px]"
             style={{
-              width: "clamp(130px, 30vw, 280px)",
-              height: "clamp(100px, 22vw, 200px)",
+              width: "clamp(130px, 30vw, 240px)",
+              height: "clamp(100px, 22vw, 170px)",
             }}
           >
             <Image
@@ -232,5 +233,9 @@ export default function Hero() {
       </div>
 
     </section>
+
+      {/* Brand-brown filler below hero – fills gap before combo curve */}
+      <div className="w-full h-[30px] sm:h-[36px] md:h-[44px] bg-brand-brown" />
+    </>
   );
 }

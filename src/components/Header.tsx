@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`w-full bg-brand-red h-[70px] sm:h-[80px] sticky top-0 z-50 transition-shadow duration-300 ${
+        className={`w-full bg-brand-red h-[70px] sm:h-[80px] fixed top-0 z-50 transition-shadow duration-300 ${
           scrolled ? "shadow-[0_4px_20px_rgba(0,0,0,0.3)]" : ""
         }`}
       >
