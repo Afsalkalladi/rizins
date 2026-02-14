@@ -25,10 +25,10 @@ export default function AboutSection() {
             </div>
           </div>
 
-          {/* Badge */}
-          <div className="absolute bottom-0 left-2 sm:left-4 w-[100px] h-[100px] sm:w-[140px] sm:h-[140px] md:w-[160px] md:h-[160px] bg-white rounded-full flex items-center justify-center border-[6px] sm:border-[8px] border-brand-red shadow-xl z-20">
+          {/* Badge – right side */}
+          <div className="absolute bottom-0 right-2 sm:right-4 w-[90px] h-[90px] sm:w-[130px] sm:h-[130px] md:w-[150px] md:h-[150px] bg-white rounded-full flex items-center justify-center border-[5px] sm:border-[7px] border-brand-red shadow-xl z-20">
             <div className="text-center text-brand-red p-2 sm:p-4">
-              <p className="font-lilita text-sm sm:text-lg leading-tight">
+              <p className="font-lilita text-xs sm:text-base leading-tight">
                 100%<br />PREMIUM<br />BEEF
               </p>
             </div>

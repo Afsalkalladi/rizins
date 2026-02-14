@@ -230,6 +230,15 @@ export default function Hero() {
           </span>
         </button>
       </div>
+
+      {/* Bottom black gradient – bleeds into ComboDeals section */}
+      <div
+        className="absolute bottom-0 left-0 right-0 z-[25] pointer-events-none"
+        style={{
+          height: "35%",
+          background: "linear-gradient(0deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.15) 70%, transparent 100%)",
+        }}
+      />
     </section>
   );
 }

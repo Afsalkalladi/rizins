@@ -2,10 +2,58 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useState, useRef, useEffect } from "react";
+
+const items = [
+  {
+    name: "THE CLASSIC",
+    image: "/images/classic-burger.png",
+    desc: "Flame-grilled beef, cheese, lettuce, tomato",
+    price: "$10.99",
+    highlighted: false,
+  },
+  {
+    name: "SIGNATURE SMASH",
+    image: "/images/main-burger.png",
+    desc: "Double beef, secret sauce, caramelized onion",
+    price: "$14.99",
+    highlighted: true,
+  },
+  {
+    name: "CRISPY CHICKEN",
+    image: "/images/fried-chicken-burger.png",
+    desc: "Southern fried breast, spicy mayo, pickles",
+    price: "$11.99",
+    highlighted: false,
+  },
+];
 
 export default function FanFavorites() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const handleScroll = () => {
+      const scrollLeft = el.scrollLeft;
+      const cardWidth = el.scrollWidth / items.length;
+      const idx = Math.round(scrollLeft / cardWidth);
+      setActiveIndex(Math.min(idx, items.length - 1));
+    };
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollTo = (idx: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / items.length;
+    el.scrollTo({ left: cardWidth * idx, behavior: "smooth" });
+  };
+
   return (
-    <section className="w-full bg-[#111] py-12 sm:py-16 md:py-20 lg:py-24">
+    <section className="w-full bg-[#111] py-10 sm:py-16 md:py-20 lg:py-24">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center md:items-end justify-between mb-8 md:mb-14 gap-4">
@@ -26,83 +74,80 @@ export default function FanFavorites() {
           </Link>
         </div>
 
-        {/* Cards – horizontal scroll on mobile, grid on sm+ */}
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 lg:gap-8 sm:overflow-visible sm:pb-0">
-          {/* Item 1 */}
-          <div className="group relative bg-[#1a1a1a] rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 transition-all hover:shadow-xl hover:-translate-y-2 hover:bg-[#222] shrink-0 w-[75vw] max-w-[300px] snap-center sm:w-auto sm:max-w-none sm:shrink">
-            <div className="relative h-[180px] sm:h-[200px] lg:h-[220px] mb-4 sm:mb-6 flex items-center justify-center">
-              <Image
-                src="/images/classic-burger.png"
-                alt="The Classic Burger"
-                width={240}
-                height={180}
-                className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
-              />
+        {/* Cards – scroll on mobile, grid on sm+ */}
+        <div
+          ref={scrollRef}
+          className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-3 sm:gap-6 lg:gap-8 sm:overflow-visible sm:pb-0"
+        >
+          {items.map((item, i) => (
+            <div
+              key={i}
+              className={`group relative rounded-[16px] sm:rounded-[28px] shrink-0 w-[60vw] max-w-[240px] snap-center sm:w-auto sm:max-w-none sm:shrink transition-all ${
+                item.highlighted
+                  ? "bg-brand-red p-4 sm:p-7 shadow-2xl sm:scale-105 z-10"
+                  : "bg-[#1a1a1a] p-4 sm:p-7 hover:shadow-xl hover:-translate-y-2 hover:bg-[#222]"
+              }`}
+            >
+              {item.highlighted && (
+                <div className="absolute top-2.5 right-2.5 sm:top-4 sm:right-4 bg-white text-brand-red px-2 sm:px-3 py-0.5 rounded-full text-[9px] sm:text-xs font-bold font-poppins">
+                  #1 SELLER
+                </div>
+              )}
+              <div className={`relative mb-3 sm:mb-5 flex items-center justify-center ${
+                item.highlighted ? "h-[140px] sm:h-[200px] lg:h-[220px]" : "h-[120px] sm:h-[180px] lg:h-[200px]"
+              }`}>
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={item.highlighted ? 240 : 200}
+                  height={item.highlighted ? 180 : 150}
+                  className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="text-center">
+                <h3 className={`font-lilita text-white mb-0.5 ${
+                  item.highlighted ? "text-lg sm:text-2xl" : "text-base sm:text-xl"
+                }`}>{item.name}</h3>
+                <p className={`text-xs sm:text-sm mb-2.5 sm:mb-4 ${
+                  item.highlighted ? "text-white/80" : "text-gray-400"
+                }`}>
+                  {item.desc}
+                </p>
+                {item.highlighted ? (
+                  <button className="bg-white text-brand-red px-5 sm:px-8 py-2 sm:py-2.5 rounded-full font-lilita text-sm sm:text-lg hover:bg-gray-100 transition-colors w-full">
+                    ORDER NOW - {item.price}
+                  </button>
+                ) : (
+                  <span className="inline-block bg-brand-red text-white px-4 sm:px-6 py-1.5 sm:py-2 rounded-full font-lilita text-sm sm:text-lg">
+                    {item.price}
+                  </span>
+                )}
+              </div>
             </div>
-            <div className="text-center">
-              <h3 className="font-lilita text-xl sm:text-2xl text-white mb-1">THE CLASSIC</h3>
-              <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
-                Flame-grilled beef, cheese, lettuce, tomato
-              </p>
-              <span className="inline-block bg-brand-red text-white px-5 sm:px-6 py-2 rounded-full font-lilita text-base sm:text-lg">
-                $10.99
-              </span>
-            </div>
-          </div>
-
-          {/* Item 2 - Highlighted */}
-          <div className="group relative bg-brand-red rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 shadow-2xl sm:scale-105 z-10 shrink-0 w-[75vw] max-w-[300px] snap-center sm:w-auto sm:max-w-none sm:shrink">
-            <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white text-brand-red px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold font-poppins">
-              #1 SELLER
-            </div>
-            <div className="relative h-[200px] sm:h-[220px] lg:h-[240px] mb-4 sm:mb-6 flex items-center justify-center">
-              <Image
-                src="/images/main-burger.png"
-                alt="Signature Smash Burger"
-                width={280}
-                height={220}
-                className="object-contain drop-shadow-xl group-hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="text-center">
-              <h3 className="font-lilita text-2xl sm:text-3xl text-white mb-1">SIGNATURE SMASH</h3>
-              <p className="text-white/80 text-xs sm:text-sm mb-4 sm:mb-6">
-                Double beef, secret sauce, caramelized onion
-              </p>
-              <button className="bg-white text-brand-red px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-lilita text-lg sm:text-xl hover:bg-gray-100 transition-colors w-full">
-                ORDER NOW - $14.99
-              </button>
-            </div>
-          </div>
-
-          {/* Item 3 */}
-          <div className="group relative bg-[#1a1a1a] rounded-[20px] sm:rounded-[32px] p-5 sm:p-8 transition-all hover:shadow-xl hover:-translate-y-2 hover:bg-[#222] shrink-0 w-[75vw] max-w-[300px] snap-center sm:w-auto sm:max-w-none sm:shrink">
-            <div className="relative h-[180px] sm:h-[200px] lg:h-[220px] mb-4 sm:mb-6 flex items-center justify-center">
-              <Image
-                src="/images/fried-chicken-burger.png"
-                alt="Crispy Chicken Burger"
-                width={240}
-                height={180}
-                className="object-contain drop-shadow-lg group-hover:scale-110 transition-transform duration-500"
-              />
-            </div>
-            <div className="text-center">
-              <h3 className="font-lilita text-xl sm:text-2xl text-white mb-1">CRISPY CHICKEN</h3>
-              <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4">
-                Southern fried breast, spicy mayo, pickles
-              </p>
-              <span className="inline-block bg-brand-red text-white px-5 sm:px-6 py-2 rounded-full font-lilita text-base sm:text-lg">
-                $11.99
-              </span>
-            </div>
-          </div>
+          ))}
         </div>
 
-        {/* Mobile: View Full Menu link */}
-        <div className="text-center mt-8 sm:mt-10 lg:mt-12">
+        {/* Dot indicators – mobile only */}
+        <div className="flex justify-center gap-2 mt-4 sm:hidden">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollTo(i)}
+              className={`rounded-full transition-all duration-300 ${
+                activeIndex === i
+                  ? "w-6 h-2 bg-brand-red"
+                  : "w-2 h-2 bg-white/30 hover:bg-white/50"
+              }`}
+              aria-label={`Go to card ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* View Full Menu link */}
+        <div className="text-center mt-6 sm:mt-10 lg:mt-12">
           <Link
             href="/menu"
-            className="font-lilita text-lg sm:text-xl text-white hover:text-brand-red underline underline-offset-4 transition-colors"
+            className="font-lilita text-base sm:text-xl text-white hover:text-brand-red underline underline-offset-4 transition-colors"
           >
             VIEW FULL MENU
           </Link>

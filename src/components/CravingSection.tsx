@@ -15,6 +15,14 @@ export default function CravingSection() {
           sizes="100vw"
         />
 
+        {/* Top gradient – blends with ComboDeals above */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[60px] sm:h-[80px] md:h-[100px] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)",
+          }}
+        />
+
         {/* Gradient overlay – diagonal from upper-left for text contrast */}
         <div
           className="absolute inset-0 z-10"

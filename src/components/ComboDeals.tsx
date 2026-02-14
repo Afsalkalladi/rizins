@@ -16,32 +16,21 @@ export default function ComboDeals() {
           priority
         />
 
-        {/* Top gradient overlay – smooth blend from hero above */}
-        <div
-          className="absolute top-0 left-0 right-0 h-[60%] z-10"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0.18) 55%, transparent 100%)",
-          }}
-        />
-
-        {/* Content overlay – positioned to match Figma */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-start items-start pt-4 sm:pt-6 md:pt-10 lg:pt-14 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-32">
+        {/* Content overlay – centered text, positioned lower */}
+        <div className="absolute inset-0 z-20 flex flex-col justify-end items-center pb-16 sm:pb-20 md:pb-24 lg:pb-28 px-4 text-center">
           {/* "rizins" script branding */}
-          <p className="font-jomhuria text-white/80 text-[24px] sm:text-[28px] md:text-[34px] lg:text-[44px] leading-none italic">
+          <p className="font-jomhuria text-white/80 text-[22px] sm:text-[26px] md:text-[32px] lg:text-[40px] leading-none italic mb-1">
             rizins
           </p>
 
-          {/* Main heading: CRUNCH. SPICE. REPEAT. */}
-          <h2 className="font-lilita text-white text-[22px] sm:text-[28px] md:text-[36px] lg:text-[48px] xl:text-[56px] leading-[1] mt-0 tracking-tight">
-            CRUNCH.<br />
-            SPICE. REPEAT.
+          {/* Main heading */}
+          <h2 className="font-lilita text-white text-[24px] sm:text-[30px] md:text-[40px] lg:text-[52px] xl:text-[60px] leading-[1.05] tracking-tight">
+            CRUNCH. SPICE. REPEAT.
           </h2>
 
           {/* Subtitle */}
-          <p className="font-poppins text-white/70 text-[9px] sm:text-[11px] md:text-[13px] lg:text-[15px] mt-1.5 sm:mt-2 md:mt-3 leading-relaxed">
-            The Ultimate Fried Chicken<br />
-            Burger Experience.
+          <p className="font-poppins text-white/70 text-[10px] sm:text-[12px] md:text-[14px] lg:text-[16px] mt-2 sm:mt-3 leading-relaxed">
+            The Ultimate Fried Chicken Burger Experience.
           </p>
 
           {/* Desktop-only CTA button */}
@@ -52,6 +41,14 @@ export default function ComboDeals() {
             </svg>
           </button>
         </div>
+
+        {/* Bottom gradient – blends into CravingSection below */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-[80px] sm:h-[100px] md:h-[120px] z-10 pointer-events-none"
+          style={{
+            background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 60%, rgba(0,0,0,0.95) 100%)",
+          }}
+        />
 
         {/* COMBO DEAL Badge – bottom-right, matches Figma position */}
         <div className="absolute bottom-[16px] sm:bottom-[20px] md:bottom-[28px] lg:bottom-[36px] right-[12px] sm:right-[16px] md:right-[24px] lg:right-[40px] z-20">
