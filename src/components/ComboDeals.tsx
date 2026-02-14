@@ -20,7 +20,7 @@ export default function ComboDeals() {
         <div
           className="absolute top-0 left-0 right-0 h-[25%] z-10 pointer-events-none"
           style={{
-            background: "linear-gradient(180deg, rgba(10,6,2,0.85) 0%, rgba(10,6,2,0.3) 50%, transparent 100%)",
+            background: "linear-gradient(180deg, rgba(10,6,2,0.65) 0%, rgba(10,6,2,0.2) 50%, transparent 100%)",
           }}
         />
 

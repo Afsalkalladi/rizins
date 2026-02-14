@@ -25,22 +25,28 @@ export default function AboutSection() {
 
           {/* Image Column */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative w-[85%] sm:w-[75%] lg:w-full mx-auto aspect-[4/5] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl ring-1 ring-white/10">
-              <Image
-                src="/images/main-burger.png"
-                alt="Premium Rizins Burger"
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+            <div className="relative w-[85%] sm:w-[75%] lg:w-full mx-auto aspect-[4/5] rounded-[28px] sm:rounded-[36px] overflow-hidden shadow-2xl ring-1 ring-white/10 bg-white/5 backdrop-blur-sm">
+              <div className="absolute inset-4 sm:inset-6 flex items-center justify-center">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/images/main-burger.png"
+                    alt="Premium Rizins Burger"
+                    fill
+                    className="object-contain drop-shadow-2xl hover:scale-110 transition-transform duration-700"
+                  />
+                </div>
+              </div>
+              
+              {/* Subtle background glow behind burger */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
               {/* EST badge */}
-              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-white/10">
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-black/40 backdrop-blur-sm rounded-full px-3 py-1.5 sm:px-4 sm:py-2 border border-white/10 z-10">
                 <span className="text-[#e8a54b] font-poppins text-[10px] sm:text-xs font-bold tracking-widest">EST. 2024</span>
               </div>
 
               {/* Overlay text */}
-              <div className="absolute bottom-5 sm:bottom-8 left-5 sm:left-8">
+              <div className="absolute bottom-5 sm:bottom-8 left-5 sm:left-8 z-10">
                 <h3 className="text-white font-jomhuria text-3xl sm:text-5xl leading-none drop-shadow-lg">
                   THE GOLD<br />STANDARD
                 </h3>
