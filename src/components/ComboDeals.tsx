@@ -1,176 +1,77 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-
-interface BurgerDeal {
-  id: number;
-  name: string;
-  price: number;
-  rating: number;
-  imageSrc: string;
-}
-
-const burgerDeals: BurgerDeal[] = [
-  {
-    id: 1,
-    name: "Zinger Burger",
-    price: 18,
-    rating: 4,
-    imageSrc: "/images/zinger-burger.png",
-  },
-  {
-    id: 2,
-    name: "Cheese Burger",
-    price: 37,
-    rating: 3,
-    imageSrc: "/images/cheese-burger.png",
-  },
-  {
-    id: 3,
-    name: "Jumbo Burger",
-    price: 27,
-    rating: 3,
-    imageSrc: "/images/cheese-burger.png",
-  },
-];
-
-function StarRating({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-[0.5px]">
-      {[1, 2, 3, 4, 5].map((star) => (
-        <div key={star} className="w-[7.5px] h-[7.5px] relative">
-          <Image
-            src={star <= rating ? "/images/star-filled.png" : "/images/star-empty.png"}
-            alt=""
-            width={8}
-            height={8}
-            className="w-full h-full object-contain"
-          />
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function BurgerCard({ deal, isActive }: { deal: BurgerDeal; isActive: boolean }) {
-  if (isActive) {
-    // Featured/Active Card Style
-    return (
-      <div className="w-[154px] h-[180px] rounded-[25px] bg-gradient-to-b from-[#630b10] to-[#d66c0f] border border-[#d66c0f] shadow-[0px_3px_6px_0px_#9d5013] p-4 flex flex-col justify-between flex-shrink-0 transition-all duration-500">
-        {/* Burger Image */}
-        <div className="relative w-[125px] h-[68px] -mt-2 mx-auto">
-          <Image
-            src={deal.imageSrc}
-            alt={deal.name}
-            fill
-            className="object-contain"
-          />
-        </div>
-
-        {/* Info */}
-        <div className="mt-auto">
-          <p className="font-poppins font-semibold text-[10px] text-white">
-            {deal.name}
-          </p>
-          <div className="mt-1">
-            <StarRating rating={deal.rating} />
-          </div>
-          <p className="font-poppins font-semibold text-[21px] text-white mt-1">
-            ${deal.price}
-          </p>
-        </div>
-      </div>
-    );
-  }
-
-  // Regular Card Style
-  return (
-    <div className="w-[146px] h-[163px] rounded-[25px] bg-white shadow-[0px_4px_6.5px_0px_rgba(0,0,0,0.11)] p-4 flex flex-col flex-shrink-0 transition-all duration-500">
-      {/* Burger Image */}
-      <div className="relative w-[57px] h-[57px] mx-auto shadow-[1px_4px_5px_0px_rgba(0,0,0,0.28)]">
-        <Image
-          src={deal.imageSrc}
-          alt={deal.name}
-          fill
-          className="object-contain"
-        />
-      </div>
-
-      {/* Info */}
-      <div className="mt-auto">
-        <p className="font-poppins font-semibold text-[10px] text-black">
-          {deal.name}
-        </p>
-        <div className="mt-1">
-          <StarRating rating={deal.rating} />
-        </div>
-        <p className="font-poppins font-semibold text-[15px] text-black mt-1">
-          ${deal.price}
-        </p>
-      </div>
-    </div>
-  );
-}
 
 export default function ComboDeals() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
-
-  // Scroll to the active card when currentIndex changes
-  useEffect(() => {
-    if (sliderRef.current) {
-      const cardWidth = currentIndex === 0 ? 154 : 146;
-      const gap = 12;
-      const scrollPosition = currentIndex * (cardWidth + gap);
-      
-      sliderRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
-    }
-  }, [currentIndex]);
-
   return (
-    <section className="w-full bg-[rgba(221,221,221,0.27)] pt-6 pb-8">
-      {/* Header Tab */}
-      <div className="bg-[#f6f6f6] rounded-[20px] py-2 px-4 mx-0 -mt-6 mb-6">
-        <h2 className="font-poppins font-bold text-[18px]">
-          <span className="text-[#232323]">COMBO</span>{" "}
-          <span className="text-[#c65e0f]">DEAL</span>
-        </h2>
-      </div>
+    <section className="relative w-full overflow-hidden -mt-3 sm:-mt-4 md:-mt-6 z-10">
+      {/* Background Image with rounded top corners matching Figma */}
+      <div className="relative w-full h-[284px] sm:h-[340px] md:h-[420px] lg:h-[520px] xl:h-[600px] rounded-t-[25px] sm:rounded-t-[30px] md:rounded-t-[40px] overflow-hidden">
+        <Image
+          src="/images/combo-deal-bg.png"
+          alt="Combo Deal - Burger, Fries & Milkshake"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
 
-      {/* Cards Slider */}
-      <div 
-        ref={sliderRef}
-        className="flex gap-3 overflow-x-auto px-4 pb-4 scrollbar-hide"
-      >
-        {burgerDeals.map((deal, index) => (
-          <div 
-            key={deal.id} 
-            onClick={() => setCurrentIndex(index)}
-            className="cursor-pointer"
-          >
-            <BurgerCard deal={deal} isActive={index === currentIndex} />
+        {/* Top gradient overlay – smooth blend from hero above */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[60%] z-10"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.55) 28%, rgba(0,0,0,0.18) 55%, transparent 100%)",
+          }}
+        />
+
+        {/* Content overlay – positioned to match Figma */}
+        <div className="absolute inset-0 z-20 flex flex-col justify-start items-start pt-4 sm:pt-6 md:pt-10 lg:pt-14 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-32">
+          {/* "rizins" script branding */}
+          <p className="font-jomhuria text-white/80 text-[24px] sm:text-[28px] md:text-[34px] lg:text-[44px] leading-none italic">
+            rizins
+          </p>
+
+          {/* Main heading: CRUNCH. SPICE. REPEAT. */}
+          <h2 className="font-lilita text-white text-[22px] sm:text-[28px] md:text-[36px] lg:text-[48px] xl:text-[56px] leading-[1] mt-0 tracking-tight">
+            CRUNCH.<br />
+            SPICE. REPEAT.
+          </h2>
+
+          {/* Subtitle */}
+          <p className="font-poppins text-white/70 text-[9px] sm:text-[11px] md:text-[13px] lg:text-[15px] mt-1.5 sm:mt-2 md:mt-3 leading-relaxed">
+            The Ultimate Fried Chicken<br />
+            Burger Experience.
+          </p>
+
+          {/* Desktop-only CTA button */}
+          <button className="hidden md:flex mt-5 lg:mt-8 px-7 lg:px-10 py-2 lg:py-3 bg-brand-red rounded-full font-lilita text-[15px] lg:text-[20px] text-white hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/40 hover:scale-105 active:scale-95 items-center gap-2">
+            VIEW COMBO DEALS
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+
+        {/* COMBO DEAL Badge – bottom-right, matches Figma position */}
+        <div className="absolute bottom-[16px] sm:bottom-[20px] md:bottom-[28px] lg:bottom-[36px] right-[12px] sm:right-[16px] md:right-[24px] lg:right-[40px] z-20">
+          <div className="bg-white rounded-[42px] px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 shadow-md relative">
+            <span className="font-poppins font-bold text-[10px] sm:text-[11px] md:text-[13px] lg:text-[15px] whitespace-nowrap">
+              <span className="text-[#232323]">COMBO</span>{" "}
+              <span className="text-orange-accent">DEAL</span>
+            </span>
+            {/* Small triangle pointer – Figma Polygon 3 */}
+            <svg
+              className="absolute -bottom-[6px] right-3"
+              width="16"
+              height="12"
+              viewBox="0 0 16 12"
+              fill="none"
+            >
+              <polygon points="8,12 0,0 16,0" fill="white" />
+            </svg>
           </div>
-        ))}
-      </div>
-
-      {/* Pagination Dots */}
-      <div className="flex justify-center gap-2 mt-4">
-        {burgerDeals.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex 
-                ? "bg-[#d66c0f] w-4" 
-                : "bg-gray-300"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+        </div>
       </div>
     </section>
   );

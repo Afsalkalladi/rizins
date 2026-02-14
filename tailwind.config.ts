@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         "brand-red": "#D0021B",
+        "brand-brown": "#653913",
         "text-dark": "#2B2B2B",
         "hero-bg": "#000000",
         "text-light": "#EDEDED",
@@ -23,15 +24,17 @@ const config: Config = {
         lilita: ["var(--font-lilita)", "Lilita One", "sans-serif"],
         poppins: ["var(--font-poppins)", "Poppins", "sans-serif"],
       },
-      width: {
-        mobile: "402px",
-      },
-      rotate: {
-        burger: "-18.27deg",
+      screens: {
+        'xs': '480px',
+        '3xl': '1920px',
       },
       fontSize: {
         "burger-watermark": ["221.888px", { lineHeight: "222px" }],
         "hero-title": ["57.1918px", { lineHeight: "33px" }],
+      },
+      transitionTimingFunction: {
+        'bounce-in': 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+        'smooth-out': 'cubic-bezier(0.45, 0, 0.55, 1)',
       },
     },
   },

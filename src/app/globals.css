@@ -4,9 +4,11 @@
 
 :root {
   --brand-red: #D0021B;
+  --brand-brown: #653913;
   --text-dark: #2B2B2B;
   --hero-bg: #000000;
   --text-light: #EDEDED;
+  --orange-accent: #c65e0f;
 }
 
 * {
@@ -15,9 +17,14 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: #f5f5f5;
+  background-color: #000;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Custom utility for burger text rotation */
@@ -25,17 +32,128 @@ body {
   transform: rotate(-18.27deg);
 }
 
-/* Shadow blur effect for burger cards */
-.shadow-blur {
-  filter: blur(1.45px);
-}
-
 /* Hide scrollbar for slider */
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Hero burger carousel animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes burgerEnter {
+  0% { 
+    opacity: 0; 
+    transform: translateY(-60px) scale(0.5); 
+  }
+  65% { 
+    opacity: 1; 
+    transform: translateY(5px) scale(1.03); 
+  }
+  85% {
+    transform: translateY(-2px) scale(0.99);
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes burgerExit {
+  0% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(60px) scale(0.4); 
+  }
+}
+
+@keyframes sideSlideLeft {
+  0% { opacity: 0; transform: translateX(-40px) scale(0.85); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes sideSlideRight {
+  0% { opacity: 0; transform: translateX(40px) scale(0.85); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-burger-enter {
+  animation: burgerEnter 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-burger-exit {
+  animation: burgerExit 0.5s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out forwards;
+}
+
+.animate-side-left {
+  animation: sideSlideLeft 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+.animate-side-right {
+  animation: sideSlideRight 0.8s cubic-bezier(0.45, 0, 0.55, 1) forwards;
+}
+
+/* Gradient text utility */
+.text-gradient-fire {
+  background: linear-gradient(135deg, #D0021B, #FF6B35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth transitions for carousel */
+.burger-slide {
+  transition: all 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Glass morphism effect */
+.glass {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive section container */
+.section-container {
+  @apply w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16;
 }
