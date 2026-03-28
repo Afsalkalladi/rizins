@@ -142,10 +142,11 @@ export default function Header() {
           {/* Center: Navigation Links */}
           <nav className="flex items-center gap-8 xl:gap-12">
             {[
+              { label: "HOME", href: "/" },
               { label: "MENU", href: "/menu" },
+              { label: "ORDER DELIVERY", href: "/order-delivery" },
               { label: "ABOUT US", href: "/about" },
-              { label: "OUR STORY", href: "/our-story" },
-              { label: "CAREERS", href: "/careers" },
+              { label: "DOWNLOAD APP", href: "#app" },
             ].map((item) => (
               <Link
                 key={item.label}
