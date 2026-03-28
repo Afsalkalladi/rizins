@@ -11,7 +11,7 @@ export default function CravingSection() {
           src="/images/crave-crunch-bg.png"
           alt="Crave the Crunch – Fried Chicken"
           fill
-          className="object-cover"
+          className="object-cover object-[20%_center]"
           sizes="100vw"
         />
 
@@ -32,10 +32,10 @@ export default function CravingSection() {
         />
 
         {/* Text Content – positioned top-left */}
-        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[75%] sm:max-w-[65%] md:max-w-[50%] lg:max-w-[40%]">
+        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[65%] sm:max-w-[55%] md:max-w-[42%] lg:max-w-[35%]">
           {/* CRAVE THE CRUNCH */}
           <h2
-            className="font-jomhuria text-text-light leading-[0.9] tracking-[2.6px]"
+            className="font-jomhuria text-text-light leading-[0.50] tracking-[2.6px]"
             style={{
               fontSize: "clamp(48px, 13.7vw, 80px)",
             }}
@@ -58,7 +58,7 @@ export default function CravingSection() {
 
           {/* Description text */}
           <p
-            className="font-poppins text-white/85 mt-2 sm:mt-3 md:mt-4 leading-relaxed"
+            className="font-poppins text-white/85 mt-2 sm:mt-3 md:mt-4 leading-relaxed max-w-[90%] sm:max-w-[85%] md:max-w-[80%]"
             style={{
               fontSize: "clamp(10px, 2.5vw, 16px)",
               textShadow: "1px 1px 4px rgba(0,0,0,0.5)",
