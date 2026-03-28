@@ -7,6 +7,7 @@ import Image from "next/image";
 ================================ */
 interface MenuItemProps {
   name: string;
+  description: string;
   imageSrc: string;
   imageWidth: number;
   imageHeight: number;
@@ -17,6 +18,7 @@ interface MenuItemProps {
 
 function MenuItem({
   name,
+  description,
   imageSrc,
   imageWidth,
   imageHeight,
@@ -25,7 +27,7 @@ function MenuItem({
   price,
 }: MenuItemProps) {
   return (
-    <div className="group w-full max-w-[280px] min-h-[320px] flex flex-col items-center justify-between rounded-2xl bg-white p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden">
+    <div className="group w-full max-w-[280px] min-h-[360px] flex flex-col items-center justify-between rounded-2xl bg-white p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100 relative overflow-hidden">
 
       {/* Hover Background Accent */}
       <div className="absolute top-0 left-0 w-full h-1 bg-brand-red scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
@@ -73,6 +75,7 @@ function MenuItem({
           }}
           dangerouslySetInnerHTML={{ __html: name }}
         />
+        <p className="text-gray-600 text-xs mt-2 leading-tight px-2">{description}</p>
         {price && (
           <p className="font-sans font-bold text-gray-400 mt-2 text-lg">{price}</p>
         )}
@@ -89,7 +92,98 @@ function MenuItem({
 /* ==============================
    MENU GRID SECTION
 ================================ */
-export default function MenuGrid() {
+interface MenuGridProps {
+  activeCategory: string;
+  showHeader?: boolean;
+}
+
+// Menu data organized by category
+interface MenuItemData {
+  name: string;
+  description: string;
+  imageSrc: string;
+  price: string;
+  fontSize?: number;
+}
+
+const menuData: Record<string, MenuItemData[]> = {
+  BEEF: [
+    {
+      name: "RIZIN'S<br/>CLASSIC",
+      description: "Beef patty, cheese, lettuce, tomato, Rizin's sauce",
+      imageSrc: "/images/classic-burger.png",
+      price: "$12.99",
+    },
+    {
+      name: "SPICY<br/>RIZIN'S",
+      description: "Beef patty, cheese, lettuce, tomato, onion, jalapenos, spicy sauce",
+      imageSrc: "/images/classic-burger.png",
+      price: "$13.99",
+    },
+    {
+      name: "SWEET<br/>RIZIN'S",
+      description: "Beef patty, cheese, lettuce, tomato, grilled pineapple, bacon, honey mustard",
+      imageSrc: "/images/classic-burger.png",
+      price: "$14.99",
+    },
+    {
+      name: "CHEESE<br/>BURGER",
+      description: "Beef patty, cheese, pickles, ketchup, mustard",
+      imageSrc: "/images/classic-burger.png",
+      price: "$11.99",
+    },
+  ],
+  CHICKEN: [
+    {
+      name: "FRIED<br/>CHICKEN",
+      description: "Fried chicken patty, pickles, choice of classic or spicy sauce",
+      imageSrc: "/images/fried-chicken-burger.png",
+      price: "$11.99",
+    },
+    {
+      name: "GRILLED<br/>CHICKEN",
+      description: "Herb marinated chicken patty, cheese, lettuce, tomato, Rizin's sauce",
+      imageSrc: "/images/fried-chicken-burger.png",
+      price: "$12.49",
+    },
+  ],
+  VEGGIE: [
+    {
+      name: "CRISPY<br/>SHROOM",
+      description: "Panko crumbed mushroom patty, cheese, lettuce, tomato, onion, Rizin's sauce",
+      imageSrc: "/images/fried-chicken-burger.png",
+      price: "$10.99",
+    },
+  ],
+  SIDES: [
+    {
+      name: "FRIES /<br/>SPICY FRIES",
+      description: "Regular or spicy seasoned",
+      imageSrc: "/images/classic-burger.png",
+      price: "$4.99",
+      fontSize: 24,
+    },
+    {
+      name: "CHEESE FRIES /<br/>NUGGETS",
+      description: "6pc Nuggets available",
+      imageSrc: "/images/classic-burger.png",
+      price: "$6.99",
+      fontSize: 22,
+    },
+  ],
+  SHAKES: [
+    {
+      name: "THICK<br/>SHAKES",
+      description: "Vanilla, Chocolate, Caramel, Mango, Strawberry",
+      imageSrc: "/images/fried-chicken-burger.png",
+      price: "$5.99",
+    },
+  ],
+};
+
+export default function MenuGrid({ activeCategory, showHeader = true }: MenuGridProps) {
+  const currentItems = menuData[activeCategory as keyof typeof menuData] || [];
+
   return (
     <section className="w-full bg-[#f8f8f8] py-20 relative overflow-hidden">
       {/* Background Decorative Elements */}
@@ -99,57 +193,34 @@ export default function MenuGrid() {
       <div className="mx-auto w-full max-w-[1440px] px-6 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          <span className="text-brand-red font-bold tracking-widest text-sm uppercase mb-2 block">Our Menu</span>
-          <h2 className="font-jomhuria text-[64px] leading-[0.8] text-black mb-6">
-            CRAFTED WITH PASSION
-          </h2>
-          <p className="text-gray-600 leading-relaxed">
-            Every burger tells a story of flavor. From our locally sourced beef to our
-            house-made sauces, discover the difference that obsession with quality makes.
-          </p>
-        </div>
+        {showHeader && (
+          <div className="text-center mb-16 max-w-2xl mx-auto">
+            <span className="text-brand-red font-bold tracking-widest text-sm uppercase mb-2 block">Our Menu</span>
+            <h2 className="font-jomhuria text-[64px] leading-[0.8] text-black mb-6">
+              {activeCategory}
+            </h2>
+            <p className="text-gray-600 leading-relaxed">
+              Every burger tells a story of flavor. From our locally sourced beef to our
+              house-made sauces, discover the difference that obsession with quality makes.
+            </p>
+          </div>
+        )}
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
-          <MenuItem
-            name="CLASSIC<br/>BEEF"
-            imageSrc="/images/classic-burger.png"
-            imageWidth={220}
-            imageHeight={160}
-            fontSize={32}
-            price="$12.99"
-          />
-
-          <MenuItem
-            name="CRISPY<br/>CHICKEN"
-            imageSrc="/images/fried-chicken-burger.png"
-            imageWidth={220}
-            imageHeight={160}
-            fontSize={32}
-            price="$11.99"
-            isMultiLine
-          />
-
-          <MenuItem
-            name="DOUBLE<br/>CHEESE"
-            imageSrc="/images/classic-burger.png"
-            imageWidth={220}
-            imageHeight={160}
-            fontSize={32}
-            price="$15.99"
-            isMultiLine
-          />
-
-          <MenuItem
-            name="SPICY<br/>VEGGIE"
-            imageSrc="/images/fried-chicken-burger.png"
-            imageWidth={220}
-            imageHeight={160}
-            fontSize={32}
-            price="$13.50"
-            isMultiLine
-          />
+          {currentItems.map((item, index) => (
+            <MenuItem
+              key={index}
+              name={item.name}
+              description={item.description}
+              imageSrc={item.imageSrc}
+              imageWidth={220}
+              imageHeight={160}
+              fontSize={item.fontSize || 28}
+              price={item.price}
+              isMultiLine
+            />
+          ))}
         </div>
       </div>
     </section>

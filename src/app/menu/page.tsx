@@ -6,10 +6,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MenuGrid from "@/components/MenuGrid";
 
-const categories = ["CHICKEN", "BEEF", "CLASSIC", "SPICY", "GRILLED", "SHAKE"];
+const categories = ["BEEF", "CHICKEN", "VEGGIE", "SIDES", "SHAKES"];
 
 export default function MenuPage() {
-    const [activeCategory, setActiveCategory] = useState("CHICKEN");
+    const [activeCategory, setActiveCategory] = useState("BEEF");
 
     return (
         <main className="min-h-screen bg-[#111] text-white">
@@ -65,7 +65,7 @@ export default function MenuPage() {
             </section>
 
             {/* Full Menu Grid (Moved from Landing Page) */}
-            <MenuGrid />
+            <MenuGrid activeCategory={activeCategory} showHeader={false} />
 
             <Footer />
         </main>
