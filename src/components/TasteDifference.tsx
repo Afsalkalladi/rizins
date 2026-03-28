@@ -1,26 +1,23 @@
 "use client";
 
+import Image from "next/image";
+
 export default function TasteDifference() {
   return (
     <section className="w-full flex flex-row bg-white">
-      
-      {/* Left: Image Box with Blue Border */}
-      {/* Reduced width to 40% to give the text side more room */}
-      <div className="relative w-[45%] lg:w-[40%] border-[3px] border-[#0099ff] bg-[#111] flex items-center justify-center min-h-[300px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[500px]">
-        {/* <Image
+
+      {/* Left: Image Box */}
+      <div className="relative w-[45%] lg:w-[40%] bg-[#111] min-h-[300px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[500px]">
+        <Image
           src="/images/taste-difference.png"
           alt="Smash Burger on Grill"
           fill
           className="object-cover object-center"
-        /> */}
-        <div className="text-white/30 font-poppins text-center p-2">
-          <div className="text-3xl mb-1">🍔</div>
-          <div className="text-sm">taste-difference.png</div>
-        </div>
+          sizes="(max-width: 768px) 45vw, 40vw"
+        />
       </div>
 
       {/* Right: Text Content */}
-      {/* Increased width to 55% / 60% */}
       <div className="w-[55%] lg:w-[60%] bg-white flex flex-col justify-center items-start pl-[5%] sm:pl-[6%] md:pl-[8%] pr-[4%] py-6 overflow-hidden">
         
         {/* Main Headings */}
