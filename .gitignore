@@ -43,5 +43,8 @@ Thumbs.db
 # Testing
 coverage/
 
+# Claude Code
+.claude/
+
 # Misc
 *.log

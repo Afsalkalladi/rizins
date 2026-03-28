@@ -5,7 +5,7 @@ import Image from "next/image";
 export default function CravingSection() {
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="relative w-full h-[270px] sm:h-[320px] md:h-[400px] lg:h-[500px] xl:h-[580px]">
+      <div className="relative w-full h-[320px] sm:h-[380px] md:h-[460px] lg:h-[540px] xl:h-[620px]">
         {/* Background Image – fried chicken scene */}
         <Image
           src="/images/crave-crunch-bg.png"
@@ -31,8 +31,9 @@ export default function CravingSection() {
           }}
         />
 
-        {/* Text: CRAVE THE CRUNCH – positioned top-left */}
-        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px]">
+        {/* Text Content – positioned top-left */}
+        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[90%] sm:max-w-[80%] md:max-w-[60%] lg:max-w-[50%]">
+          {/* CRAVE THE CRUNCH */}
           <h2
             className="font-jomhuria text-text-light leading-[0.9] tracking-[2.6px]"
             style={{
@@ -43,13 +44,28 @@ export default function CravingSection() {
             CRUNCH
           </h2>
 
-          {/* Desktop-only CTA */}
-          <button className="hidden md:flex mt-4 lg:mt-6 px-8 lg:px-10 py-2.5 lg:py-3 bg-brand-red rounded-full font-lilita text-[16px] lg:text-[20px] text-white hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/40 hover:scale-105 active:scale-95 items-center gap-2">
-            ORDER NOW
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
+          {/* SMASHED Fresh. TASTES BETTER tagline */}
+          <p
+            className="font-lilita text-white mt-3 sm:mt-4 md:mt-5 leading-tight"
+            style={{
+              fontSize: "clamp(14px, 4vw, 28px)",
+              textShadow: "2px 2px 8px rgba(0,0,0,0.5)",
+            }}
+          >
+            SMASHED <span className="text-yellow-400 italic">Fresh.</span> TASTES{" "}
+            <span className="text-yellow-400 italic">BETTER</span>
+          </p>
+
+          {/* Description text */}
+          <p
+            className="font-poppins text-white/85 mt-2 sm:mt-3 md:mt-4 leading-relaxed"
+            style={{
+              fontSize: "clamp(10px, 2.5vw, 16px)",
+              textShadow: "1px 1px 4px rgba(0,0,0,0.5)",
+            }}
+          >
+            Great burgers start with great ingredients. At Rizins Smash Burgers, we use premium quality meat, smashed fresh on the grill for that perfect crispy edge and juicy bite.
+          </p>
         </div>
       </div>
     </section>

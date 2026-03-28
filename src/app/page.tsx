@@ -2,8 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ComboDeals from "@/components/ComboDeals";
 import CravingSection from "@/components/CravingSection";
-import FanFavorites from "@/components/FanFavorites";
-import AboutSection from "@/components/AboutSection";
+import TasteDifference from "@/components/TasteDifference";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -21,11 +20,8 @@ export default function Home() {
       {/* Crave the Crunch Section */}
       <CravingSection />
 
-      {/* Fan Favorites / Signature Collection */}
-      <FanFavorites />
-
-      {/* About Section */}
-      <AboutSection />
+      {/* Taste the Difference Section */}
+      <TasteDifference />
 
       {/* Footer */}
       <Footer />
