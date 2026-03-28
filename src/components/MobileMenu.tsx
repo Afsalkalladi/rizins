@@ -10,7 +10,7 @@ interface MobileMenuProps {
 const menuItems = [
   { label: "HOME", href: "/" },
   { label: "MENU", href: "/menu" },
-  { label: "LOCATION", href: "/location" },
+  { label: "ABOUT US", href: "/about" },
   { label: "ORDER NOW", href: "/menu" }, // redirecting order to menu for now as typical
   { label: "WORK WITH US", href: "/careers" },
 ];

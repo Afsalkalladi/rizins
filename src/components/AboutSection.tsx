@@ -1,98 +1,94 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <section className="w-full bg-[#f9f9f9] py-16 sm:py-24 relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10">
-        
-        {/* Quality Seal / Header */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <div className="w-[60px] h-[4px] bg-brand-red mb-6 rounded-full" />
-          <h2 className="font-lilita text-[42px] sm:text-[56px] md:text-[64px] text-[#1a1a1a] leading-tight mb-4">
-            QUALITY YOU CAN TASTE
+    <section className="w-full bg-white">
+      {/* Award Image - Full Width */}
+      <div className="relative w-full h-[250px] sm:h-[320px] md:h-[400px] lg:h-[480px] bg-neutral-800">
+        {/* Placeholder - uncomment when image is ready */}
+        {/* <Image
+          src="/images/award-banner.png"
+          alt="Australia's Best Burger Awards 2025 Finalist"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        /> */}
+        <div className="absolute inset-0 flex items-center justify-center text-white/30 font-poppins text-center p-4">
+          <div>
+            <div className="text-4xl mb-2">🏆</div>
+            <div>Award Banner Placeholder</div>
+            <div className="text-sm mt-1">award-banner.png</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Story Content */}
+      <div className="w-full bg-white px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-10 sm:py-14 md:py-16 lg:py-20">
+        <div className="max-w-4xl">
+          {/* Headline */}
+          <h2 className="font-lilita leading-[0.95]">
+            <span
+              className="block text-black"
+              style={{ fontSize: "clamp(36px, 8vw, 72px)" }}
+            >
+              AUSTRALIA&apos;S BEST
+            </span>
+            <span
+              className="block text-[#d56116]"
+              style={{ fontSize: "clamp(48px, 10vw, 96px)" }}
+            >
+              BURGER
+            </span>
           </h2>
-          <p className="text-gray-500 font-poppins text-sm sm:text-base max-w-2xl">
-            We don&apos;t just make burgers. We craft experiences using only the freshest, locally sourced ingredients. 
-            From farm to tray, every step is handled with care.
+
+          {/* Subheading */}
+          <h3
+            className="font-lilita text-black mt-6 sm:mt-8"
+            style={{ fontSize: "clamp(16px, 3vw, 28px)" }}
+          >
+            THE RIZINS SMASH BURGERS STORY
+          </h3>
+
+          {/* Story Paragraphs */}
+          <div className="font-poppins text-black/80 mt-6 sm:mt-8 space-y-4 sm:space-y-5 leading-relaxed" style={{ fontSize: "clamp(12px, 2vw, 16px)" }}>
+            <p>
+              In the heart of Melbourne, where food culture thrives and taste buds are discerning, Rizins Smash Burgers was born from a simple idea: burgers should be bold, fresh, and unforgettable.
+            </p>
+            <p>
+              What started as a passion project between friends with a love for American smash-style burgers has grown into one of Australia&apos;s most talked-about burger joints. Our mission? To serve burgers that make you stop mid-bite and think, &quot;This is it.&quot;
+            </p>
+            <p>
+              Every patty at Rizins is made from 100% Australian beef, smashed to perfection on a sizzling hot grill. The result? A crispy, caramelized crust on the outside, juicy and tender on the inside. We don&apos;t believe in shortcuts — our buns are baked fresh, our sauces are house-made, and our ingredients are sourced locally.
+            </p>
+            <p>
+              From our classic Smash Burger to our signature Fried Chicken creations, every item on our menu is crafted with care and a whole lot of flavor. Whether you&apos;re a first-timer or a loyal regular, we promise one thing: you&apos;ll leave craving more.
+            </p>
+          </div>
+
+          {/* Closing Line */}
+          <p
+            className="font-lilita text-black mt-8 sm:mt-10"
+            style={{ fontSize: "clamp(14px, 2.5vw, 22px)" }}
+          >
+            Not all burgers are the same. Ours are smashed to perfection.
           </p>
         </div>
+      </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          
-          {/* Left: Fresh Ingredients Visual */}
-          <div className="relative order-2 lg:order-1">
-             <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square bg-white rounded-[40px] shadow-xl border border-gray-100 p-8 sm:p-12 overflow-hidden group">
-                <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-brand-red/5 rounded-bl-[100px] -z-0 transition-all duration-500 group-hover:scale-110" />
-                <div className="absolute bottom-0 left-0 w-[150px] h-[150px] bg-yellow-400/10 rounded-tr-[80px] -z-0 transition-all duration-500 group-hover:scale-110" />
-                
-                <div className="relative w-full h-full">
-                  <Image
-                    src="/images/main-burger.png"
-                    alt="Fresh Ingredients"
-                    fill
-                    className="object-contain hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
-                  />
-                </div>
-
-                {/* Floating "Fresh" tag */}
-                <div className="absolute top-8 left-8 bg-green-600 text-white px-4 py-1.5 rounded-full font-lilita text-sm shadow-lg rotate-[-6deg]">
-                  FRESH DAILY
-                </div>
-                
-                {/* 100% Beef Badge */}
-                <div className="absolute bottom-8 right-8 w-[100px] h-[100px] bg-brand-red text-white sorted-full rounded-full flex flex-col items-center justify-center font-lilita text-center shadow-red-500/30 shadow-xl rotate-[12deg] border-4 border-white">
-                  <span className="text-sm leading-none">100%</span>
-                  <span className="text-[10px] mt-0.5">AUSSIE<br/>BEEF</span>
-                </div>
-             </div>
-          </div>
-
-          {/* Right: Content Cards */}
-          <div className="order-1 lg:order-2 space-y-8">
-            
-            {/* Card 1 */}
-            <div className="flex gap-6 items-start group">
-               <div className="w-[60px] h-[60px] shrink-0 bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center text-2xl group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                 🔥
-               </div>
-               <div>
-                 <h3 className="font-lilita text-2xl text-[#1a1a1a] mb-2 group-hover:text-brand-red transition-colors">FLAME GRILLED TO PERFECTION</h3>
-                 <p className="text-gray-500 text-sm leading-relaxed">
-                   Our patties are smashed fresh on a scorching hot grill to lock in the juices and create that signature crust you crave.
-                 </p>
-               </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="flex gap-6 items-start group">
-               <div className="w-[60px] h-[60px] shrink-0 bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center text-2xl group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                 🥬
-               </div>
-               <div>
-                 <h3 className="font-lilita text-2xl text-[#1a1a1a] mb-2 group-hover:text-brand-red transition-colors">CRISP & ORGANIC</h3>
-                 <p className="text-gray-500 text-sm leading-relaxed">
-                   We partner with local farmers to bring you crunchy lettuce, ripe tomatoes, and artisan buns baked fresh every morning.
-                 </p>
-               </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="pt-4">
-              <Link
-                href="/our-story"
-                className="inline-flex items-center gap-3 px-8 py-3.5 bg-brand-red text-white rounded-xl font-lilita text-xl hover:bg-[#b00217] transition-all shadow-lg hover:shadow-brand-red/30 hover:-translate-y-1"
-              >
-                READ OUR FULL STORY
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </Link>
-            </div>
-
-          </div>
+      {/* Locations Placeholder */}
+      <div className="w-full bg-neutral-300 px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-16 sm:py-20 md:py-24">
+        <div className="text-center">
+          <h3
+            className="font-lilita text-black/40"
+            style={{ fontSize: "clamp(24px, 5vw, 48px)" }}
+          >
+            LOCATIONS
+          </h3>
+          <p className="font-poppins text-black/30 mt-2" style={{ fontSize: "clamp(12px, 2vw, 16px)" }}>
+            Coming soon...
+          </p>
         </div>
       </div>
     </section>

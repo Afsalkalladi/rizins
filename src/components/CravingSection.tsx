@@ -32,7 +32,7 @@ export default function CravingSection() {
         />
 
         {/* Text Content – positioned top-left */}
-        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[65%] sm:max-w-[55%] md:max-w-[42%] lg:max-w-[35%]">
+        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[60%] sm:max-w-[55%] md:max-w-[42%] lg:max-w-[35%]">
           {/* CRAVE THE CRUNCH */}
           <h2
             className="font-jomhuria text-text-light leading-[0.50] tracking-[2.6px]"
