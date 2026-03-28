@@ -6,22 +6,14 @@ export default function AboutSection() {
   return (
     <section className="w-full bg-white">
       {/* Award Image - Full Width */}
-      <div className="relative w-full h-[250px] sm:h-[320px] md:h-[400px] lg:h-[480px] bg-neutral-800">
-        {/* Placeholder - uncomment when image is ready */}
-        {/* <Image
+      <div className="relative w-full h-[250px] sm:h-[320px] md:h-[400px] lg:h-[480px]">
+        <Image
           src="/images/award-banner.png"
           alt="Australia's Best Burger Awards 2025 Finalist"
           fill
           className="object-cover"
           sizes="100vw"
-        /> */}
-        <div className="absolute inset-0 flex items-center justify-center text-white/30 font-poppins text-center p-4">
-          <div>
-            <div className="text-4xl mb-2">🏆</div>
-            <div>Award Banner Placeholder</div>
-            <div className="text-sm mt-1">award-banner.png</div>
-          </div>
-        </div>
+        />
       </div>
 
       {/* Story Content */}
@@ -77,8 +69,8 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* Locations Placeholder */}
-      <div className="w-full bg-neutral-300 px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-16 sm:py-20 md:py-24">
+      {/* Locations Card - Curved Top */}
+      <div className="w-full bg-neutral-300 rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[50px] px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-16 sm:py-20 md:py-24">
         <div className="text-center">
           <h3
             className="font-lilita text-black/40"
