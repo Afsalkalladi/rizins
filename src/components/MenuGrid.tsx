@@ -100,7 +100,7 @@ export default function MenuGrid({ activeCategory }: MenuGridProps) {
   const currentItems = menuData[activeCategory as keyof typeof menuData] || [];
 
   return (
-    <section className="w-full bg-[#111] px-4 pb-20">
+    <section className="w-full bg-[#111] px-4 pt-6 pb-20">
       {/* Dark Rounded Container matching the image */}
       <div className="mx-auto w-full max-w-[800px] bg-[#1A1A1A] rounded-3xl p-6 md:p-8 shadow-2xl border border-white/5">
         
