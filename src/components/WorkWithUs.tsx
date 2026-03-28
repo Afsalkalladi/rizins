@@ -1,53 +1,46 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+
+const GOOGLE_FORM_URL = "https://forms.gle/your-form-id";
 
 export default function WorkWithUs() {
     return (
-        <section className="w-full bg-[#FAFAFA] py-20 relative overflow-hidden" id="careers">
-            <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <section className="w-full min-h-[calc(100vh-80px)] bg-white py-12 md:py-16" id="careers">
+            <div className="mx-auto w-full max-w-[760px] px-5 text-center">
+                <h1 className="font-lilita text-brand-red text-[30px] md:text-[42px] leading-[0.95] tracking-wide uppercase">
+                    WORK WITH US!
+                </h1>
 
-                {/* Left: Illustration / Image */}
-                <div className="relative h-[400px] md:h-[500px] w-full bg-black rounded-[40px] overflow-hidden shadow-2xl group">
+                <div className="relative mt-6 w-full h-[240px] sm:h-[320px] md:h-[390px] overflow-hidden">
                     <Image
                         src="/images/workwithus.png"
-                        alt="Join our team"
+                        alt="Kitchen team at work"
                         fill
-                        className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                        className="object-cover object-center"
+                        priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
-                        <p className="text-white font-lilita text-2xl">"BEST JOB EVER"</p>
-                    </div>
                 </div>
 
-                {/* Right: Content */}
-                <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-6">
-                    <div>
-                        <span className="text-brand-red font-bold tracking-widest text-sm uppercase mb-2 block">JOIN THE SQUAD</span>
-                        <h2 className="font-jomhuria text-[70px] md:text-[90px] leading-[0.8] text-black">
-                            WORK WITH <br /><span className="text-brand-red">PASSION</span>
-                        </h2>
-                    </div>
+                <h2 className="mt-7 font-lilita text-brand-red text-[30px] md:text-[40px] leading-[0.95] uppercase">
+                    APPLY FOR
+                    <br />
+                    STORE STAFF & DELIVERY
+                </h2>
 
-                    <p className="text-gray-600 text-lg leading-relaxed max-w-md">
-                        We are looking for energetic, burger-loving individuals to join our kitchen and service teams.
-                        Flexible hours, great vibes, and free burgers on shift!
-                    </p>
+                <Link
+                    href={GOOGLE_FORM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-red px-10 py-3 font-lilita text-[28px] md:text-[34px] leading-[0.9] text-white uppercase shadow-[0_10px_25px_rgba(0,0,0,0.18)] transition-all hover:brightness-110"
+                >
+                    CONTACT NOW
+                </Link>
 
-                    <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto pt-4">
-                        <button className="px-10 py-4 bg-black text-white rounded-full font-lilita text-xl hover:bg-brand-red transition-all shadow-xl hover:shadow-brand-red/40 hover:-translate-y-1">
-                            APPLY NOW
-                        </button>
-                        <button className="px-10 py-4 border-2 border-black text-black rounded-full font-lilita text-xl hover:bg-black hover:text-white transition-all">
-                            VIEW POSITIONS
-                        </button>
-                    </div>
-
-                    <p className="text-xs text-gray-400 mt-4">
-                        *Experience is preferred but passion is mandatory.
-                    </p>
-                </div>
-
+                <p className="mt-4 text-[22px] md:text-[28px] leading-none font-jomhuria text-black/85 tracking-wide">
+                    Read More About Policy
+                </p>
             </div>
         </section>
     );

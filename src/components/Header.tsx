@@ -43,8 +43,8 @@ export default function Header() {
           </Link>
 
           {/* Order Delivery */}
-          <a
-            href="#order"
+          <Link
+            href="/order-delivery"
             className="flex items-center justify-center gap-1.5 sm:gap-2 px-1 sm:px-2 text-white hover:opacity-85 transition-opacity"
             aria-label="Order delivery"
           >
@@ -69,7 +69,7 @@ export default function Header() {
             <span className="font-jomhuria text-[18px] sm:text-[24px] leading-[12px] sm:leading-[14px] text-left">
               ORDER<br />DELIVERY
             </span>
-          </a>
+          </Link>
 
           {/* Pick Up On App */}
           <a
@@ -159,8 +159,8 @@ export default function Header() {
 
           {/* Right: Action Buttons */}
           <div className="flex items-center gap-4">
-            <a
-              href="#order"
+            <Link
+              href="/order-delivery"
               className="flex items-center gap-2 px-5 py-2.5 bg-white text-brand-red rounded-full font-lilita text-[15px] hover:bg-gray-100 transition-colors shadow-lg"
             >
               <svg width="16" height="18" viewBox="0 0 28 32" fill="none" className="flex-shrink-0">
@@ -168,7 +168,7 @@ export default function Header() {
                 <circle cx="14" cy="12" r="4" fill="#D0021B"/>
               </svg>
               ORDER DELIVERY
-            </a>
+            </Link>
             <a
               href="#app"
               className="flex items-center gap-2 px-5 py-2.5 border-2 border-white text-white rounded-full font-lilita text-[15px] hover:bg-white hover:text-brand-red transition-all"
