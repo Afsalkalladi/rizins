@@ -1,113 +1,67 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function QualitySection() {
   return (
-    <section className="w-full bg-[#f9f9f9] py-16 sm:py-24 relative overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="flex flex-col items-center mb-16 text-center"
-        >
-          <div className="w-[60px] h-[4px] bg-brand-red mb-6 rounded-full" />
-          <h2 className="font-lilita text-[42px] sm:text-[56px] md:text-[64px] text-[#1a1a1a] leading-tight mb-4">
-            QUALITY YOU CAN TASTE
-          </h2>
-          <p className="text-gray-500 font-poppins text-sm sm:text-base max-w-2xl">
-            We don&apos;t just make burgers. We craft experiences using only the freshest, locally sourced ingredients.
-            From farm to tray, every step is handled with care.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section className="w-full bg-white -mt-6 sm:-mt-8 pt-12 sm:pt-16 pb-6 sm:pb-10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Changed to always be flex-row so they stay side-by-side */}
+        <div className="flex flex-row items-center gap-4 sm:gap-8 lg:gap-12">
+          
+          {/* Text Content - Forced to always take exactly half the width (w-1/2) */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="relative order-2 lg:order-1"
-          >
-            <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square bg-white rounded-[40px] shadow-xl border border-gray-100 p-8 sm:p-12 overflow-hidden group">
-              <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-brand-red/5 rounded-bl-[100px] -z-0 transition-all duration-500 group-hover:scale-110" />
-              <div className="absolute bottom-0 left-0 w-[150px] h-[150px] bg-yellow-400/10 rounded-tr-[80px] -z-0 transition-all duration-500 group-hover:scale-110" />
-
-              <div className="relative w-full h-full">
-                <Image
-                  src="/images/main-burger.png"
-                  alt="Fresh Ingredients"
-                  fill
-                  className="object-contain hover:scale-105 transition-transform duration-500 drop-shadow-2xl"
-                />
-              </div>
-
-              <div className="absolute top-8 left-8 bg-green-600 text-white px-4 py-1.5 rounded-full font-lilita text-sm shadow-lg rotate-[-6deg]">
-                FRESH DAILY
-              </div>
-
-              <div className="absolute bottom-8 right-8 w-[100px] h-[100px] bg-brand-red text-white rounded-full flex flex-col items-center justify-center font-lilita text-center shadow-red-500/30 shadow-xl rotate-[12deg] border-4 border-white">
-                <span className="text-sm leading-none">100%</span>
-                <span className="text-[10px] mt-0.5">
-                  AUSSIE
-                  <br />
-                  BEEF
-                </span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="order-1 lg:order-2 space-y-8"
+            className="w-1/2 text-left"
           >
-            <div className="flex gap-6 items-start group">
-              <div className="w-[60px] h-[60px] shrink-0 bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center text-2xl group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                🔥
-              </div>
-              <div>
-                <h3 className="font-lilita text-2xl text-[#1a1a1a] mb-2 group-hover:text-brand-red transition-colors">
-                  FLAME GRILLED TO PERFECTION
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  Our patties are smashed fresh on a scorching hot grill to lock in the juices and create that signature crust you crave.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex gap-6 items-start group">
-              <div className="w-[60px] h-[60px] shrink-0 bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center text-2xl group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                🥬
-              </div>
-              <div>
-                <h3 className="font-lilita text-2xl text-[#1a1a1a] mb-2 group-hover:text-brand-red transition-colors">
-                  CRISP & ORGANIC
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">
-                  We partner with local farmers to bring you crunchy lettuce, ripe tomatoes, and artisan buns baked fresh every morning.
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-4">
+            <h2 className="font-lilita text-[24px] sm:text-[36px] lg:text-[44px] text-[#1a1a1a] leading-tight mb-3 sm:mb-4">
+              QUALITY YOU CAN TASTE
+            </h2>
+            <p className="text-gray-600 font-poppins text-xs sm:text-sm lg:text-base leading-relaxed">
+              We don&apos;t just make burgers. We craft experiences using only the freshest, locally sourced ingredients. From farm to tray, every step is handled with care.
+            </p>
+            <div className="mt-4 sm:mt-6">
               <Link
-                href="/our-story"
-                className="inline-flex items-center gap-3 px-8 py-3.5 bg-brand-red text-white rounded-xl font-lilita text-xl hover:bg-[#b00217] transition-all shadow-lg hover:shadow-brand-red/30 hover:-translate-y-1"
+                href="/about"
+                className="inline-flex items-center gap-2 rounded-lg bg-brand-red px-4 py-2 sm:px-5 sm:py-2.5 font-lilita text-sm sm:text-base text-white transition-colors duration-300 hover:bg-[#b00217]"
               >
-                READ OUR FULL STORY
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                READ OUR STORY
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
               </Link>
             </div>
           </motion.div>
+
+          {/* Image - Forced to always take exactly half the width (w-1/2) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="w-1/2 h-[250px] sm:h-[350px] lg:h-[450px] relative"
+          >
+            <Image
+              src="/images/main-burger.png"
+              alt="Quality Ingredients"
+              fill
+              className="object-contain"
+            />
+            {/* Adjusted the badge size slightly for smaller screens to fit the 50% layout */}
+            <div className="absolute bottom-2 right-2 sm:bottom-6 sm:right-6 w-16 h-16 sm:w-24 sm:h-24 bg-brand-red text-white rounded-full flex flex-col items-center justify-center font-lilita text-center shadow-red-500/30 shadow-xl rotate-[12deg] border-2 sm:border-4 border-white">
+              <span className="text-xs sm:text-sm leading-none">100%</span>
+              <span className="text-[8px] sm:text-[10px] mt-0.5">
+                AUSSIE
+                <br />
+                BEEF
+              </span>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
