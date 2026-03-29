@@ -7,10 +7,11 @@ import Image from "next/image";
 ================================ */
 interface MenuItemProps {
   name: string;
+  description: string;
   imageSrc: string;
 }
 
-function MenuItem({ name, imageSrc }: MenuItemProps) {
+function MenuItem({ name, description, imageSrc }: MenuItemProps) {
   return (
     <div className="flex items-center gap-6 py-4 group cursor-pointer">
       {/* Thumbnail Image */}
@@ -24,10 +25,15 @@ function MenuItem({ name, imageSrc }: MenuItemProps) {
         />
       </div>
 
-      {/* Item Name */}
-      <h3 className="font-black text-xl md:text-2xl text-[#E5E5E5] group-hover:text-white uppercase tracking-wide">
-        {name}
-      </h3>
+      {/* Item Name + Description */}
+      <div>
+        <h3 className="font-black text-xl md:text-2xl text-[#E5E5E5] group-hover:text-white uppercase tracking-wide">
+          {name}
+        </h3>
+        <p className="mt-1 font-poppins text-[11px] sm:text-xs md:text-sm text-[#B9B9B9] leading-snug uppercase tracking-[0.3px]">
+          {description}
+        </p>
+      </div>
     </div>
   );
 }
@@ -42,6 +48,7 @@ interface MenuGridProps {
 // Menu data organized by category (Pricing removed)
 interface MenuItemData {
   name: string;
+  description: string;
   imageSrc: string;
 }
 
@@ -49,48 +56,57 @@ const menuData: Record<string, MenuItemData[]> = {
   BEEF: [
     {
       name: "BEEF BURGER",
+      description: "Beef patty, cheese, lettuce, tomato, Rizin's sauce.",
       imageSrc: "/images/classic-burger.png",
     },
     {
       name: "SMASHED BEEF BURGER",
+      description: "Double smashed beef patties, cheese, pickles, mustard and ketchup.",
       imageSrc: "/images/classic-burger.png",
     },
     {
       name: "CHEESE BEEF BURGER",
+      description: "Beef patty, cheese, pickles, ketchup and mustard.",
       imageSrc: "/images/classic-burger.png",
     },
   ],
   CHICKEN: [
     {
       name: "FRIED CHICKEN",
+      description: "Fried chicken patty, pickles and choice of classic or spicy sauce.",
       imageSrc: "/images/fried-chicken-burger.png",
     },
     {
       name: "GRILLED CHICKEN",
+      description: "Herb marinated chicken patty, cheese, lettuce, tomato and Rizins sauce.",
       imageSrc: "/images/fried-chicken-burger.png",
     },
   ],
   CLASSIC: [
     {
       name: "RIZIN'S CLASSIC",
+      description: "Beef patty, cheese, lettuce, tomato, Rizin's sauce.",
       imageSrc: "/images/classic-burger.png",
     },
   ],
   SPICY: [
     {
       name: "SPICY RIZIN'S",
+      description: "Beef patty, cheese, lettuce, tomato, onion, jalapenos and spicy sauce.",
       imageSrc: "/images/classic-burger.png",
     },
   ],
   COMBO: [
     {
       name: "BURGER & FRIES COMBO",
+      description: "Burger, fries and drink in one value combo meal.",
       imageSrc: "/images/classic-burger.png",
     },
   ],
   SHAKE: [
     {
       name: "THICK SHAKES",
+      description: "Vanilla, chocolate, caramel, mango and strawberry.",
       imageSrc: "/images/fried-chicken-burger.png",
     },
   ],
@@ -110,6 +126,7 @@ export default function MenuGrid({ activeCategory }: MenuGridProps) {
               <MenuItem
                 key={index}
                 name={item.name}
+                description={item.description}
                 imageSrc={item.imageSrc}
               />
             ))}
