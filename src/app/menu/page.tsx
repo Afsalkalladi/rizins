@@ -9,8 +9,36 @@ import MenuGrid from "@/components/MenuGrid";
 // Updated categories to match the image
 const categories = ["CHICKEN", "BEEF", "CLASSIC", "SPICY", "COMBO", "SHAKE"];
 
+const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
+    CHICKEN: {
+        src: "/images/fried-chicken-burger.png",
+        alt: "Featured Chicken Burger",
+    },
+    BEEF: {
+        src: "/images/classic-burger.png",
+        alt: "Featured Beef Burger",
+    },
+    CLASSIC: {
+        src: "/images/classic-burger.png",
+        alt: "Featured Classic Burger",
+    },
+    SPICY: {
+        src: "/images/zinger-burger.png",
+        alt: "Featured Spicy Burger",
+    },
+    COMBO: {
+        src: "/images/cheese-burger.png",
+        alt: "Featured Combo Burger",
+    },
+    SHAKE: {
+        src: "/images/cheese-burger.png",
+        alt: "Featured Shake Pairing",
+    },
+};
+
 export default function MenuPage() {
     const [activeCategory, setActiveCategory] = useState("CHICKEN");
+    const featuredImage = featuredImageByCategory[activeCategory] ?? featuredImageByCategory.CHICKEN;
 
     return (
         <main className="min-h-screen bg-[#111] text-white font-sans pt-[70px] sm:pt-[80px]">
@@ -43,8 +71,8 @@ export default function MenuPage() {
             <section className="relative w-full h-[350px] flex justify-center items-center bg-[radial-gradient(circle_at_center,_#934A1C_0%,_#3E1F09_50%,_#170A03_100%)]">
                 <div className="relative w-[280px] h-[280px]">
                     <Image
-                        src="/images/classic-burger.png" // Replace with your double beef burger asset
-                        alt="Featured Beef Burger"
+                        src={featuredImage.src}
+                        alt={featuredImage.alt}
                         fill
                         className="object-contain drop-shadow-2xl"
                     />
