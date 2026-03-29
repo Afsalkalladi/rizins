@@ -69,20 +69,7 @@ export default function AboutSection() {
         </div>
       </div>
 
-      {/* Locations Card - Curved Top */}
-      <div className="w-full bg-neutral-300 rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[50px] px-6 sm:px-8 md:px-12 lg:px-20 xl:px-32 py-16 sm:py-20 md:py-24">
-        <div className="text-center">
-          <h3
-            className="font-lilita text-black/40"
-            style={{ fontSize: "clamp(24px, 5vw, 48px)" }}
-          >
-            LOCATIONS
-          </h3>
-          <p className="font-poppins text-black/30 mt-2" style={{ fontSize: "clamp(12px, 2vw, 16px)" }}>
-            Coming soon...
-          </p>
-        </div>
-      </div>
+
     </section>
   );
 }

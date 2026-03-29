@@ -138,6 +138,7 @@ export default function Header() {
               { label: "MENU", href: "/menu" },
               { label: "ORDER DELIVERY", href: "/order-delivery" },
               { label: "ABOUT US", href: "/about" },
+              { label: "LOCATIONS", href: "/locations" },
               { label: "DOWNLOAD APP", href: "#app" },
             ].map((item) => (
               <Link
