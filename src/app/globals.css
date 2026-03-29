@@ -65,18 +65,18 @@ body {
 @keyframes burgerEnter {
   0% { 
     opacity: 0; 
-    transform: translateY(-60px) scale(0.5); 
+    transform: translateX(150px) scale(0.8); 
   }
   65% { 
     opacity: 1; 
-    transform: translateY(5px) scale(1.03); 
+    transform: translateX(-15px) scale(1.03); 
   }
   85% {
-    transform: translateY(-2px) scale(0.99);
+    transform: translateX(8px) scale(0.99);
   }
   100% { 
     opacity: 1; 
-    transform: translateY(0) scale(1); 
+    transform: translateX(0) scale(1); 
   }
 }
 
@@ -157,3 +157,41 @@ body {
 .section-container {
   @apply w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16;
 }
+
+/* Next button (Leftwards movement) */
+@keyframes slideCenterLeftwards {
+  0% { transform: translate(35vw, -30px) scale(0.6); opacity: 0; }
+  20% { opacity: 0.5; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+@keyframes slideLeftLeftwards {
+  0% { transform: translate(35vw, 30px) scale(1.6); opacity: 1; filter: blur(0); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes slideRightLeftwards {
+  0% { transform: translateX(20vw) scale(0.5); opacity: 0; }
+  100% { transform: translateX(0) scale(1); }
+}
+
+/* Prev button (Rightwards movement) */
+@keyframes slideCenterRightwards {
+  0% { transform: translate(-35vw, -30px) scale(0.6); opacity: 0; }
+  20% { opacity: 0.5; }
+  100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+@keyframes slideRightRightwards {
+  0% { transform: translate(-35vw, 30px) scale(1.6); opacity: 1; filter: blur(0); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+@keyframes slideLeftRightwards {
+  0% { transform: translateX(-20vw) scale(0.5); opacity: 0; }
+  100% { transform: translateX(0) scale(1); }
+}
+
+.anim-c-leftwards { animation: slideCenterLeftwards 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.anim-l-leftwards { animation: slideLeftLeftwards 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.anim-r-leftwards { animation: slideRightLeftwards 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+.anim-c-rightwards { animation: slideCenterRightwards 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.anim-r-rightwards { animation: slideRightRightwards 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.anim-l-rightwards { animation: slideLeftRightwards 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; }

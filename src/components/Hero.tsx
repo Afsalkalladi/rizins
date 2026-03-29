@@ -25,27 +25,29 @@ export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [animationKey, setAnimationKey] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const total = slides.length;
 
   const goToSlide = useCallback(
-    (index: number) => {
+    (index: number, moveDirection: "next" | "prev" = "next") => {
       if (isAnimating) return;
       setIsAnimating(true);
+      setDirection(moveDirection);
       setCurrentSlide(index);
       setAnimationKey((prev) => prev + 1);
-      setTimeout(() => setIsAnimating(false), 900);
+      setTimeout(() => setIsAnimating(false), 1500);
     },
     [isAnimating]
   );
 
   const nextSlide = useCallback(() => {
-    goToSlide((currentSlide + 1) % total);
+    goToSlide((currentSlide + 1) % total, "next");
   }, [currentSlide, total, goToSlide]);
 
   const prevSlide = useCallback(() => {
-    goToSlide((currentSlide - 1 + total) % total);
+    goToSlide((currentSlide - 1 + total) % total, "prev");
   }, [currentSlide, total, goToSlide]);
 
   // Auto-play
@@ -115,8 +117,8 @@ export default function Hero() {
       >
         <div
           key={`left-${animationKey}`}
-          className="animate-side-left cursor-pointer"
-          onClick={() => goToSlide(prevIndex)}
+          className={animationKey === 0 ? "animate-side-left cursor-pointer" : direction === "next" ? "anim-l-leftwards cursor-pointer" : "anim-l-rightwards cursor-pointer"}
+          onClick={prevSlide}
         >
           <div
             className="relative opacity-40 blur-[1px] lg:opacity-50 lg:blur-[0.5px]"
@@ -137,7 +139,7 @@ export default function Hero() {
 
       {/* Center Burger – centering wrapper separated from animation */}
       <div className="absolute z-20 left-1/2 -translate-x-1/2" style={{ top: "8%" }}>
-        <div key={`center-${animationKey}`} className={animationKey === 0 ? "" : "animate-burger-enter"}>
+        <div key={`center-${animationKey}`} className={animationKey === 0 ? "" : direction === "next" ? "anim-c-leftwards" : "anim-c-rightwards"}>
           <div
             className="relative animate-float bg-transparent isolate"
             style={{
@@ -163,8 +165,8 @@ export default function Hero() {
       >
         <div
           key={`right-${animationKey}`}
-          className="animate-side-right cursor-pointer"
-          onClick={() => goToSlide(nextIndex)}
+          className={animationKey === 0 ? "animate-side-right cursor-pointer" : direction === "next" ? "anim-r-leftwards cursor-pointer" : "anim-r-rightwards cursor-pointer"}
+          onClick={nextSlide}
         >
           <div
             className="relative opacity-40 blur-[1px] lg:opacity-50 lg:blur-[0.5px]"
@@ -205,12 +207,12 @@ export default function Hero() {
         </svg>
       </button>
 
-            {/* ===== TEXT: BURGER'S REINVENTED (fixed) ===== */}
+      {/* ===== HEADER & CALL TO ACTION (fixed) ===== */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 z-20 text-center w-full px-4"
-        style={{ top: "62%" }}
+        className="absolute left-1/2 -translate-x-1/2 z-20 flex flex-col items-center justify-between w-full px-4"
+        style={{ top: "54%", height: "32%" }}
       >
-        <div>
+        <div className="flex flex-col items-center text-center">
           <h1 className="font-jomhuria text-[57px] sm:text-[64px] md:text-[72px] lg:text-[90px] xl:text-[110px] leading-[33px] sm:leading-[38px] md:leading-[42px] lg:leading-[52px] xl:leading-[64px] tracking-[2.69px] text-text-light">
             BURGER&apos;S
           </h1>
@@ -219,18 +221,14 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* --- NEW SUBTITLE ADDED HERE --- */}
-        <p className="text-white/90 font-light mt-4 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-wide opacity-80">
-          One brand. One standard. Endless satisfaction.
-        </p>
-      </div>
+        {/* CENTERED BUT MOVED SLIGHTLY UP */}
+        <div className="flex flex-1 items-start pt-2 sm:pt-4 justify-center w-full">
+          <p className="text-white/90 font-light text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-wide opacity-80 text-center">
+            One brand. One standard. Endless satisfaction.
+          </p>
+        </div>
 
-      {/* ===== ORDER NOW BUTTON ===== */}
-      <div
-        className="absolute left-1/2 -translate-x-1/2 z-20"
-        style={{ top: "86%" }} // Adjusted from 84% to 86% to make room for text
-      >
-        <button className="w-[161px] h-[32px] sm:w-[180px] sm:h-[38px] md:w-[200px] md:h-[42px] lg:w-[240px] lg:h-[50px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/40 hover:scale-105 active:scale-95">
+        <button className="w-[161px] h-[32px] sm:w-[180px] sm:h-[38px] md:w-[200px] md:h-[42px] lg:w-[240px] lg:h-[50px] bg-brand-red rounded-[28px] flex shrink-0 items-center justify-center hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/40 hover:scale-105 active:scale-95">
           <span className="font-lilita text-[20px] sm:text-[22px] md:text-[24px] lg:text-[28px] text-white">
             ORDER NOW
           </span>
