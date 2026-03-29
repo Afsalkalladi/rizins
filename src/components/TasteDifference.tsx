@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function TasteDifference() {
   return (
-    <section className="w-full flex flex-row bg-white">
+    <section className="w-full flex flex-row bg-white overflow-hidden">
 
       {/* Left: Image Box */}
       <div className="relative w-[45%] lg:w-[40%] bg-[#111] min-h-[300px] sm:min-h-[350px] md:min-h-[450px] lg:min-h-[500px]">
