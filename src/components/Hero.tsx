@@ -137,7 +137,7 @@ export default function Hero() {
 
       {/* Center Burger – centering wrapper separated from animation */}
       <div className="absolute z-20 left-1/2 -translate-x-1/2" style={{ top: "8%" }}>
-        <div key={`center-${animationKey}`} className="animate-burger-enter">
+        <div key={`center-${animationKey}`} className={animationKey === 0 ? "" : "animate-burger-enter"}>
           <div
             className="relative animate-float"
             style={{
