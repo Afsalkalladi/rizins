@@ -5,7 +5,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 const slides = [
   {
-    image: "/images/main-burger.png",
+    image: "/images/beef/classic.png",
     subtitle: "BURGER'S",
     title: "REINVENTED",
   },

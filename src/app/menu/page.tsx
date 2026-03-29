@@ -14,7 +14,7 @@ const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
         alt: "Featured Chicken Burger",
     },
     BEEF: {
-        src: "/images/classic-burger.png",
+        src: "/images/beef/classic.png",
         alt: "Featured Beef Burger",
     },
     VEG: {
