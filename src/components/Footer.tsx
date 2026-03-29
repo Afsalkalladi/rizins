@@ -22,8 +22,27 @@ const navLinks = [
 ];
 
 function getUrl(platform: Platform, locId: string) {
-  if (platform === "UberEats") return `https://www.ubereats.com/au/store/rizins-${locId}`;
-  if (platform === "DoorDash") return `https://www.doordash.com/store/rizins-${locId}`;
+  const locations = [
+    {
+      id: "seaford",
+      doordashUrl: "https://www.doordash.com/en-GB/store/rizin%E2%80%99s-smash-burgers-seaford-39534831/91585950/?cursor=eyJzZWFyY2hfaXRlbV9jYXJvdXNlbF9jdXJzb3IiOnsicXVlcnkiOiJyaXppbnMgc21hc2ggYnVyZ2VycyBtaXRjaGFtIiwiaXRlbV9pZHMiOltdLCJzZWFyY2hfdGVybSI6InJpemluIHNtYXNoIGJ1cmdlciBtaXRjaGFtIiwidmVydGljYWxfaWQiOi05OTksInZlcnRpY2FsX25hbWUiOiJhbGwiLCJxdWVyeV9pbnRlbnQiOiJTVE9SRV9SWCJ9LCJzdG9yZV9wcmltYXJ5X3ZlcnRpY2FsX2lkcyI6WzEsMTEwMDQ1LDRdfQ==&pickup=false",
+      uberEatsUrl: "https://www.ubereats.com/au/store/rizins-smash-burgers-seaford/qE1o_MeIU2SingPFctXU0w?diningMode=DELIVERY&surfaceName=",
+    },
+    {
+      id: "mitcham",
+      doordashUrl: "https://www.doordash.com/en-GB/store/rizin%E2%80%99s-smash-burgers-mitcham-33345535/83788161/?cursor=eyJzZWFyY2hfaXRlbV9jYXJvdXNlbF9jdXJzb3IiOnsicXVlcnkiOiJyaXppbnMgc21hc2ggYnVyZ2VycyBtaXRjaGFtIiwiaXRlbV9pZHMiOltdLCJzZWFyY2hfdGVybSI6InJpemluIHNtYXNoIGJ1urdleciBtaXRjaGFtIiwidmVydGljYWxfaWQiOi05OTksInZlcnRpY2FsX25hbWUiOiJhbGwiLCJxdWVyeV9pbnRlbnQiOiJTVE9SRV9SWCJ9LCJzdG9yZV9wcmltYXJ5X3ZlcnRpY2FsX2lkcyI6WzEsMTEwMDQ1LDRsMTAwMzMzXX0=&pickup=false",
+      uberEatsUrl: "https://www.ubereats.com/au/store/rizins-smash-burgers-mitcham/mAdz1sKATnGEa6Xtm-k7rQ?diningMode=DELIVERY&ps=1&surfaceName=",
+    },
+    {
+      id: "dandenong",
+      doordashUrl: "https://www.doordash.com/en-GB/store/rizin%E2%80%99s-smash-burgers-dandenong-24403281/17715024/?cursor=eyJzZWFyY2hfaXRlbV9jYXJvdXNlbF9jdXJzb3IiOnsicXVlcnkiOiJyaXppbnMgc21hc2ggYnVyZ2VycyIsIml0ZW1faWRzIjpbXSwic2VhcmNoX3Rlcm0iOiJyaXppbiBzbWFzaCBidXJnZXIiLCJ2ZXJ0aWNhbF9pZCI6LTk5OSwidmVydGljYWxfbmFtZSI6ImFsbCIsInF1ZXJ5X2ludGVudCI6IlNUT1JFX1JYIn0sInN0b3JlX3ByaW1hcnlfdmVydGljYWxfaWRzIjpbMSwxMTAwNDUsNCwxMDAzMzMsMTkyXX0=&pickup=false",
+      uberEatsUrl: "https://www.ubereats.com/au/store/rizins-smash-burgers/mHLbgdAZQruoFtIhFWAdHg?diningMode=DELIVERY&mod=storeDeliveryTime&modctx=%257B%2522entryPoint%2522%253A%2522store-auto-surface%2522%252C%2522encodedStoreUuid%2522%253A%2522mHLbgdAZQruoFtIhFWAdHg%2522%257D&ps=1&surfaceName=",
+    },
+  ];
+  const location = locations.find(l => l.id === locId);
+  if (!location) return "#";
+  if (platform === "UberEats") return location.uberEatsUrl;
+  if (platform === "DoorDash") return location.doordashUrl;
   return "#";
 }
 
@@ -82,7 +101,7 @@ export default function Footer() {
 
             {/* Social icons */}
             <div className="flex gap-3 mt-1">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+              <a href="https://www.instagram.com/rizins_burgers?igsh=MTg2dTlsY2t0aG51cA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-brand-red transition-all flex items-center justify-center">
                 <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
