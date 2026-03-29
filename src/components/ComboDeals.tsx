@@ -36,7 +36,6 @@ export default function ComboDeals() {
           muted
           playsInline
           preload="metadata"
-          poster="/images/combo-deal-bg.png"
         >
           <source src="/videos/Remove_White_Cup_Duplicate_Other%20(1).mp4" type="video/mp4" />
         </video>
