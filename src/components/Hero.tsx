@@ -139,7 +139,7 @@ export default function Hero() {
       <div className="absolute z-20 left-1/2 -translate-x-1/2" style={{ top: "8%" }}>
         <div key={`center-${animationKey}`} className={animationKey === 0 ? "" : "animate-burger-enter"}>
           <div
-            className="relative animate-float"
+            className="relative animate-float bg-transparent isolate"
             style={{
               width: "clamp(190px, 48vw, 400px)",
               height: "clamp(190px, 48vw, 400px)",
@@ -149,7 +149,7 @@ export default function Hero() {
               src={slides[currentSlide].image}
               alt={slides[currentSlide].title}
               fill
-              className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
+              className="object-contain sm:drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
               priority
             />
           </div>
