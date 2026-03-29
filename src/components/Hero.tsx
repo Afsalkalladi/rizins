@@ -70,13 +70,13 @@ export default function Hero() {
       <div
         className="absolute inset-0 z-[4]"
         style={{
-          background: "linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0.35) 100%)",
+          background: "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 45%, rgba(0,0,0,0.35) 100%)",
         }}
       />
 
       {/* Radial shadow at top centre */}
       <div
-        className="absolute z-[6]"
+        className="absolute z-[6]  hidden sm:block"
         style={{
           left: "-18%",
           top: "-5%",
@@ -151,8 +151,6 @@ export default function Hero() {
               fill
               className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
               priority
-              unoptimized
-              sizes="(max-width: 640px) 48vw, (max-width: 1024px) 40vw, 400px"
             />
           </div>
         </div>
