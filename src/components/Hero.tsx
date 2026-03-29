@@ -151,6 +151,8 @@ export default function Hero() {
               fill
               className="object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
               priority
+              unoptimized
+              sizes="(max-width: 640px) 48vw, (max-width: 1024px) 40vw, 400px"
             />
           </div>
         </div>
