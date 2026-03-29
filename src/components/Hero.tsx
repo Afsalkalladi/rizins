@@ -186,7 +186,7 @@ export default function Hero() {
 
         {/* ===== HEADER & CALL TO ACTION (fixed) ===== */}
         <div
-          className="absolute left-1/2 -translate-x-1/2 z-20 flex flex-col items-center justify-between w-full px-4"
+          className="absolute left-1/2 -translate-x-1/2 z-20 flex flex-col items-center justify-between w-full px-4 lg:mt-12"
           style={{ top: "54%", height: "32%" }}
         >
           <div className="flex flex-col items-center text-center">
