@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-type Platform = "UberEats" | "DoorDash" | "Menulog" | null;
+type Platform = "UberEats" | "DoorDash" | null;
 type ModalStep = "platform" | "store";
 
 const locations = [
@@ -24,7 +24,6 @@ const navLinks = [
 function getUrl(platform: Platform, locId: string) {
   if (platform === "UberEats") return `https://www.ubereats.com/au/store/rizins-${locId}`;
   if (platform === "DoorDash") return `https://www.doordash.com/store/rizins-${locId}`;
-  if (platform === "Menulog") return `https://www.menulog.com.au/restaurants-rizins-${locId}`;
   return "#";
 }
 
@@ -112,12 +111,6 @@ export default function Footer() {
                 DoorDash
               </span>
             </button>
-            <button onClick={() => openModal("Menulog")}
-              className="group hover:scale-105 transition-transform">
-              <span className="text-lg sm:text-xl font-bold font-sans tracking-tighter text-[#FF8000]/80 group-hover:text-[#FF8000] lowercase">
-                menulog
-              </span>
-            </button>
           </div>
 
           {/* Divider */}
@@ -178,10 +171,6 @@ export default function Footer() {
                     className="w-full bg-white/5 border border-white/5 hover:border-[#FF3008]/50 hover:bg-[#FF3008]/10 py-4 rounded-2xl font-black font-sans text-base uppercase tracking-tighter text-[#FF3008] transition-all duration-200 active:scale-95">
                     DoorDash
                   </button>
-                  <button onClick={() => handlePlatformSelect("Menulog")}
-                    className="w-full bg-white/5 border border-white/5 hover:border-[#FF8000]/50 hover:bg-[#FF8000]/10 py-4 rounded-2xl font-bold font-sans text-xl lowercase tracking-tighter text-[#FF8000] transition-all duration-200 active:scale-95">
-                    menulog
-                  </button>
                 </div>
               </>
             )}
@@ -195,7 +184,7 @@ export default function Footer() {
                   <button className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity"
                     style={{
                       color: selectedPlatform === "UberEats" ? "#06C167"
-                        : selectedPlatform === "DoorDash" ? "#FF3008" : "#FF8000"
+                        : selectedPlatform === "DoorDash" ? "#FF3008" : ""
                     }}
                     onClick={() => setStep("platform")}>
                     {selectedPlatform}
