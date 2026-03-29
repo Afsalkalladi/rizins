@@ -24,8 +24,8 @@ const slides = [
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [animationKey, setAnimationKey] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const total = slides.length;
@@ -33,11 +33,11 @@ export default function Hero() {
   const goToSlide = useCallback(
     (index: number, moveDirection: "next" | "prev" = "next") => {
       if (isAnimating) return;
+      setIsFirstLoad(false);
       setIsAnimating(true);
       setDirection(moveDirection);
       setCurrentSlide(index);
-      setAnimationKey((prev) => prev + 1);
-      setTimeout(() => setIsAnimating(false), 1500);
+      setTimeout(() => setIsAnimating(false), 1200);
     },
     [isAnimating]
   );
@@ -62,8 +62,11 @@ export default function Hero() {
     };
   }, [nextSlide, isAnimating]);
 
-  const prevIndex = (currentSlide - 1 + total) % total;
-  const nextIndex = (currentSlide + 1) % total;
+  const getPos = useCallback((index: number) => {
+    if (index === currentSlide) return "center";
+    if (index === (currentSlide + 1) % total) return "right";
+    return "left";
+  }, [currentSlide, total]);
 
   return (
     <>
@@ -109,81 +112,68 @@ export default function Hero() {
       </div>
 
       {/* ===== BURGER CAROUSEL ===== */}
+      {slides.map((slide, index) => {
+        const pos = getPos(index);
+        let className = "absolute transition-all duration-1000 ease-in-out cursor-pointer ";
+        let style: React.CSSProperties = {};
 
-      {/* Left Burger (Previous) – closer to center on PC */}
-      <div
-        className="absolute z-10"
-        style={{ top: "16%", left: "clamp(-48px, calc(5vw - 60px), 14%)" }}
-      >
-        <div
-          key={`left-${animationKey}`}
-          className={animationKey === 0 ? "animate-side-left cursor-pointer" : direction === "next" ? "anim-l-leftwards cursor-pointer" : "anim-l-rightwards cursor-pointer"}
-          onClick={prevSlide}
-        >
+        if (pos === "center") {
+          className += "z-20 cursor-default";
+          style = {
+            top: "8%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "clamp(190px, 48vw, 400px)",
+            height: "clamp(190px, 48vw, 400px)",
+            opacity: 1,
+            filter: "blur(0px)",
+          };
+        } else if (pos === "left") {
+          className += "z-10";
+          style = {
+            top: "16%",
+            left: "clamp(-48px, calc(5vw - 60px), 14%)",
+            transform: "translateX(0)",
+            width: "clamp(130px, 30vw, 240px)",
+            height: "clamp(100px, 22vw, 170px)",
+            opacity: 0.5,
+            filter: "blur(1px)",
+          };
+        } else if (pos === "right") {
+          className += "z-10";
+          style = {
+            top: "16%",
+            left: "calc(100% - clamp(-48px, calc(5vw - 60px), 14%))", /* Anchors exact same bound from right */
+            transform: "translateX(-100%)",
+            width: "clamp(130px, 30vw, 240px)",
+            height: "clamp(100px, 22vw, 170px)",
+            opacity: 0.5,
+            filter: "blur(1px)",
+          };
+        }
+
+        return (
           <div
-            className="relative opacity-40 blur-[1px] lg:opacity-50 lg:blur-[0.5px]"
-            style={{
-              width: "clamp(130px, 30vw, 240px)",
-              height: "clamp(100px, 22vw, 170px)",
+            key={index}
+            className={className}
+            style={style}
+            onClick={() => {
+              if (pos === "left") prevSlide();
+              if (pos === "right") nextSlide();
             }}
           >
-            <Image
-              src={slides[prevIndex].image}
-              alt={slides[prevIndex].title}
-              fill
-              className="object-contain drop-shadow-lg"
-            />
+            <div className={`relative w-full h-full ${pos === "center" ? "animate-float" : "animate-float-slow"}`}>
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                className={`object-contain ${pos === "center" ? "sm:drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]" : "drop-shadow-lg"}`}
+                priority={pos === "center"}
+              />
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* Center Burger – centering wrapper separated from animation */}
-      <div className="absolute z-20 left-1/2 -translate-x-1/2" style={{ top: "8%" }}>
-        <div key={`center-${animationKey}`} className={animationKey === 0 ? "" : direction === "next" ? "anim-c-leftwards" : "anim-c-rightwards"}>
-          <div
-            className="relative animate-float bg-transparent isolate"
-            style={{
-              width: "clamp(190px, 48vw, 400px)",
-              height: "clamp(190px, 48vw, 400px)",
-            }}
-          >
-            <Image
-              src={slides[currentSlide].image}
-              alt={slides[currentSlide].title}
-              fill
-              className="object-contain sm:drop-shadow-[0_20px_40px_rgba(0,0,0,0.5)]"
-              priority
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Right Burger (Next) – closer to center on PC */}
-      <div
-        className="absolute z-10"
-        style={{ top: "16%", right: "clamp(-48px, calc(5vw - 60px), 14%)" }}
-      >
-        <div
-          key={`right-${animationKey}`}
-          className={animationKey === 0 ? "animate-side-right cursor-pointer" : direction === "next" ? "anim-r-leftwards cursor-pointer" : "anim-r-rightwards cursor-pointer"}
-          onClick={nextSlide}
-        >
-          <div
-            className="relative opacity-40 blur-[1px] lg:opacity-50 lg:blur-[0.5px]"
-            style={{
-              width: "clamp(130px, 30vw, 240px)",
-              height: "clamp(100px, 22vw, 170px)",
-            }}
-          >
-            <Image
-              src={slides[nextIndex].image}
-              alt={slides[nextIndex].title}
-              fill
-              className="object-contain drop-shadow-lg"
-            />
-          </div>
-        </div>
-      </div>
+        );
+      })}
 
       {/* ===== ARROW NAVIGATION ===== */}
       <button
