@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import ComboDeals from "@/components/ComboDeals";
 import CravingSection from "@/components/CravingSection";
 import TasteDifference from "@/components/TasteDifference";
+import QualitySection from "@/components/QualitySection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -22,6 +23,9 @@ export default function Home() {
 
       {/* Taste the Difference Section */}
       <TasteDifference />
+
+      {/* Quality Section */}
+      <QualitySection />
 
       {/* Footer */}
       <Footer />
