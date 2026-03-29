@@ -205,7 +205,7 @@ export default function Hero() {
         </svg>
       </button>
 
-      {/* ===== TEXT: BURGER'S REINVENTED (fixed) ===== */}
+            {/* ===== TEXT: BURGER'S REINVENTED (fixed) ===== */}
       <div
         className="absolute left-1/2 -translate-x-1/2 z-20 text-center w-full px-4"
         style={{ top: "62%" }}
@@ -218,12 +218,17 @@ export default function Hero() {
             REINVENTED
           </h1>
         </div>
+
+        {/* --- NEW SUBTITLE ADDED HERE --- */}
+        <p className="text-white/90 font-light mt-4 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-wide opacity-80">
+          One brand. One standard. Endless satisfaction.
+        </p>
       </div>
 
       {/* ===== ORDER NOW BUTTON ===== */}
       <div
         className="absolute left-1/2 -translate-x-1/2 z-20"
-        style={{ top: "84%" }}
+        style={{ top: "86%" }} // Adjusted from 84% to 86% to make room for text
       >
         <button className="w-[161px] h-[32px] sm:w-[180px] sm:h-[38px] md:w-[200px] md:h-[42px] lg:w-[240px] lg:h-[50px] bg-brand-red rounded-[28px] flex items-center justify-center hover:bg-red-700 transition-all shadow-lg hover:shadow-brand-red/40 hover:scale-105 active:scale-95">
           <span className="font-lilita text-[20px] sm:text-[22px] md:text-[24px] lg:text-[28px] text-white">
@@ -240,6 +245,17 @@ export default function Hero() {
         }}
       />
 
+      {/* Vignette Gradient from sides */}
+      <div
+        className="absolute inset-0 z-[6] pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 100% at 50% 100%, transparent 60%, rgba(0,0,0,0.6) 95%)",
+        }}
+      />
+
+      {/* Tiny connector – prevents sub-pixel gaps */}
+      <div className="w-full h-[6px] bg-[#0a0602]" />
     </section>
 
       {/* Tiny connector – prevents sub-pixel gaps */}
