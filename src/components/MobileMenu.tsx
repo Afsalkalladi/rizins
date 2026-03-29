@@ -12,6 +12,7 @@ const menuItems = [
   { label: "ORDER DELIVERY", href: "/order-delivery" },
   { label: "ABOUT US", href: "/about" },
   { label: "LOCATIONS", href: "/locations" },
+  { label: "CAREERS", href: "/careers" },
   { label: "DOWNLOAD APP", href: "#app" },
 ];
 
