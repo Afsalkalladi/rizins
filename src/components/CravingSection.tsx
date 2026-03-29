@@ -3,6 +3,25 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const taglineContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const taglineWord = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.32, ease: "easeOut" },
+  },
+};
+
 export default function CravingSection() {
   return (
     <section className="relative w-full overflow-hidden">
@@ -52,19 +71,29 @@ export default function CravingSection() {
           </h2>
 
           {/* SMASHED Fresh. TASTES BETTER tagline */}
-          <p
+          <motion.p
+            variants={taglineContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.6 }}
             className="font-lilita text-white mt-3 sm:mt-4 md:mt-5 leading-tight"
             style={{
               fontSize: "clamp(14px, 4vw, 28px)",
               textShadow: "2px 2px 8px rgba(0,0,0,0.5)",
             }}
           >
-            SMASHED <span className="text-yellow-400 italic">Fresh.</span> TASTES{" "}
-            <span className="text-yellow-400 italic">BETTER</span>
-          </p>
+            <motion.span variants={taglineWord} className="inline-block mr-[0.35em]">SMASHED</motion.span>
+            <motion.span variants={taglineWord} className="inline-block mr-[0.35em] text-yellow-400 italic">Fresh.</motion.span>
+            <motion.span variants={taglineWord} className="inline-block mr-[0.35em]">TASTES</motion.span>
+            <motion.span variants={taglineWord} className="inline-block text-yellow-400 italic">BETTER</motion.span>
+          </motion.p>
 
           {/* Description text */}
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.75 }}
+            viewport={{ once: true, amount: 0.6 }}
             className="font-poppins text-white/85 mt-2 sm:mt-3 md:mt-4 leading-relaxed max-w-[90%] sm:max-w-[85%] md:max-w-[80%]"
             style={{
               fontSize: "clamp(10px, 2.5vw, 16px)",
@@ -72,7 +101,7 @@ export default function CravingSection() {
             }}
           >
             Great burgers start with great ingredients. At Rizins Smash Burgers, we use premium quality meat, smashed fresh on the grill for that perfect crispy edge and juicy bite.
-          </p>
+          </motion.p>
         </motion.div>
       </div>
     </section>
