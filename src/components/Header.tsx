@@ -142,7 +142,6 @@ export default function Header() {
           {/* Center: Navigation Links */}
           <nav className="flex items-center gap-8 xl:gap-12">
             {[
-              { label: "HOME", href: "/" },
               { label: "MENU", href: "/menu" },
               { label: "ORDER DELIVERY", href: "/order-delivery" },
               { label: "ABOUT US", href: "/about" },

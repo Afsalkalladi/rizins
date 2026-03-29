@@ -8,7 +8,6 @@ interface MobileMenuProps {
 }
 
 const menuItems = [
-  { label: "HOME", href: "/" },
   { label: "MENU", href: "/menu" },
   { label: "ORDER DELIVERY", href: "/order-delivery" },
   { label: "ABOUT US", href: "/about" },
