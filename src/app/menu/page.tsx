@@ -6,8 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MenuGrid from "@/components/MenuGrid";
 
-// Updated categories to match the image
-const categories = ["CHICKEN", "BEEF", "CLASSIC", "SPICY", "COMBO", "SHAKE"];
+const categories = ["CHICKEN", "BEEF", "VEG", "KIDS", "SIDES", "SHAKE"];
 
 const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
     CHICKEN: {
@@ -18,27 +17,27 @@ const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
         src: "/images/classic-burger.png",
         alt: "Featured Beef Burger",
     },
-    CLASSIC: {
+    VEG: {
         src: "/images/classic-burger.png",
-        alt: "Featured Classic Burger",
+        alt: "Featured Veg Burger",
     },
-    SPICY: {
-        src: "/images/zinger-burger.png",
-        alt: "Featured Spicy Burger",
+    KIDS: {
+        src: "/images/classic-burger.png",
+        alt: "Featured Kids Meal",
     },
-    COMBO: {
-        src: "/images/cheese-burger.png",
-        alt: "Featured Combo Burger",
+    SIDES: {
+        src: "/images/classic-burger.png",
+        alt: "Featured Sides",
     },
     SHAKE: {
-        src: "/images/cheese-burger.png",
-        alt: "Featured Shake Pairing",
+        src: "/images/classic-burger.png",
+        alt: "Featured Thick Shake",
     },
 };
 
 export default function MenuPage() {
-    const [activeCategory, setActiveCategory] = useState("CHICKEN");
-    const featuredImage = featuredImageByCategory[activeCategory] ?? featuredImageByCategory.CHICKEN;
+    const [activeCategory, setActiveCategory] = useState("BEEF");
+    const featuredImage = featuredImageByCategory[activeCategory] ?? featuredImageByCategory.BEEF;
 
     return (
         <main className="min-h-screen bg-[#111] text-white font-sans pt-[70px] sm:pt-[80px]">
@@ -82,8 +81,8 @@ export default function MenuPage() {
             {/* Overlapping Pill Text */}
             <div className="relative z-20 flex justify-center -mt-6 px-4">
                 <div className="bg-[#0a0a0a] text-gray-200 px-6 py-4 rounded-[30px] text-center max-w-[90%] md:max-w-[600px] text-sm md:text-base border border-white/5 shadow-2xl">
-                    Big, Thick, Crispy & Juicy. Bite into better <br className="hidden md:block"/>
-                    with our Jack&apos;s Fried Chicken Range.
+                    Big, Thick, Crispy &amp; Juicy. Bite into better <br className="hidden md:block"/>
+                    with our Rizin&apos;s Signature Range.
                 </div>
             </div>
 
@@ -100,7 +99,7 @@ export default function MenuPage() {
                 <div className="absolute bottom-6 left-6 max-w-[80%] md:max-w-[50%] z-10">
                     <p className="text-gray-200 text-xs md:text-sm leading-snug drop-shadow-md">
                         Indulge in the ultimate taste sensation <br/>
-                        with Rizin&apos;s Signature Chicken Burger <br/>
+                        with Rizin&apos;s Signature Burgers <br/>
                         – where crispy meets succulent, and <br/>
                         flavor knows no bounds!
                     </p>
