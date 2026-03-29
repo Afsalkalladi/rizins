@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function TasteDifference() {
   return (
@@ -18,7 +19,13 @@ export default function TasteDifference() {
       </div>
 
       {/* Right: Text Content */}
-      <div className="w-[55%] lg:w-[60%] bg-white flex flex-col justify-center items-start pl-[5%] sm:pl-[6%] md:pl-[8%] pr-[4%] py-6 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="w-[55%] lg:w-[60%] bg-white flex flex-col justify-center items-start pl-[5%] sm:pl-[6%] md:pl-[8%] pr-[4%] py-6 overflow-hidden"
+      >
         
         {/* Main Headings */}
         <h2 
@@ -46,7 +53,7 @@ export default function TasteDifference() {
           It&apos;s the real smash experience.
         </p>
         
-      </div>
+      </motion.div>
 
     </section>
   );

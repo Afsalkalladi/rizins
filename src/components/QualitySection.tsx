@@ -2,12 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function QualitySection() {
   return (
     <section className="w-full bg-[#f9f9f9] py-16 sm:py-24 relative overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-16 relative z-10">
-        <div className="flex flex-col items-center mb-16 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center mb-16 text-center"
+        >
           <div className="w-[60px] h-[4px] bg-brand-red mb-6 rounded-full" />
           <h2 className="font-lilita text-[42px] sm:text-[56px] md:text-[64px] text-[#1a1a1a] leading-tight mb-4">
             QUALITY YOU CAN TASTE
@@ -16,10 +23,16 @@ export default function QualitySection() {
             We don&apos;t just make burgers. We craft experiences using only the freshest, locally sourced ingredients.
             From farm to tray, every step is handled with care.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative order-2 lg:order-1">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative order-2 lg:order-1"
+          >
             <div className="relative w-full aspect-square sm:aspect-[4/3] lg:aspect-square bg-white rounded-[40px] shadow-xl border border-gray-100 p-8 sm:p-12 overflow-hidden group">
               <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-brand-red/5 rounded-bl-[100px] -z-0 transition-all duration-500 group-hover:scale-110" />
               <div className="absolute bottom-0 left-0 w-[150px] h-[150px] bg-yellow-400/10 rounded-tr-[80px] -z-0 transition-all duration-500 group-hover:scale-110" />
@@ -46,9 +59,15 @@ export default function QualitySection() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="order-1 lg:order-2 space-y-8">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2 space-y-8"
+          >
             <div className="flex gap-6 items-start group">
               <div className="w-[60px] h-[60px] shrink-0 bg-white rounded-2xl shadow-md border border-gray-100 flex items-center justify-center text-2xl group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
                 🔥
@@ -88,7 +107,7 @@ export default function QualitySection() {
                 </svg>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

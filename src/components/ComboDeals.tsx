@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 export default function ComboDeals() {
@@ -58,7 +59,11 @@ export default function ComboDeals() {
 
         {/* Center text overlay */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-start text-center px-4 sm:px-6 pt-2 sm:pt-3 md:pt-4 lg:pt-5">
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
             className="font-jomhuria text-white leading-none"
             style={{
               fontSize: "clamp(34px, 7.5vw, 72px)",
@@ -66,9 +71,13 @@ export default function ComboDeals() {
             }}
           >
             rizins
-          </p>
+          </motion.p>
 
-          <h2
+          <motion.h2
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
             className="font-lilita uppercase text-white leading-[0.95] tracking-wide"
             style={{
               fontSize: "clamp(34px, 8.5vw, 86px)",
@@ -78,9 +87,13 @@ export default function ComboDeals() {
             CRUNCH.
             <br />
             SPICE. REPEAT.
-          </h2>
+          </motion.h2>
 
-          <p
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
             className="font-poppins text-white/95 mt-2 sm:mt-3 leading-tight"
             style={{
               fontSize: "clamp(12px, 2.5vw, 30px)",
@@ -90,7 +103,7 @@ export default function ComboDeals() {
             The Ultimate Fried Chicken
             <br />
             Burger Experience.
-          </p>
+          </motion.p>
         </div>
       </div>
     </section>

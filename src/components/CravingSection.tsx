@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function CravingSection() {
   return (
@@ -32,7 +33,13 @@ export default function CravingSection() {
         />
 
         {/* Text Content – positioned top-left */}
-        <div className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[60%] sm:max-w-[55%] md:max-w-[42%] lg:max-w-[35%]">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="absolute z-20 left-6 sm:left-8 md:left-12 lg:left-20 xl:left-32 top-[24px] sm:top-[32px] md:top-[44px] lg:top-[60px] max-w-[60%] sm:max-w-[55%] md:max-w-[42%] lg:max-w-[35%]"
+        >
           {/* CRAVE THE CRUNCH */}
           <h2
             className="font-jomhuria text-text-light leading-[0.50] tracking-[2.6px]"
@@ -66,7 +73,7 @@ export default function CravingSection() {
           >
             Great burgers start with great ingredients. At Rizins Smash Burgers, we use premium quality meat, smashed fresh on the grill for that perfect crispy edge and juicy bite.
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
