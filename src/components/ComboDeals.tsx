@@ -26,7 +26,7 @@ export default function ComboDeals() {
   return (
     <section className="relative w-full overflow-hidden z-10 -mt-[6px] bg-[#0a0602]">
       {/* Background video with rounded top corners */}
-      <div className="relative w-full h-[284px] sm:h-[340px] md:h-[420px] lg:h-[520px] xl:h-[600px] rounded-t-[30px] sm:rounded-t-[36px] md:rounded-t-[48px] overflow-hidden">
+      <div className="relative w-full h-[330px] sm:h-[390px] md:h-[480px] lg:h-[590px] xl:h-[680px] rounded-t-[30px] sm:rounded-t-[36px] md:rounded-t-[48px] overflow-hidden">
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover object-center lg:object-[center_30%]"
@@ -57,7 +57,7 @@ export default function ComboDeals() {
         />
 
         {/* Center text overlay */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start text-center px-4 sm:px-6 pt-6 sm:pt-8 md:pt-10 lg:pt-12">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-start text-center px-4 sm:px-6 pt-2 sm:pt-3 md:pt-4 lg:pt-5">
           <p
             className="font-jomhuria text-white leading-none"
             style={{
