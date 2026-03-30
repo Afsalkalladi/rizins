@@ -167,7 +167,8 @@ export default function Header() {
               { label: "MENU", href: "/menu" },
               { label: "ORDER DELIVERY", href: "/order-delivery", action: openModal },
               { label: "ABOUT US", href: "/about" },
-              { label: "LOCATIONS", href: "/locations" },              { label: "CAREERS", href: "/careers" },              { label: "DOWNLOAD APP", href: "#app", action: openModal },
+              { label: "LOCATIONS", href: "/locations" },
+              { label: "CAREERS", href: "/careers" },
             ].map((item) => (
               item.action ? (
                 <button

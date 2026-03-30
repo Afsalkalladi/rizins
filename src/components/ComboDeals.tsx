@@ -37,7 +37,7 @@ export default function ComboDeals() {
           playsInline
           preload="metadata"
         >
-          <source src="/videos/Remove_White_Cup_Duplicate_Other%20(1).mp4" type="video/mp4" />
+          <source src="/videos/combo_web.webm" type="video/webm" />
         </video>
 
         {/* Top gradient – blends the dark gap into the image */}
