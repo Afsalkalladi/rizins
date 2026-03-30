@@ -27,6 +27,15 @@ body {
   overflow-x: hidden;
 }
 
+/* Hide native browser play button / media controls on autoplay videos */
+video::-webkit-media-controls { display: none !important; }
+video::-webkit-media-controls-enclosure { display: none !important; }
+video::-webkit-media-controls-panel { display: none !important; }
+video::-webkit-media-controls-play-button { display: none !important; }
+video::-webkit-media-controls-start-playback-button { display: none !important; }
+video::--webkit-media-controls-overlay-play-button { display: none !important; }
+
+
 /* Custom utility for burger text rotation */
 .rotate-burger {
   transform: rotate(-18.27deg);
