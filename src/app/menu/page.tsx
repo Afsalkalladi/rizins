@@ -10,7 +10,7 @@ const categories = ["CHICKEN", "BEEF", "VEG", "KIDS", "SIDES", "SHAKE"];
 
 const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
     CHICKEN: {
-        src: "/images/fried-chicken-burger.png",
+        src: "/images/chicken/grilled.png",
         alt: "Featured Chicken Burger",
     },
     BEEF: {
@@ -18,7 +18,7 @@ const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
         alt: "Featured Beef Burger",
     },
     VEG: {
-        src: "/images/classic-burger.png",
+        src: "/images/veg/shroom.png",
         alt: "Featured Veg Burger",
     },
     KIDS: {

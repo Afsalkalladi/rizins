@@ -5,19 +5,19 @@ import { useEffect, useState, useCallback, useRef } from "react";
 
 const slides = [
   {
+    image: "/images/chicken/grilled.png",
+    subtitle: "GRILLED",
+    title: "CHICKEN",
+  },
+  {
     image: "/images/beef/classic.png",
-    subtitle: "BURGER'S",
-    title: "REINVENTED",
+    subtitle: "CLASSIC",
+    title: "BEEF",
   },
   {
     image: "/images/beef/spicy.png",
-    subtitle: "BOLD",
-    title: "FLAVOR",
-  },
-  {
-    image: "/images/beef/sweet.png",
-    subtitle: "SWEET",
-    title: "INDULGENCE",
+    subtitle: "SPICY",
+    title: "BEEF",
   },
 ];
 
