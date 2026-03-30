@@ -46,13 +46,13 @@ const menuData: Record<string, MenuItemData[]> = {
     {
       name: "FRIED CHICKEN SANDWICH",
       description: "Fried chicken patty, pickles and choice of classic or spicy sauce.",
-      imageSrc: "/images/fried-chicken-burger.png",
+      imageSrc: "/images/chicken/fried.png",
       prices: [{ label: "Single", value: "$11.35" }],
     },
     {
       name: "GRILLED CHICKEN BURGER",
       description: "Herb marinated chicken patty, cheese, lettuce, tomato, Rizin's sauce.",
-      imageSrc: "/images/fried-chicken-burger.png",
+      imageSrc: "/images/chicken/grilled.png",
       prices: [{ label: "Double", value: "$10.90" }, { label: "Triple", value: "$13.95" }],
     },
   ],
@@ -68,7 +68,7 @@ const menuData: Record<string, MenuItemData[]> = {
     {
       name: "KIDS COMBO MEAL",
       description: "6 pc nuggets + fries + choice of drink.",
-      imageSrc: "/images/classic-burger.png",
+      imageSrc: "/images/kids/kids.png",
       prices: [{ label: "Meal", value: "$12.65" }],
     },
   ],
