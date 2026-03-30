@@ -46,20 +46,11 @@ export default function QualitySection() {
             className="w-1/2 h-[250px] sm:h-[350px] lg:h-[450px] relative"
           >
             <Image
-              src="/images/main-burger.png"
+              src="/images/chicken/grilled.png"
               alt="Quality Ingredients"
               fill
               className="object-contain"
             />
-            {/* Adjusted the badge size slightly for smaller screens to fit the 50% layout */}
-            <div className="absolute bottom-2 right-2 sm:bottom-6 sm:right-6 w-16 h-16 sm:w-24 sm:h-24 bg-brand-red text-white rounded-full flex flex-col items-center justify-center font-lilita text-center shadow-red-500/30 shadow-xl rotate-[12deg] border-2 sm:border-4 border-white">
-              <span className="text-xs sm:text-sm leading-none">100%</span>
-              <span className="text-[8px] sm:text-[10px] mt-0.5">
-                AUSSIE
-                <br />
-                BEEF
-              </span>
-            </div>
           </motion.div>
 
         </div>
