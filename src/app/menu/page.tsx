@@ -22,11 +22,11 @@ const featuredImageByCategory: Record<string, { src: string; alt: string }> = {
         alt: "Featured Veg Burger",
     },
     KIDS: {
-        src: "/images/classic-burger.png",
+        src: "/images/kids/kids.png",
         alt: "Featured Kids Meal",
     },
     SIDES: {
-        src: "/images/sides/Fries 1.png",
+        src: "/images/sides/sidehero.png",
         alt: "Featured Sides",
     },
     SHAKE: {
