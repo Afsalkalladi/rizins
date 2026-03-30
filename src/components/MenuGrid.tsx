@@ -167,7 +167,7 @@ function MenuItem({ name, description, imageSrc, prices, showComboNote }: MenuIt
         </p>
         {showComboNote && (
           <p className="mt-1.5 font-poppins text-[10px] text-brand-red/80 tracking-wide">
-            + Add normal fries &amp; tin of Coke for extra charge
+            Make it a meal (add fries &amp; drink) for an extra charge.
           </p>
         )}
       </div>
