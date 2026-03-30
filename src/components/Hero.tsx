@@ -10,14 +10,14 @@ const slides = [
     title: "REINVENTED",
   },
   {
-    image: "/images/fried-chicken-burger.png",
-    subtitle: "CRISPY",
-    title: "CRUNCH",
+    image: "/images/beef/spicy.png",
+    subtitle: "BOLD",
+    title: "FLAVOR",
   },
   {
-    image: "/images/classic-burger.png",
-    subtitle: "DOUBLE",
-    title: "DELIGHT",
+    image: "/images/beef/sweet.png",
+    subtitle: "SWEET",
+    title: "INDULGENCE",
   },
 ];
 
