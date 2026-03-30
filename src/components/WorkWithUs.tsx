@@ -26,7 +26,7 @@ export default function WorkWithUs() {
                 <h2 className="mt-7 font-lilita text-brand-red text-[30px] md:text-[40px] leading-[0.95] uppercase">
                     APPLY FOR
                     <br />
-                    STORE STAFF & DELIVERY
+                    STORE STAFF
                 </h2>
 
                 <Link
