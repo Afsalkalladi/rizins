@@ -60,7 +60,7 @@ const menuData: Record<string, MenuItemData[]> = {
     {
       name: "CRISPY SHROOM BURGER",
       description: "Panko crumbed mushroom patty, cheese, lettuce, tomato, onion, Rizin's sauce.",
-      imageSrc: "/images/classic-burger.png",
+      imageSrc: "/images/veg/shroom.png",
       prices: [{ label: "Single", value: "$13.40" }],
     },
   ],
@@ -72,62 +72,62 @@ const menuData: Record<string, MenuItemData[]> = {
       prices: [{ label: "Meal", value: "$12.65" }],
     },
   ],
+  SHAKE: [
+    {
+      name: "CHOCOLATE SHAKE",
+      description: "Rich and creamy chocolate shake.",
+      imageSrc: "/images/shakes/Chocolate.png",
+      prices: [],
+    },
+    {
+      name: "VANILLA SHAKE",
+      description: "Classic smooth vanilla shake.",
+      imageSrc: "/images/shakes/Vanilla.png",
+      prices: [],
+    },
+    {
+      name: "STRAWBERRY SHAKE",
+      description: "Sweet and fruity strawberry shake.",
+      imageSrc: "/images/shakes/Strawberry.png",
+      prices: [],
+    },
+    {
+      name: "CARAMEL SHAKE",
+      description: "Buttery and sweet caramel shake.",
+      imageSrc: "/images/shakes/Caramel.png",
+      prices: [],
+    },
+    {
+      name: "MANGO SHAKE",
+      description: "Tropical and refreshing mango shake.",
+      imageSrc: "/images/shakes/Mango.png",
+      prices: [],
+    },
+  ],
   SIDES: [
     {
       name: "FRIES",
       description: "Golden crispy fries.",
-      imageSrc: "/images/classic-burger.png",
+      imageSrc: "/images/sides/Fries1.png",
       prices: [{ label: "Regular", value: "$5.15" }],
     },
     {
       name: "SPICY FRIES",
       description: "Golden fries tossed in our signature spicy seasoning.",
-      imageSrc: "/images/classic-burger.png",
+      imageSrc: "/images/sides/Spicyfries.png",
       prices: [{ label: "Regular", value: "$5.50" }],
     },
     {
       name: "CHEESE FRIES",
       description: "Fries smothered in melted cheese sauce.",
-      imageSrc: "/images/classic-burger.png",
+      imageSrc: "/images/sides/Cheesyfries.png",
       prices: [{ label: "Regular", value: "$7.00" }],
     },
     {
       name: "NUGGETS",
       description: "Crispy golden chicken nuggets.",
-      imageSrc: "/images/fried-chicken-burger.png",
+      imageSrc: "/images/sides/Nuggets.png",
       prices: [{ label: "6 pc", value: "$7.65" }],
-    },
-  ],
-  SHAKE: [
-    {
-      name: "THICK SHAKE — VANILLA",
-      description: "Rich and creamy vanilla thick shake.",
-      imageSrc: "/images/classic-burger.png",
-      prices: [{ label: "Regular", value: "$8.90" }],
-    },
-    {
-      name: "THICK SHAKE — CHOCOLATE",
-      description: "Indulgent chocolate thick shake.",
-      imageSrc: "/images/classic-burger.png",
-      prices: [{ label: "Regular", value: "$8.90" }],
-    },
-    {
-      name: "THICK SHAKE — CARAMEL",
-      description: "Smooth caramel drizzle thick shake.",
-      imageSrc: "/images/classic-burger.png",
-      prices: [{ label: "Regular", value: "$8.90" }],
-    },
-    {
-      name: "THICK SHAKE — MANGO",
-      description: "Tropical fresh mango thick shake.",
-      imageSrc: "/images/classic-burger.png",
-      prices: [{ label: "Regular", value: "$8.90" }],
-    },
-    {
-      name: "THICK SHAKE — STRAWBERRY",
-      description: "Fresh strawberry thick shake.",
-      imageSrc: "/images/classic-burger.png",
-      prices: [{ label: "Regular", value: "$8.90" }],
     },
   ],
 };
