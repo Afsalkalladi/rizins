@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const GOOGLE_FORM_URL = "https://forms.gle/fDqv7eq45CUKyzSv8";
+const GOOGLE_FORM_URL = "https://forms.gle/a3vfyzT2emCWjcGS8";
 
 export default function WorkWithUs() {
     return (
@@ -26,7 +26,7 @@ export default function WorkWithUs() {
                 <h2 className="mt-7 font-lilita text-brand-red text-[30px] md:text-[40px] leading-[0.95] uppercase">
                     APPLY FOR
                     <br />
-                    STORE STAFF
+                    STORE STAFF & DELIVERY
                 </h2>
 
                 <Link
