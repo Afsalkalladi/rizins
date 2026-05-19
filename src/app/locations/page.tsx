@@ -5,17 +5,17 @@ const locations = [
   {
     suburb: "Mitcham",
     address: "2/535 Whitehorse Rd, Mitcham VIC",
-    link: "https://www.google.com/maps/search/?api=1&query=2%2F535+Whitehorse+Rd%2C+Mitcham+VIC"
+    link: "https://maps.app.goo.gl/PcgdreWEzEtVuCvh7"
   },
   {
     suburb: "Dandenong",
     address: "132 Walker St, Dandenong VIC",
-    link: "https://www.google.com/maps/search/?api=1&query=132+Walker+St%2C+Dandenong+VIC"
+    link: "https://maps.app.goo.gl/and1gmVPS5EMq8Ze7"
   },
   {
     suburb: "Seaford",
     address: "6/366 Frankston-Dandenong Rd, Seaford VIC",
-    link: "https://www.google.com/maps/search/?api=1&query=6%2F366+Frankston-Dandenong+Rd%2C+Seaford+VIC"
+    link: "https://maps.app.goo.gl/aB5Vo6AdrXDrPgXE6"
   },
   {
     suburb: "Frankston",
