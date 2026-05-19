@@ -16,6 +16,11 @@ const locations = [
     suburb: "Seaford",
     address: "6/366 Frankston-Dandenong Rd, Seaford VIC",
     link: "https://www.google.com/maps/search/?api=1&query=6%2F366+Frankston-Dandenong+Rd%2C+Seaford+VIC"
+  },
+  {
+    suburb: "Frankston",
+    address: "68 Young St, Frankston VIC 3199",
+    link: "https://maps.app.goo.gl/cpQTHxvPbSaNVqeb9"
   }
 ];
 
