@@ -26,6 +26,14 @@ export const locations = [
     uberEatsUrl:
       "https://www.ubereats.com/au/store/rizins-smash-burgers/mHLbgdAZQruoFtIhFWAdHg?diningMode=DELIVERY&mod=storeDeliveryTime&modctx=%257B%2522entryPoint%2522%253A%2522store-auto-surface%2522%252C%2522encodedStoreUuid%2522%253A%2522mHLbgdAZQruoFtIhFWAdHg%2522%257D&ps=1&surfaceName=",
   },
+  {
+    name: "Frankston",
+    id: "frankston",
+    doordashUrl:
+      "https://www.doordash.com/en-AU/store/rizin’s-smash-burgers-frankston-42292193/104211546/?preview=1",
+    uberEatsUrl:
+      "https://www.ubereats.com/store/rizins-smash-burgers-frankston/vzuG0_aQT_KakO4DmMl1rg?utm_source=menu-maker",
+  },
 ];
 
 export function getUrl(platform: Platform, locId: string): string {
