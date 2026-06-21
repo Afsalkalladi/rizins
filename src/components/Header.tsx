@@ -169,6 +169,7 @@ export default function Header() {
               { label: "ABOUT US", href: "/about" },
               { label: "LOCATIONS", href: "/locations" },
               { label: "CAREERS", href: "/careers" },
+              { label: "COMMUNITY", href: "/community" },
             ].map((item) => (
               item.action ? (
                 <button

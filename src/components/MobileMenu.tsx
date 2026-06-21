@@ -13,6 +13,7 @@ const menuItems = [
   { label: "ABOUT US", href: "/about" },
   { label: "LOCATIONS", href: "/locations" },
   { label: "CAREERS", href: "/careers" },
+  { label: "COMMUNITY", href: "/community" },
 ];
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {

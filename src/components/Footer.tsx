@@ -19,6 +19,7 @@ const navLinks = [
   { label: "LOCATIONS", href: "/locations" },
   { label: "ABOUT US", href: "/about" },
   { label: "CAREERS", href: "/careers" },
+  { label: "COMMUNITY", href: "/community" },
 ];
 
 function getUrl(platform: Platform, locId: string) {
