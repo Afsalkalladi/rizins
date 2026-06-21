@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState, useCallback, useRef } from "react";
-import { locations, getUrl, type Platform, type ModalStep } from "@/lib/orderModal";
+import OrderModal, { useOrderModal } from "./OrderModal";
 
 const slides = [
   {
@@ -29,35 +29,8 @@ export default function Hero() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Order modal state
-  const [showModal, setShowModal] = useState(false);
-  const [step, setStep] = useState<ModalStep>("platform");
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform>(null);
-
-  const openModal = () => {
-    setSelectedPlatform(null);
-    setStep("platform");
-    setShowModal(true);
-  };
-
-  const handlePlatformSelect = (p: NonNullable<Platform>) => {
-    setSelectedPlatform(p);
-    setStep("store");
-  };
-
-  const handleLocationClick = (locId: string) => {
-    const url = getUrl(selectedPlatform, locId);
-    window.open(url, "_blank");
-    setShowModal(false);
-    setSelectedPlatform(null);
-    setStep("platform");
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedPlatform(null);
-    setStep("platform");
-  };
+  // Order modal state (shared hook + component)
+  const { open, initialPlatform, openModal, closeModal } = useOrderModal();
 
   const total = slides.length;
 
@@ -271,84 +244,7 @@ export default function Hero() {
       <div className="w-full h-[6px] bg-[#0a0602]" />
 
       {/* Order Modal */}
-      {showModal && (
-        <div
-          className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
-          onClick={closeModal}
-        >
-          <div
-            className="bg-[#111] border border-white/10 p-7 rounded-3xl w-full max-w-sm relative flex flex-col items-center text-center shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={closeModal}
-              aria-label="Close"
-              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {step === "platform" && (
-              <>
-                <h3 className="font-lilita text-2xl tracking-wide text-white mb-1 uppercase">Order Via</h3>
-                <p className="text-xs text-gray-400 mb-6 font-poppins">Choose your delivery platform</p>
-                <div className="flex flex-col gap-3 w-full">
-                  <button
-                    onClick={() => handlePlatformSelect("UberEats")}
-                    className="w-full bg-white/5 border border-white/5 hover:border-[#06C167]/50 hover:bg-[#06C167]/10 py-4 rounded-2xl font-sans text-base font-semibold transition-all duration-200 active:scale-95"
-                  >
-                    <span className="text-white">Uber </span>
-                    <span className="font-bold text-[#06C167]">Eats</span>
-                  </button>
-                  <button
-                    onClick={() => handlePlatformSelect("DoorDash")}
-                    className="w-full bg-white/5 border border-white/5 hover:border-[#FF3008]/50 hover:bg-[#FF3008]/10 py-4 rounded-2xl font-black font-sans text-base uppercase tracking-tighter text-[#FF3008] transition-all duration-200 active:scale-95"
-                  >
-                    DoorDash
-                  </button>
-                </div>
-              </>
-            )}
-
-            {step === "store" && (
-              <>
-                <h3 className="font-lilita text-2xl tracking-wide text-white mb-1 uppercase">Select Store</h3>
-                <p className="text-xs text-gray-400 mb-1 font-poppins">
-                  via{" "}
-                  <button
-                    className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity"
-                    style={{
-                      color:
-                        selectedPlatform === "UberEats"
-                          ? "#06C167"
-                          : selectedPlatform === "DoorDash"
-                          ? "#FF3008"
-                          : "",
-                    }}
-                    onClick={() => setStep("platform")}
-                  >
-                    {selectedPlatform}
-                  </button>
-                </p>
-                <p className="text-[10px] text-gray-600 mb-5 font-poppins">Tap name to change platform</p>
-                <div className="flex flex-col gap-3 w-full">
-                  {locations.map((loc) => (
-                    <button
-                      key={loc.id}
-                      onClick={() => handleLocationClick(loc.id)}
-                      className="w-full bg-white/5 border border-white/5 hover:bg-brand-red hover:border-brand-red text-white py-4 rounded-2xl font-lilita tracking-widest text-xl transition-all duration-300 active:scale-95"
-                    >
-                      {loc.name}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      <OrderModal open={open} onClose={closeModal} initialPlatform={initialPlatform} />
     </>
   );
 }

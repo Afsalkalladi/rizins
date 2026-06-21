@@ -4,14 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import MobileMenu from "./MobileMenu";
-import { locations, getUrl, type Platform, type ModalStep } from "@/lib/orderModal";
+import OrderModal, { useOrderModal } from "./OrderModal";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [step, setStep] = useState<ModalStep>("platform");
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform>(null);
+  const { open, initialPlatform, openModal, closeModal } = useOrderModal();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,31 +18,6 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const openModal = () => {
-    setSelectedPlatform(null);
-    setStep("platform");
-    setShowModal(true);
-  };
-
-  const handlePlatformSelect = (p: NonNullable<Platform>) => {
-    setSelectedPlatform(p);
-    setStep("store");
-  };
-
-  const handleLocationClick = (locId: string) => {
-    const url = getUrl(selectedPlatform, locId);
-    window.open(url, "_blank");
-    setShowModal(false);
-    setSelectedPlatform(null);
-    setStep("platform");
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedPlatform(null);
-    setStep("platform");
-  };
 
   return (
     <>
@@ -147,22 +120,22 @@ export default function Header() {
         </div>
 
         {/* Desktop: Full navigation bar */}
-        <div className="hidden lg:flex h-full items-center justify-between px-8 xl:px-16 max-w-[1440px] mx-auto">
+        <div className="hidden lg:flex h-full items-center justify-between gap-6 px-8 xl:px-16 max-w-[1440px] mx-auto">
           {/* Left: Logo + Brand */}
-          <Link href="/" className="flex items-center gap-3 group" aria-label="Go to homepage">
+          <Link href="/" className="flex items-center gap-3 group shrink-0" aria-label="Go to homepage">
             <Image
               src="/images/logo.png"
               alt="Rizins Logo"
               width={48}
               height={48}
-              className="object-contain group-hover:scale-105 transition-transform"
+              className="object-contain w-9 h-9 xl:w-12 xl:h-12 group-hover:scale-105 transition-transform"
               priority
             />
-            <span className="font-jomhuria text-white text-[36px] leading-none pt-2 tracking-wider">RIZINS</span>
+            <span className="font-jomhuria text-white text-[32px] xl:text-[36px] leading-none pt-2 tracking-wider">RIZINS</span>
           </Link>
 
           {/* Center: Navigation Links */}
-          <nav className="flex items-center gap-8 xl:gap-12">
+          <nav className="flex flex-1 items-center justify-center gap-5 xl:gap-9">
             { [
               { label: "MENU", href: "/menu" },
               { label: "ORDER DELIVERY", href: "/order-delivery", action: openModal },
@@ -175,7 +148,7 @@ export default function Header() {
                 <button
                   key={item.label}
                   onClick={item.action}
-                  className="font-lilita text-white text-[16px] xl:text-[18px] tracking-wider hover:text-white/80 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                  className="font-lilita text-white text-[14px] xl:text-[17px] tracking-wide whitespace-nowrap hover:text-white/80 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {item.label}
                 </button>
@@ -183,7 +156,7 @@ export default function Header() {
                 <Link
                   key={item.label}
                   href={item.href || '#'}
-                  className="font-lilita text-white text-[16px] xl:text-[18px] tracking-wider hover:text-white/80 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
+                  className="font-lilita text-white text-[14px] xl:text-[17px] tracking-wide whitespace-nowrap hover:text-white/80 transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full"
                 >
                   {item.label}
                 </Link>
@@ -192,10 +165,10 @@ export default function Header() {
           </nav>
 
           {/* Right: Socials & CTA */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 shrink-0">
             <button
               onClick={openModal}
-              className="h-[46px] bg-white text-brand-red font-lilita text-[18px] tracking-wider px-8 rounded-full hover:bg-opacity-90 transition-all shadow-lg"
+              className="h-[46px] bg-white text-brand-red font-lilita text-[15px] xl:text-[18px] tracking-wide whitespace-nowrap px-6 xl:px-8 rounded-full hover:bg-opacity-90 transition-all shadow-lg"
             >
               PICK UP ON APP
             </button>
@@ -207,71 +180,7 @@ export default function Header() {
       <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       {/* Delivery Modal */}
-      {showModal && (
-        <div
-          className="fixed inset-0 z-[200] bg-black/90 backdrop-blur-md flex items-center justify-center p-4"
-          onClick={closeModal}
-        >
-          <div
-            className="bg-[#111] border border-white/10 p-7 rounded-3xl w-full max-w-sm relative flex flex-col items-center text-center shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button onClick={closeModal} aria-label="Close"
-              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-
-            {step === "platform" && (
-              <>
-                <h3 className="font-lilita text-2xl tracking-wide text-white mb-1 uppercase">Order Via</h3>
-                <p className="text-xs text-gray-400 mb-6 font-poppins">Choose your delivery platform</p>
-                <div className="flex flex-col gap-3 w-full">
-                  <button onClick={() => handlePlatformSelect("UberEats")}
-                    className="w-full bg-white/5 border border-white/5 hover:border-[#06C167]/50 hover:bg-[#06C167]/10 py-4 rounded-2xl font-sans text-base font-semibold transition-all duration-200 active:scale-95">
-                    <span className="text-white">Uber </span>
-                    <span className="font-bold text-[#06C167]">Eats</span>
-                  </button>
-                  <button onClick={() => handlePlatformSelect("DoorDash")}
-                    className="w-full bg-white/5 border border-white/5 hover:border-[#FF3008]/50 hover:bg-[#FF3008]/10 py-4 rounded-2xl font-black font-sans text-base uppercase tracking-tighter text-[#FF3008] transition-all duration-200 active:scale-95">
-                    DoorDash
-                  </button>
-                </div>
-              </>
-            )}
-
-            {step === "store" && (
-              <>
-                <h3 className="font-lilita text-2xl tracking-wide text-white mb-1 uppercase">Select Store</h3>
-                <p className="text-xs text-gray-400 mb-1 font-poppins">
-                  via{" "}
-                  <button className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity"
-                    style={{
-                      color: selectedPlatform === "UberEats" ? "#06C167"
-                        : selectedPlatform === "DoorDash" ? "#FF3008" : ""
-                    }}
-                    onClick={() => setStep("platform")}>
-                    {selectedPlatform}
-                  </button>
-                </p>
-                <p className="text-[10px] text-gray-600 mb-5 font-poppins">Tap name to change platform</p>
-                <div className="flex flex-col gap-3 w-full">
-                  {locations.map((loc) => (
-                    <button
-                      key={loc.id}
-                      onClick={() => handleLocationClick(loc.id)}
-                      className="w-full bg-white/5 border border-white/5 hover:bg-brand-red hover:border-brand-red text-white py-4 rounded-2xl font-lilita tracking-widest text-xl transition-all duration-300 active:scale-95"
-                    >
-                      {loc.name}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
+      <OrderModal open={open} onClose={closeModal} initialPlatform={initialPlatform} />
     </>
   );
 }

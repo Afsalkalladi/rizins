@@ -7,7 +7,7 @@ const GOOGLE_FORM_URL = "https://forms.gle/a3vfyzT2emCWjcGS8";
 
 export default function WorkWithUs() {
     return (
-        <section className="w-full min-h-[calc(100vh-80px)] bg-white py-12 md:py-16" id="careers">
+        <section className="w-full min-h-[calc(100vh-160px)] flex flex-col items-center justify-center bg-white py-12 md:py-16" id="careers">
             <div className="mx-auto w-full max-w-[760px] px-5 text-center">
                 <h1 className="font-lilita text-brand-red text-[30px] md:text-[42px] leading-[0.95] tracking-wide uppercase">
                     WORK WITH US!

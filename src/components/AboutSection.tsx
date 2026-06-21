@@ -5,15 +5,19 @@ import Image from "next/image";
 export default function AboutSection() {
   return (
     <section className="w-full bg-white">
-      {/* Award Image - Full Width */}
-      <div className="relative w-full h-[250px] sm:h-[320px] md:h-[400px] lg:h-[480px]">
-        <Image
-          src="/images/award-banner.png"
-          alt="Australia's Best Burger Awards 2025 Finalist"
-          fill
-          className="object-cover"
-          sizes="100vw"
-        />
+      {/* Award showcase — frame matches the image's native ratio so it fills
+          the container edge-to-edge with no stretching or cropping */}
+      <div className="w-full bg-white flex justify-center px-4 pt-8 sm:pt-10 md:pt-12">
+        <div className="relative w-full max-w-[420px] md:max-w-[480px] aspect-[536/428] overflow-hidden rounded-2xl shadow-[0_18px_45px_rgba(0,0,0,0.18)]">
+          <Image
+            src="/images/award-banner.png"
+            alt="Australia's Best Burger Awards 2025 Finalist"
+            fill
+            sizes="(max-width: 640px) 92vw, 480px"
+            className="object-cover"
+            priority
+          />
+        </div>
       </div>
 
       {/* Story Content */}

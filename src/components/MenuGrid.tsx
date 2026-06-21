@@ -145,9 +145,9 @@ interface MenuItemProps {
 
 function MenuItem({ name, description, imageSrc, prices, showComboNote }: MenuItemProps) {
   return (
-    <div className="flex items-center gap-6 py-4 group cursor-pointer border-b border-white/5 last:border-0">
+    <div className="flex items-center gap-3 sm:gap-5 py-4 group cursor-pointer border-b border-white/5 last:border-0">
       {/* Thumbnail Image */}
-      <div className="relative w-[60px] h-[60px] shrink-0 transition-transform duration-300 group-hover:scale-110">
+      <div className="relative w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] shrink-0 transition-transform duration-300 group-hover:scale-110">
         <Image
           src={imageSrc}
           alt={name}
@@ -159,7 +159,7 @@ function MenuItem({ name, description, imageSrc, prices, showComboNote }: MenuIt
 
       {/* Item Name + Description */}
       <div className="flex-1 min-w-0">
-        <h3 className="font-black text-xl md:text-2xl text-[#E5E5E5] group-hover:text-white uppercase tracking-wide leading-tight">
+        <h3 className="font-black text-base sm:text-xl md:text-2xl text-[#E5E5E5] group-hover:text-white uppercase tracking-wide leading-tight">
           {name}
         </h3>
         <p className="mt-1 font-poppins text-[11px] sm:text-xs md:text-sm text-[#B9B9B9] leading-snug uppercase tracking-[0.3px]">
