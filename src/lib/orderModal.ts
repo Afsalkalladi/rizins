@@ -34,6 +34,14 @@ export const locations = [
     uberEatsUrl:
       "https://www.ubereats.com/store/rizins-smash-burgers-frankston/vzuG0_aQT_KakO4DmMl1rg?utm_source=menu-maker",
   },
+  {
+    name: "Springvale",
+    id: "springvale",
+    doordashUrl:
+      "https://www.doordash.com/store/51882299?utm_source=mx_share&aw=j37LrBfJvsNuFSlu",
+    uberEatsUrl:
+      "https://www.ubereats.com/store-browse-uuid/37b6e4fd-1acc-57c2-99df-dffd29bc688b?diningMode=DELIVERY",
+  },
 ];
 
 export function getUrl(platform: Platform, locId: string): string {
